@@ -16,7 +16,9 @@ return require('packer').startup(function()
   use 'hrsh7th/cmp-cmdline'
   use 'hrsh7th/nvim-cmp'
   use 'hrsh7th/cmp-vsnip'
+  -- vsnip
   use 'hrsh7th/vim-vsnip'
+  use "rafamadriz/friendly-snippets"
   -- use 'nvim-autopairs'
   use "windwp/nvim-autopairs"
   -- nvim-tree 
