@@ -32,6 +32,8 @@ return require('packer').startup(function()
   use "blackCauldron7/surround.nvim" 
   -- Comment 
   use 'numToStr/Comment.nvim' 
+  -- nvim-coloizer
+  use 'norcalli/nvim-colorizer.lua'
   -- gruvbox theme
   use {"ellisonleao/gruvbox.nvim", requires = {"rktjmp/lush.nvim"}}
 

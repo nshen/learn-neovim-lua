@@ -17,6 +17,7 @@ lua require('nvim-tree-config')
 lua require('bufferline-config')
 lua require('surround-config')
 lua require('comment-config')
+lua require('nvim-colorizer-config')
 
 " lsp
 lua require('lsp/nvim-cmp-config')
