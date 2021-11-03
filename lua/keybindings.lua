@@ -30,5 +30,4 @@ map("n", "<C-h>", "<cmd>BufferLineCyclePrev<CR>", {noremap = true, silent = true
 map("n", "<C-l>", "<cmd>BufferLineCycleNext<CR>", {noremap = true, silent = true })
 
 -- comment
-map("n", "<C-_>", "gcc", {noremap = true, silent = true })
-map("v", "<C-_>", "gc", {noremap = true, silent = true })
+-- see ./comment-config.lua
