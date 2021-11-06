@@ -9,7 +9,7 @@ vim.wo.number = true
 vim.wo.relativenumber = true
 -- 高亮所在行
 vim.wo.cursorline = true
--- 显示指示列
+-- 显示左侧图标指示列
 vim.wo.signcolumn = "yes"
 -- 右侧参考线
 vim.wo.colorcolumn = "80"
@@ -21,13 +21,13 @@ vim.o.shiftround = true
 -- >> << 时长度
 vim.o.shiftwidth = 2
 vim.bo.shiftwidth = 2
--- 新行对齐当前行，适合空格替代tab
+-- 新行对齐当前行，空格替代tab
 vim.o.expandtab = true
 vim.bo.expandtab = true
 vim.o.autoindent = true
 vim.bo.autoindent = true
 vim.o.smartindent = true
--- 搜索大小写不敏感，除非包含大小写
+-- 搜索大小写不敏感，除非包含大写
 vim.o.ignorecase = true
 vim.o.smartcase = true
 -- 搜索不要高亮
@@ -61,7 +61,8 @@ vim.o.timeoutlen = 100
 -- split window 从下边和右边出现
 vim.o.splitbelow = true
 vim.o.splitright = true
-
+-- 自动补全不自动选中
+vim.g.completeopt = "menu,menuone,noselect,noinsert"
 ---------------------------------------------
 vim.o.background = "dark"
 vim.o.termguicolors = true

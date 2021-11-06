@@ -1,5 +1,4 @@
 -- https://gitub.com/hrsh7th/nvim-cmph
-vim.g.completeopt = "menu,menuone,noselect,noinsert"
 
 -- copy from wiki
 -- https://github.com/hrsh7th/nvim-cmp/wiki/Example-mappings#vim-vsnip
