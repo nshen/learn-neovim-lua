@@ -6,9 +6,13 @@ return require('packer').startup(function()
   -- which-key
   use 'folke/which-key.nvim'
   -- telescope
+  use 'nvim-lua/popup.nvim'
+  use 'nvim-lua/plenary.nvim'
   use { 'nvim-telescope/telescope.nvim', requires = { {'nvim-lua/plenary.nvim'} } }
   -- lspconfig
   use 'neovim/nvim-lspconfig'
+  -- rust-tools
+  use 'simrat39/rust-tools.nvim'
   -- nvim-cmp
   use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-buffer'
