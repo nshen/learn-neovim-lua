@@ -29,13 +29,17 @@
 
 ## 目录
 
-- WSL2
-- Windows terminal
+- WSL 2
+- Windows Terminal
 - Nerd fonts
 - 安装 Neovim
 - Neovim 配置文件
+- 配置入口 init.vim 
+- 基础配置 basic.lua 
+- 快捷键配置 keybindings.lua
 - 插件管理器 Packer
 - 语法高亮 Treesitter
+- LSP
 
 ## WSL 2
 
@@ -128,15 +132,15 @@ lua require('basic')
 目前我的配置文件大概是这个样子。
 
 ```
-├── init.vim
-└── lua
-    ├── basic.lua
-    ├── keybindings.lua
-    ├── lsp
+├── init.vim                              入口文件
+└── lua                                   所有 lua 配置文件
+    ├── basic.lua                         Neovim 的基础配置
+    ├── keybindings.lua                   快捷键配置
+    ├── lsp                               内置 LSP  (Language Server Protocol) 配置
     │   ├── diagnostic_signs.lua
     │   ├── language_servers.lua
     │   └── nvim-cmp-config.lua
-    ├── plugin-config
+    ├── plugin-config                     各个插件配置在这个文件夹
     │   ├── bufferline.lua
     │   ├── comment.lua
     │   ├── nvim-autopairs.lua
@@ -147,10 +151,14 @@ lua require('basic')
     │   ├── surround.lua
     │   ├── telescope.lua
     │   └── which-key.lua
-    └── plugins.lua
+    └── plugins.lua                       插件安装管理
 ```
 
-`init.vim` 主要负责加载各个 lua 文件
+## init.vim 配置入口
+
+`init.vim` 是入口文件，主要负责加载各个 lua 文件，对应上边的结构。
+
+如果暂时没有找到办法用lua设置的，就在这里用vim脚本设置。
 
 ```
 " 基础设置
@@ -182,7 +190,143 @@ lua require('lsp/diagnostic_signs')
 lua require('lsp/language_servers')
 ```
 
-## 基础配置
+## 基础配置 basic.lua
+
+这里的配置看着有点多，比 `VSCode` 复杂多了，主要是历史遗留的默认配置不太合理。
+
+其实不用纠结太多，我参考了很多大神的配置都差不多，可以闭眼直接 copy。
+
+可以根据需要微调，大部分都有注释
+
+```lua
+-- utf8
+vim.g.encoding = "UTF-8"
+vim.o.fileencoding = 'utf-8'
+-- 光标下方保留8行
+vim.o.scrolloff = 8
+vim.o.sidescrolloff = 5
+-- 相对行号
+vim.wo.number = true
+vim.wo.relativenumber = true
+-- 高亮所在行
+vim.wo.cursorline = true
+-- 显示左侧图标指示列
+vim.wo.signcolumn = "yes"
+-- 右侧参考线
+vim.wo.colorcolumn = "80"
+-- 缩进2个空格等于一个Tab
+vim.o.tabstop = 2
+vim.bo.tabstop = 2
+vim.o.softtabstop = 2
+vim.o.shiftround = true
+-- >> << 时长度
+vim.o.shiftwidth = 2
+vim.bo.shiftwidth = 2
+-- 新行对齐当前行，空格替代tab
+vim.o.expandtab = true
+vim.bo.expandtab = true
+vim.o.autoindent = true
+vim.bo.autoindent = true
+vim.o.smartindent = true
+-- 搜索大小写不敏感，除非包含大写
+vim.o.ignorecase = true
+vim.o.smartcase = true
+-- 搜索不要高亮
+vim.o.hlsearch = false
+-- 边输入边搜索
+vim.o.incsearch = true
+-- 使用增强状态栏后不再需要 vim 的模式提示
+vim.o.showmode = false
+-- 命令行高为2，提供足够的显示空间
+vim.o.cmdheight = 2
+-- 当文件被外部程序修改时，自动加载
+vim.o.autoread = true
+vim.bo.autoread = true
+-- 禁止折行
+vim.o.wrap = false
+vim.wo.wrap = false
+-- 允许隐藏被修改过的buffer
+vim.o.hidden = true
+-- 鼠标支持
+vim.o.mouse = "a"
+-- 行结尾可以跳到下一行
+vim.o.whichwrap = 'b,s,<,>,[,],h,l'
+-- 禁止创建备份文件
+vim.o.backup = false
+vim.o.writebackup = false
+vim.o.swapfile = false
+-- smaller updatetime 
+vim.o.updatetime = 300
+-- 等待mappings
+vim.o.timeoutlen = 100
+-- split window 从下边和右边出现
+vim.o.splitbelow = true
+vim.o.splitright = true
+-- 自动补全不自动选中
+vim.g.completeopt = "menu,menuone,noselect,noinsert"
+---------------------------------------------
+vim.o.background = "dark"
+vim.o.termguicolors = true
+vim.opt.termguicolors = true
+--? tab 字符显示
+vim.o.list = true
+vim.o.listchars = "tab:>·"
+-- 补全
+vim.o.wildmenu = true
+-- Dont' pass messages to |ins-completin menu|
+vim.o.shortmess = vim.o.shortmess .. 'c'
+vim.o.pumheight = 10
+-- vim.o.conceallevel = 0
+vim.o.showtabline = 2
+
+```
+
+## 快捷键配置 keybindings.lua
+
+```lua
+
+-- leader
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+local map = vim.api.nvim_set_keymap
+
+
+-- ctrl u / ctrl + d  只移动9行，默认移动半屏
+map("n", "<C-u>", "9k", {noremap = true, silent = true })
+map("n", "<C-d>", "9j", {noremap = true, silent = true })
+
+map('v', '<', '<gv', {noremap = true, silent = false})
+map('v', '>', '>gv', {noremap = true, silent = false})
+
+-- 分屏
+map("n", "<A-h>", "<C-w>h", {noremap = true, silent = false })
+map("n", "<A-j>", "<C-w>j", {noremap = true, silent = false })
+map("n", "<A-k>", "<C-w>k", {noremap = true, silent = false })
+map("n", "<A-l>", "<C-w>l", {noremap = true, silent = false })
+map("n", "<A-o>", "<C-w>o", {noremap = true, silent = false }) -- close others
+
+-- map("n", "<C-l>", "<C-w>>", {noremap = true, silent = false })
+-- map("n", "<C-h>", "<cmd>vertical resize -2<CR>", {noremap = true, silent = false })
+map("n", "<A-=>", "<C-w>=", {noremap = true, silent = false })
+
+-- Telescope
+map("n", "<C-p>", "<cmd>Telescope find_files<cr>", {noremap = true, silent = false })
+map("n", "<leader>f", "<cmd>Telescope find_files<cr>", {noremap = true, silent = false })
+map("n", "<leader>g", "<cmd>Telescope live_grep<cr>", {noremap = true, silent = false })
+
+-- nvimTree
+map('n', '<C-n>', ':NvimTreeToggle<CR>', {noremap = true, silent = true})
+
+-- bufferline 左右切换
+map("n", "<C-h>", "<cmd>BufferLineCyclePrev<CR>", {noremap = true, silent = true })
+map("n", "<C-l>", "<cmd>BufferLineCycleNext<CR>", {noremap = true, silent = true })
+
+
+-- comment
+-- see ./comment-config.lua
+
+```
+
 
 ##包管理器
 
