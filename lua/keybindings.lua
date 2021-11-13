@@ -3,6 +3,11 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 local map = vim.api.nvim_set_keymap
 
+
+-- ctrl u / ctrl + d  只移动9行，默认移动半屏
+map("n", "<C-u>", "9k", {noremap = true, silent = true })
+map("n", "<C-d>", "9j", {noremap = true, silent = true })
+
 map('v', '<', '<gv', {noremap = true, silent = false})
 map('v', '>', '>gv', {noremap = true, silent = false})
 
@@ -25,9 +30,10 @@ map("n", "<leader>g", "<cmd>Telescope live_grep<cr>", {noremap = true, silent = 
 -- nvimTree
 map('n', '<C-n>', ':NvimTreeToggle<CR>', {noremap = true, silent = true})
 
--- bufferline
+-- bufferline 左右切换
 map("n", "<C-h>", "<cmd>BufferLineCyclePrev<CR>", {noremap = true, silent = true })
 map("n", "<C-l>", "<cmd>BufferLineCycleNext<CR>", {noremap = true, silent = true })
+
 
 -- comment
 -- see ./comment-config.lua
