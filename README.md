@@ -27,6 +27,16 @@
 
 ![neovim run in wsl2](./imgs/gif1.gif)
 
+## 目录
+
+- WSL2
+- Windows terminal
+- Nerd fonts
+- 安装 Neovim
+- Neovim 配置文件
+- 插件管理器 Packer
+- 语法高亮 Treesitter
+
 ## WSL 2
 
 首先确定你的 `Windows` 系统是否为 `WSL 2`，如果不是请先找教程升级到 `WSL2`
@@ -61,9 +71,9 @@ https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/FiraCode/Regul
 
 注意要下载兼容 `Windows` 的版本 `XXXX Windows Compatible.ttf`
 
-![nerd fonts](./imgs/2.png)
-
 到 `设置` `外观` 里，选中刚才安装的字体，保存。
+
+![nerd fonts](./imgs/2.png)
 
 安装过后，命令行里就支持显示这些小图标了，到这个网址可以复制小图标
 
@@ -83,7 +93,7 @@ sudo apt-get update
 sudo apt-get install neovim
 ```
 
-### 配置文件位置
+## Neovim 配置文件
 
 Neovim 配置文件不是 `.vimrc`
 
@@ -91,6 +101,184 @@ Neovim 配置文件不是 `.vimrc`
 
 `~/.config/nvim/init.vim`
 
+也可以直接是 `init.lua` ，为了保证和老版本兼容，或者有一些不知怎么在 `lua` 下配置的，我还是使用 `init.vim`
+
+从 `init.vim` 里调用 `lua`，可以这样
+
+```
+lua print('单行 lua')
+```
+
+多行调用
+
+```
+lua <<EOF
+print('多行 lua')
+print('多行 lua')
+EOF
+```
+
+在 `Neovim` 中加载 `lua` 文件，可以这样
+
+```
+" 加载 lua/basic.lua 文件，此行为注释
+lua require('basic')
+```
+
+目前我的配置文件大概是这个样子。
+
+```
+├── init.vim
+└── lua
+    ├── basic.lua
+    ├── keybindings.lua
+    ├── lsp
+    │   ├── diagnostic_signs.lua
+    │   ├── language_servers.lua
+    │   └── nvim-cmp-config.lua
+    ├── plugin-config
+    │   ├── bufferline.lua
+    │   ├── comment.lua
+    │   ├── nvim-autopairs.lua
+    │   ├── nvim-colorizer.lua
+    │   ├── nvim-tree.lua
+    │   ├── nvim-treesitter.lua
+    │   ├── rust-tools.lua
+    │   ├── surround.lua
+    │   ├── telescope.lua
+    │   └── which-key.lua
+    └── plugins.lua
+```
+
+`init.vim` 主要负责加载各个 lua 文件
+
+```
+" 基础设置
+lua require('basic')
+" Packer插件管理
+lua require('plugins')
+" 快捷键映射
+lua require('keybindings')
+" 皮肤设置
+" https://github.com/ellisonleao/gruvbox.nvim
+set background=dark " or light if you want light mode
+colorscheme gruvbox
+
+" 插件配置
+lua require('plugin-config/which-key')
+lua require('plugin-config/nvim-treesitter')
+lua require('plugin-config/telescope')
+lua require('plugin-config/nvim-autopairs')
+lua require('plugin-config/nvim-tree')
+lua require('plugin-config/bufferline')
+lua require('plugin-config/surround')
+lua require('plugin-config/comment')
+lua require('plugin-config/nvim-colorizer')
+lua require('plugin-config/rust-tools')
+
+" lsp
+lua require('lsp/nvim-cmp-config')
+lua require('lsp/diagnostic_signs')
+lua require('lsp/language_servers')
+```
+
+## 基础配置
+
+##包管理器
+
+https://github.com/wbthomason/packer.nvim
+
+
+in `~/.config/nvim/lua/plugins/init.lua`
+
+```lua
+return require('packer').startup(function()
+  -- Packer can manage itself
+  use 'wbthomason/packer.nvim'
+end)
+```
+
+`:PackerInstall`
+
+## colorscheme
+
+
+https://github.com/shaunsingh/nord.nvim
+
+
+in `~/.config/nvim/lua/plugins/init.lua`
+
+```lua
+return require('packer').startup(function()
+  -- Packer can manage itself
+  use 'wbthomason/packer.nvim'
+  -- If you are using Packer
+  use 'shaunsingh/nord.nvim'
+end)
+```
+
+in `~/.config/nvim/init.lua`
+
+```lua
+require('plugins')
+vim.cmd('colorscheme nord')
+```
+
+## treesitter
+
+- https://github.com/nvim-treesitter/nvim-treesitter/wiki/Installation
+
+```lua
+return require('packer').startup(function()
+  -- Packer can manage itself
+  use 'wbthomason/packer.nvim'
+  -- If you are using Packer
+  use 'shaunsingh/nord.nvim'
+  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+end)
+```
+
+
+`:PackerSync`
+
+`~/.config/nvim/lua/plugnis/init.lua`
+
+```bash
+require('plugins')
+-- ~/.config/nvim/lua/treesitter-config/init.lua
+require('treesitter-config')
+vim.cmd('colorscheme nord')
+```
+
+报错， 安装 `sudo apt-get install build-essential`
+ 
+
+
+语法高亮 Treesitter
+## telescope
+
+`:checkhealth telescope`  检查安装情况，提示 `ripgrep` 不存在
+
+```bash
+sudo add-apt-repository ppa:x4121/ripgrep
+sudo apt-get update
+sudo apt install ripgre
+```
+fd 不存在
+
+`npm install -g fd-find`
+
+
+设置keybinding
+
+
+
+## bufferline.nvim && lualine.nvim
+
+## nvim-tree.lua
+
+
+## 
 ## 插件管理器 Packer
 
 https://github.com/wbthomason/packer.nvim
