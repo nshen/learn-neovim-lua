@@ -1,6 +1,6 @@
 ## Neovim 基础配置
 
-学习 Neovim 全 lua 配置 (二) Neovim 基础配置
+本章介绍 `Neovim` 的基本配置
 
 ## 配置文件
 
@@ -200,7 +200,9 @@ vim.o.pumheight = 10
 vim.o.showtabline = 2
 ```
 
+[basic.lua 完整文件](../lua/basic.lua) 
+
 重启后的 `Neovim` 应该顺眼多了，下一篇介绍我的 Neovim 快捷键配置。
 
-[Neovim 快捷键配置](./keybinding.md)
 
+下一章： [Neovim 快捷键配置](./keybinding.md)

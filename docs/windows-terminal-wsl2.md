@@ -1,6 +1,6 @@
 ## 在 Windows Terminal 与 WSL 2 下安装 Neovim 
 
-学习 Neovim 全 lua 配置 (一) 在 Windows Terminal 与 WSL 2 下安装 Neovim
+本章介绍如何在 `Windows` 命令行环境下安装 `Neovim`
 
 ## WSL 2 
 
@@ -74,4 +74,4 @@ alias v='nvim'
 
 目前安装完成，但 `vim` 的默认配置不尽人意，下一篇介绍基础配置。
 
-[Neovim 基础配置](./basic-config.md)
+下一章： [Neovim 基础配置](./basic-config.md)

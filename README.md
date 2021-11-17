@@ -1,7 +1,5 @@
 ## 学习 Neovim 全 lua 配置
 
-> 逃离 VSCode，在 Windows 下配置 Neovim
-
 本人常年在 `Windows` 机器上做 `Web` 开发，虽然已经使用 “`VIM`” 好多年了，但都是在使用 [VSCodeVim](https://github.com/VSCodeVim/Vim)
 
 中间曾尝试配置过几次原生的 `VIM`，包括各种 GUI 的版本，最终都放弃了。
