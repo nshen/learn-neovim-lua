@@ -1,14 +1,20 @@
-## Neovim 配置文件
+## Neovim 基础配置
+
+学习 Neovim 全 lua 配置 (二) Neovim 基础配置
+
+## 配置文件
 
 Neovim 配置文件不是 `.vimrc`
 
-而是
+而是保存在 `~/.config/nvim/init.vim`
 
-`~/.config/nvim/init.vim`
+也可以直接是 `init.lua` ，为了保证和老版本兼容，或者有一些不知怎么在 `lua` 下配置的，我这里还是使用了 `init.vim`。
 
-也可以直接是 `init.lua` ，为了保证和老版本兼容，或者有一些不知怎么在 `lua` 下配置的，我还是使用 `init.vim`
+但是 `init.vim` 只作为入口，真正的配置，是加载的其他的 `lua` 配置文件
 
-从 `init.vim` 里调用 `lua`，可以这样
+## .vim 中调用 lua
+
+从 `init.vim` 里可以直接写 `lua`代码，这样
 
 ```
 lua print('单行 lua')
@@ -22,6 +28,7 @@ print('多行 lua')
 print('多行 lua')
 EOF
 ```
+## .vim 中加载其他lua 文件
 
 在 `Neovim` 中加载 `lua` 文件，可以这样
 
@@ -55,13 +62,14 @@ lua require('basic')
     └── plugins.lua                       插件安装管理
 ```
 
+
 ## init.vim 配置入口
 
 `init.vim` 是入口文件，主要负责加载各个 lua 文件，对应上边的结构。
 
-如果暂时没有找到办法用lua设置的，就在这里用vim脚本设置。
+如果暂时没有找到办法用 `lua` 设置的，就在这里用 `vim` 脚本设置。
 
-先看一下这个文件大概的样子，下边会逐行讲解
+先预览一下这个文件最终的样子，本章只需关注前两行，后边的会在之后的章节介绍
 
 ```
 " 基础设置
@@ -102,11 +110,11 @@ lua require('lsp/language_servers')
 lua require('basic')
 ```
 
-加载对应的 `lua/basic.lua`
+此行会加载对应的 `lua/basic.lua`
 
 这里的配置看着有点多，比 `VSCode` 复杂多了，主要是历史遗留的默认配置不太合理。
 
-其实不用纠结太多，我参考了很多大神的配置都差不多，可以闭眼直接 copy。
+其实不用纠结太多，我也是参考了很多大神的配置都差不多，基本可以闭眼直接 copy。
 
 可以根据需要微调，大部分都有注释
 
@@ -114,24 +122,24 @@ lua require('basic')
 -- utf8
 vim.g.encoding = "UTF-8"
 vim.o.fileencoding = 'utf-8'
--- 光标下方保留8行
+-- jk移动时光标下上方保留8行
 vim.o.scrolloff = 8
 vim.o.sidescrolloff = 8
--- 相对行号
+-- 使用相对行号
 vim.wo.number = true
 vim.wo.relativenumber = true
 -- 高亮所在行
 vim.wo.cursorline = true
 -- 显示左侧图标指示列
 vim.wo.signcolumn = "yes"
--- 右侧参考线
+-- 右侧参考线，超过表示代码太长了，考虑换行
 vim.wo.colorcolumn = "80"
 -- 缩进2个空格等于一个Tab
 vim.o.tabstop = 2
 vim.bo.tabstop = 2
 vim.o.softtabstop = 2
 vim.o.shiftround = true
--- 输入 >> << 时长度
+-- >> << 时移动长度
 vim.o.shiftwidth = 2
 vim.bo.shiftwidth = 2
 -- 新行对齐当前行，空格替代tab
@@ -157,12 +165,12 @@ vim.bo.autoread = true
 -- 禁止折行
 vim.o.wrap = false
 vim.wo.wrap = false
+-- 行结尾可以跳到下一行
+vim.o.whichwrap = 'b,s,<,>,[,],h,l'
 -- 允许隐藏被修改过的buffer
 vim.o.hidden = true
 -- 鼠标支持
 vim.o.mouse = "a"
--- 行结尾可以跳到下一行
-vim.o.whichwrap = 'b,s,<,>,[,],h,l'
 -- 禁止创建备份文件
 vim.o.backup = false
 vim.o.writebackup = false
@@ -176,20 +184,23 @@ vim.o.splitbelow = true
 vim.o.splitright = true
 -- 自动补全不自动选中
 vim.g.completeopt = "menu,menuone,noselect,noinsert"
----------------------------------------------
--- 下边的还没研究，先设置上没错的
+-- 样式
 vim.o.background = "dark"
 vim.o.termguicolors = true
 vim.opt.termguicolors = true
---? tab 字符显示
+-- 不可见字符的显示，这里只把空格显示为一个点
 vim.o.list = true
-vim.o.listchars = "tab:>·"
--- 补全
+vim.o.listchars = "space:·"
+-- 补全增强
 vim.o.wildmenu = true
 -- Dont' pass messages to |ins-completin menu|
 vim.o.shortmess = vim.o.shortmess .. 'c'
 vim.o.pumheight = 10
--- vim.o.conceallevel = 0
+-- always show tabline
 vim.o.showtabline = 2
-
 ```
+
+重启后的 `Neovim` 应该顺眼多了，下一篇介绍我的 Neovim 快捷键配置。
+
+[Neovim 快捷键配置](./keybinding.md)
+
