@@ -11,16 +11,29 @@ map("n", "<C-d>", "9j", {noremap = true, silent = true })
 map('v', '<', '<gv', {noremap = true, silent = false})
 map('v', '>', '>gv', {noremap = true, silent = false})
 
--- 分屏
+------------------------------------------------------------------
+-- windows 分屏
+map("n", "sv", ":vsp<cr>", {noremap = true, silent = true })
+map("n", "sh", ":sp<cr>", {noremap = true, silent = true })
+-- 关闭当前
+map("n", "sc", "<C-w>c", {noremap = true, silent = true })
+-- 关闭其他
+map("n", "so", "<C-w>o", {noremap = true, silent = true }) -- close others
+
+-- 比例控制
+map("n", "s>", ":vertical resize +20<CR>", {noremap = true, silent = true })
+map("n", "s<", ":vertical resize -20<CR>", {noremap = true, silent = true })
+map("n", "s=", "<C-w>=", {noremap = true, silent = true })
+map("n", "sj", ":resize +10<CR>",{noremap = true, silent = true })
+map("n", "sk", ":resize -10<CR>",{noremap = true, silent = true })
+
+-- alt + hjkl  窗口之间跳转
 map("n", "<A-h>", "<C-w>h", {noremap = true, silent = false })
 map("n", "<A-j>", "<C-w>j", {noremap = true, silent = false })
 map("n", "<A-k>", "<C-w>k", {noremap = true, silent = false })
 map("n", "<A-l>", "<C-w>l", {noremap = true, silent = false })
-map("n", "<A-o>", "<C-w>o", {noremap = true, silent = false }) -- close others
+--------------------------------------------------------------------
 
--- map("n", "<C-l>", "<C-w>>", {noremap = true, silent = false })
--- map("n", "<C-h>", "<cmd>vertical resize -2<CR>", {noremap = true, silent = false })
-map("n", "<A-=>", "<C-w>=", {noremap = true, silent = false })
 
 -- Telescope
 map("n", "<C-p>", "<cmd>Telescope find_files<cr>", {noremap = true, silent = false })

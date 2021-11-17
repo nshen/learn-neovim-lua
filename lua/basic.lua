@@ -35,7 +35,7 @@ vim.g.encoding = "UTF-8"
 vim.o.fileencoding = 'utf-8'
 -- 光标下方保留8行
 vim.o.scrolloff = 8
-vim.o.sidescrolloff = 5
+vim.o.sidescrolloff = 8
 -- 相对行号
 vim.wo.number = true
 vim.wo.relativenumber = true
