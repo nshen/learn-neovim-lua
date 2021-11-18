@@ -75,4 +75,4 @@ alias v='nvim'
 目前安装完成，但 `vim` 的默认配置不尽人意，下一篇介绍基础配置。
 
 - 下一章： [Neoim 基础配置](./basic-config.md)  
-- 回首页： [学习 Neovim 全 lua 配置](../README.md)
+- [回首页](../README.md)

@@ -200,10 +200,10 @@ vim.o.pumheight = 10
 vim.o.showtabline = 2
 ```
 
-- [init.vim 完整文件](./init.vim) 
+- [init.vim 完整文件](../init.vim) 
 - [basic.lua 完整文件](../lua/basic.lua) 
 
 重启后的 `Neovim` 应该顺眼多了，下一篇介绍我的 Neovim 快捷键配置。
 
 - 下一章： [Neovim 快捷键配置](./keybinding.md)
-- 回首页： [学习 Neovim 全 lua 配置](../README.md)
+- [回首页](../README.md)
