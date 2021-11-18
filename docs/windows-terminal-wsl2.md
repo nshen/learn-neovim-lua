@@ -30,11 +30,11 @@
 
 ![nerd fonts](./imgs/sankey-glyphs-combined-diagram.png)
 
-到这里 `https://www.nerdfonts.com/font-downloads` 找到你喜欢的字体。
+到这里 https://www.nerdfonts.com/font-downloads 找到你喜欢的字体。
 
 比如我在 `VSCode` 里最常用的是 `Fira Code` 字体，那么我就安装这个打了 Patch 的`FiraCode` 字体
 
-`https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/FiraCode/Regular/complete/`
+https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/FiraCode/Regular/complete/
 
 注意要下载兼容 `Windows` 的版本 `XXXX Windows Compatible.ttf`，下载后双击即可安装完成。
 
@@ -44,7 +44,7 @@
 
 安装过后，命令行里就支持显示这些小图标了，为了测试是否成功，可以到这个网址可以复制小图标
 
-`https://www.nerdfonts.com/cheat-sheet`
+https://www.nerdfonts.com/cheat-sheet
 
 粘贴到命令行里。
 
@@ -72,6 +72,10 @@ alias vi='nvim'
 alias v='nvim'
 ```
 
+[init.vim 完整文件](./init.vim) 
+
+
 目前安装完成，但 `vim` 的默认配置不尽人意，下一篇介绍基础配置。
 
-下一章： [Neovim 基础配置](./basic-config.md)
+- 下一章： [Neoim 基础配置](./basic-config.md)  
+- 回首页： [学习 Neovim 全 lua 配置](../README.md)

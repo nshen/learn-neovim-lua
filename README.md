@@ -50,5 +50,6 @@
 - rust开发配置
 - 直接使用我的配置
 
+本文 + 配置源码，随着我的习惯改变，会在 [github.com/nshen/learn-neovim-lua](https://github.com/nshen/learn-neovim-lua) 永久更新，欢迎订阅。
 
-本文 + 配置源码，随着我的习惯改变，会在[github.com/nshen/learn-neovim-lua](https://github.com/nshen/learn-neovim-lua)永久更新，欢迎订阅。
+任何问题欢迎[留言](https://github.com/nshen/learn-neovim-lua/issues)，共同进步。
