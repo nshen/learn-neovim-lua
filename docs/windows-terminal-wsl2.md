@@ -72,9 +72,6 @@ alias vi='nvim'
 alias v='nvim'
 ```
 
-[init.vim 完整文件](./init.vim) 
-
-
 目前安装完成，但 `vim` 的默认配置不尽人意，下一篇介绍基础配置。
 
 - 下一章： [Neoim 基础配置](./basic-config.md)  

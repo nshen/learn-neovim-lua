@@ -37,7 +37,7 @@ EOF
 lua require('basic')
 ```
 
-目前我的配置文件大概是这个样子。
+目前我的配置文件结构大概是这个样子。 后边章节会逐个介绍
 
 ```
 ├── init.vim                              入口文件，这里负责加载所有lua文件夹里的文件
@@ -200,11 +200,10 @@ vim.o.pumheight = 10
 vim.o.showtabline = 2
 ```
 
-[basic.lua 完整文件](../lua/basic.lua) 
+- [init.vim 完整文件](./init.vim) 
+- [basic.lua 完整文件](../lua/basic.lua) 
 
 重启后的 `Neovim` 应该顺眼多了，下一篇介绍我的 Neovim 快捷键配置。
 
-
 - 下一章： [Neovim 快捷键配置](./keybinding.md)
 - 回首页： [学习 Neovim 全 lua 配置](../README.md)
-
