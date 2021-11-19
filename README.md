@@ -1,4 +1,4 @@
-## 📜 学习 eovim 全 lua 配置
+## 📜 学习 Neovim 全 lua 配置
 
 本人常年在 `Windows` 系统上做前端开发，虽然已经使用 “`VIM`” 好多年了，但一直使用的都是 [VSCodeVim](https://github.com/VSCodeVim/Vim)，
 
