@@ -25,29 +25,29 @@
 
 ![neovim run in wsl2](./docs/imgs/gif1.gif)
 
-本文将介绍我如何在 `Windows` 命令行环境下使用全lua配置 `Neovim`，以及各种常用插件的配置和使用方法。
+本文将介绍我如何在 `Windows` 命令行环境下使用全 lua 配置 `Neovim`，以及各种常用插件的配置和使用方法。
 
 其他系统用户可以跳过第一章，从第二章开始。
 
 ## 📃 目录
 
-- 🏆 [在 Windows Terminal 与 WSL 2 下安装 Neovim](./docs/windows-terminal-wsl2.md) 
-- 🛠 [Neovim 基础配置](./docs/basic-config.md) 
-- 🖐 Neovim 快捷键配置
+- 🏆 [在 Windows Terminal 与 WSL 2 下安装 Neovim](./docs/windows-terminal-wsl2.md)
+- 🛠 [Neovim 基础配置](./docs/basic-config.md)
+- 🖐 [Neovim 快捷键配置](./docs/keybindings.md)
 - 📦 Packer 插件管理与配置
 - 🛒 常用插件配置
-    - 📌 nvim-tree
-    - 📌 bufferline
-    - 📌 treesitter
-    - 📌 telescope
-    - 📌 nvim-cmp
-    - 📌 surround
-    - 📌 Comment
-    - 📌 nvim-coloizer
+  - 📌 nvim-tree
+  - 📌 bufferline
+  - 📌 treesitter
+  - 📌 telescope
+  - 📌 nvim-cmp
+  - 📌 surround
+  - 📌 Comment
+  - 📌 nvim-coloizer
 - 🎭 主题配置
-- ✨ 内置LSP配置
+- ✨ 内置 LSP 配置
 - ⚔ 前端开发配置
-- 🦀 rust开发配置
+- 🦀 rust 开发配置
 - 🎉 直接使用我的配置
 
 ## ❤ 感谢
