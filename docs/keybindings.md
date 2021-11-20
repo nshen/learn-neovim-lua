@@ -55,7 +55,7 @@ local opt = {noremap = true, silent = true }
 
 我喜欢把 `ctrl + u` / `ctrl + d` 设置成移动 9 行，演示：
 
-![vim-split-windows](./imgs/up-down.gif)
+<img src="./imgs/up-down.gif" width="850">
 
 ```lua
 map("n", "<C-u>", "9k", opt)
@@ -79,7 +79,7 @@ map('v', '>', '>gv', opt)
 
 `alt + hjkl` 在窗口之间跳转。 演示：
 
-![vim-split-windows](./imgs/split-windows.gif)
+<img src="./imgs/split-windows.gif" width="850">
 
 - `sv` 水平分屏
 - `sh` 垂直分屏
