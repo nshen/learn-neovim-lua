@@ -1,10 +1,8 @@
-##  未完成----------------
+## Neovim 主题配置
 
 ## colorscheme
 
-
 https://github.com/shaunsingh/nord.nvim
-
 
 in `~/.config/nvim/lua/plugins/init.lua`
 
