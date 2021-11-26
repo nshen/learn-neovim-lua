@@ -46,7 +46,7 @@ map("n", "<leader>f", ":Telescope find_files<CR>", opt)
 map("n", "<leader>g", ":Telescope live_grep<CR>", opt)
 
 -- nvimTree
-map('n', '<C-n>', ':NvimTreeToggle<CR>', opt)
+map('n', '<A-m>', ':NvimTreeToggle<CR>', opt)
 
 -- bufferline 左右切换
 map("n", "<C-h>", ":BufferLineCyclePrev<CR>", opt)
