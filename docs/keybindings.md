@@ -178,5 +178,5 @@ return pluginKeys
 
 下一章会介绍插件安装，和使用。
 
-- 下一章： Packer 插件管理与配置 (正在写，请点赞关注，谢谢)
+- 下一章： [Neovim 插件管理与配置](./packer-usage.md)
 - [回首页](../README.md)
