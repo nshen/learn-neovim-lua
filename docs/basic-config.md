@@ -205,5 +205,5 @@ vim.o.showtabline = 2
 
 重启后的 `Neovim` 应该顺眼多了，下一篇介绍我的 Neovim 快捷键配置。
 
-- 下一章： [Neovim 快捷键配置](./keybinding.md)
+- 下一章： [Neovim 快捷键配置](./keybindings.md)
 - [回首页](../README.md)

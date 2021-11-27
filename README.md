@@ -34,7 +34,8 @@
 - 🏆 [在 Windows Terminal 与 WSL 2 下安装 Neovim](./docs/windows-terminal-wsl2.md)
 - 🛠 [Neovim 基础配置](./docs/basic-config.md)
 - 🖐 [Neovim 快捷键配置](./docs/keybindings.md)
-- 📦 Packer 插件管理与配置
+- 📦 [Neovim 插件管理与配置](./docs/packer-usage.md)
+- 🎭 Neovim 主题配置
 - 🛒 常用插件配置
   - 📌 nvim-tree
   - 📌 bufferline
@@ -44,7 +45,6 @@
   - 📌 surround
   - 📌 Comment
   - 📌 nvim-coloizer
-- 🎭 主题配置
 - ✨ 内置 LSP 配置
 - ⚔ 前端开发配置
 - 🦀 rust 开发配置
