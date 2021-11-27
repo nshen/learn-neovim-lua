@@ -4,13 +4,11 @@
 
 ## Packer 介绍
 
-之前 `vim` 最常见的插件管理应该是 [vim-plug](https://github.com/junegunn/vim-plug) 我也用过，但
+之前 `vim` 最常见的插件管理应该是 [vim-plug](https://github.com/junegunn/vim-plug) 我也用过，但 `Neovim` 0.5 以后一般都会推荐使用 `lua` 原生的 [packer.nvim](https://github.com/wbthomason/packer.nvim) 做插件管理 。
 
-未来可能都会逐渐转成 `lua` 原生的 [packer.nvim](https://github.com/wbthomason/packer.nvim) 了。
+一个好插件管理器，最重要是常用插件都支持。 现在 `Neovim` 常用插件的主页上都有如何用 `Packer.nvim` 安装的说明了，所以不用担心。
 
-切换并不复杂，使用方法上都差不多，一个好插件管理器，最重要是常用插件都支持。
-
-现在一般插件的主页上都有如何用 `Packer.nvim` 安装的说明了，所以不用担心。
+切换也并不复杂，使用方法上也都差不多，开始安装吧
 
 ## 安装 Packer.nvim 插件管理器
 
