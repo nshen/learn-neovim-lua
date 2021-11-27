@@ -35,7 +35,7 @@
 - 🛠 [Neovim 基础配置](./docs/basic-config.md)
 - 🖐 [Neovim 快捷键配置](./docs/keybindings.md)
 - 📦 [Neovim 插件管理与配置](./docs/packer-usage.md)
-- 🎭 Neovim 主题配置
+- 🎭 [Neovim 主题配置](./docs/colorscheme.md)
 - 🛒 常用插件配置
   - 📌 nvim-tree
   - 📌 bufferline

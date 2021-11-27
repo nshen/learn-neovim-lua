@@ -80,5 +80,5 @@ Packer.nvim 安装后会增加以下命令，
 
 实在有点丑，下一章我们先把主题装上试试。
 
-- 下一章：[Neovim 主题配置](./docs/colorscheme.md)
+- 下一章：[Neovim 主题配置](./colorscheme.md)
 - [回首页](../README.md)
