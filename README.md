@@ -37,7 +37,7 @@
 - 📦 [Neovim 插件管理与配置](./docs/packer-usage.md)
 - 🎭 [Neovim 主题配置](./docs/colorscheme.md)
 - 🛒 常用插件配置
-  - 📌 nvim-tree
+  - 📌 [nvim-tree](./docs/plugins/nvim-tree.md)
   - 📌 bufferline
   - 📌 treesitter
   - 📌 telescope
@@ -55,3 +55,7 @@
 本文 + 配置源码，随着我的习惯改变，会在 [github.com/nshen/learn-neovim-lua](https://github.com/nshen/learn-neovim-lua) 永久更新，欢迎订阅。
 
 任何问题欢迎 [留言](https://github.com/nshen/learn-neovim-lua/issues)，共同进步，谢谢。
+
+本作品采用 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a> 进行许可。
+
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
