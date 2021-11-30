@@ -1,4 +1,4 @@
-## nvim-tree 插件安装配置
+## Neovim 插件 nvim-tree 的安装与配置
 
 本章介绍如何给 nvim 安装和配置 [nvim-tree.lua](https://github.com/kyazdani42/nvim-tree.lua) 插件。
 
@@ -102,7 +102,7 @@ map('n', '<A-m>', ':NvimTreeToggle<CR>', opt)
 
 <img src="../imgs/nvim-tree4.gif" width="850">
 
-还有其他功能 详见主页 [nvim-tree.nvim](https://github.com/kyazdani42/nvim-tree.lua)
+还有其他功能，我不常用，详见 [nvim-tree.nvim](https://github.com/kyazdani42/nvim-tree.lua) 主页
 
 下一章继续介绍其他插件，感谢关注。
 

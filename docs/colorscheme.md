@@ -80,5 +80,6 @@ colorscheme nord
 
 下一章开始会介绍一些常用的插件。
 
-- 下一章： (正在写，请点赞关注，谢谢)
+- 下一章： [Neovim 插件 nvim-tree 的安装与配置](./plugins/nvim-tree.md)
+
 - [回首页](../README.md)
