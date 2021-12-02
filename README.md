@@ -38,7 +38,7 @@
 - 🎭 [Neovim 主题配置](./docs/colorscheme.md)
 - 🛒 常用插件配置
   - 📌 [nvim-tree](./docs/plugins/nvim-tree.md)
-  - 📌 bufferline
+  - 📌 [bufferline](./docs/plugins/bufferline.md)
   - 📌 treesitter
   - 📌 telescope
   - 📌 nvim-cmp

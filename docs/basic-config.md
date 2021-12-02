@@ -28,7 +28,8 @@ print('多行 lua')
 print('多行 lua')
 EOF
 ```
-## .vim 中加载其他lua 文件
+
+## .vim 中加载其他 lua 文件
 
 在 `Neovim` 中加载 `lua` 文件，可以这样
 
@@ -62,14 +63,13 @@ lua require('basic')
     └── plugins.lua                       插件安装管理
 ```
 
-
 ## init.vim 配置入口
 
 `init.vim` 是入口文件，主要负责加载各个 lua 文件，对应上边的结构。
 
 如果暂时没有找到办法用 `lua` 设置的，就在这里用 `vim` 脚本设置。
 
-先预览一下这个文件最终的样子，本章只需关注前两行，后边的会在之后的章节介绍
+先预览一下这个文件最终的样子，本章只需关注 **前两行** ，后边的会在之后的章节介绍
 
 ```
 " 基础设置
@@ -175,7 +175,7 @@ vim.o.mouse = "a"
 vim.o.backup = false
 vim.o.writebackup = false
 vim.o.swapfile = false
--- smaller updatetime 
+-- smaller updatetime
 vim.o.updatetime = 300
 -- 等待mappings
 vim.o.timeoutlen = 100
@@ -200,8 +200,8 @@ vim.o.pumheight = 10
 vim.o.showtabline = 2
 ```
 
-- [init.vim 完整文件](../init.vim) 
-- [basic.lua 完整文件](../lua/basic.lua) 
+- [init.vim 完整文件](../init.vim)
+- [basic.lua 完整文件](../lua/basic.lua)
 
 重启后的 `Neovim` 应该顺眼多了，下一篇介绍我的 Neovim 快捷键配置。
 

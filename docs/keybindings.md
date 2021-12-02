@@ -83,7 +83,7 @@ map('v', '>', '>gv', opt)
 
 - `sv` 水平分屏
 - `sh` 垂直分屏
-- `sc` 关闭当前分屏 (s = close)
+- `sc` 关闭当前分屏 (c = close)
 - `so` 关闭其他分屏 (o = other)
 - `s>` `s<` `s=` `sj` `sk` 分屏比例控制
 
