@@ -104,7 +104,7 @@ map('n', '<A-m>', ':NvimTreeToggle<CR>', opt)
 
 还有其他功能，我不常用，详见 [nvim-tree.nvim](https://github.com/kyazdani42/nvim-tree.lua) 主页
 
-下一章继续介绍其他插件，感谢关注。
+下一章介绍 `bufferline.nvim` 插件，感谢关注。
 
-- 下一章： (正在写)
+- 下一章： [Neovim 插件 bufferline 的安装与配置](./bufferline.md)
 - [回首页](../../README.md)
