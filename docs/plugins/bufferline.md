@@ -73,11 +73,11 @@ require("bufferline").setup {
 
 ```
 
-`bufferline.nvim` 有很多配置项，我没有过多设置，主要是为了保持与 `VSCode` 一致，
+`bufferline.nvim` 有很多配置项，我没有过多设置，主要是把左侧 `nvim-tree` 的位置让出来了，为了保持与 `VSCode` 一致，
 
-把左侧 `nvim-tree` 的位置让出来了，如果不设置 `offsets` 他默认会从左上角开始出现 Tab。
+如果不设置 `offsets` 他默认会从左上角开始出现 Tab。
 
-[bufferline.nvim](https://github.com/akinsho/bufferline.nvim) 主页有更多详细设置选项介绍
+[bufferline.nvim](https://github.com/akinsho/bufferline.nvim) 主页有更多详细设置介绍，你有哪些不错的选项，欢迎留言告诉我。
 
 打开 `init.vim`，加载 `lua/plugin-config/bufferline.lua` 配置文件，增加
 
