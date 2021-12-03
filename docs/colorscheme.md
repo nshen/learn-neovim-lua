@@ -76,6 +76,27 @@ colorscheme nord
 
 <img src="./imgs/colorscheme3.png" width="850">
 
+## zephyr-nvim 配色
+
+再增加一个 [zephyr-nvim](https://github.com/glepnir/zephyr-nvim) 配色
+
+修改 `lua/plugins.lua` 增加
+
+```lua
+use 'glepnir/zephyr-nvim'`
+```
+
+`:wq` 保存退出，重新打开后运行 `:PackerSync`
+
+安装成功后，修改 `init.vim`
+
+```vim
+set background=dark
+colorscheme zephyr
+```
+
+<img src="./imgs/colorscheme4.png" width="850">
+
 本章结束，如果你有更漂亮的皮肤推荐，欢迎留言告诉我。
 
 下一章开始会介绍一些常用的插件。

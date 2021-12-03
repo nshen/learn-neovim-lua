@@ -38,8 +38,12 @@ return require('packer').startup(function()
   use 'numToStr/Comment.nvim' 
   -- nvim-coloizer
   use 'norcalli/nvim-colorizer.lua'
-  -- gruvbox theme
+  ----------- colorscheme -----------
+  -- gruvbox 
   use {"ellisonleao/gruvbox.nvim", requires = {"rktjmp/lush.nvim"}}
-
+  -- zephyr
+  use 'glepnir/zephyr-nvim'
+  --  nord
+  use 'shaunsingh/nord.nvim'
 end)
 
