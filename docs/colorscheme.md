@@ -4,6 +4,8 @@
 
 主题与一般插件一样，都是用 [上一章](./packer-usage.md) 讲的 `Packer.nvim` 来安装的。
 
+由于后边需要安装 `nvim-treesitter` 语法高亮，所选的主题必须在 [支持 nvim-treesitter 的主题列表](https://github.com/nvim-treesitter/nvim-treesitter/wiki/Colorschemes) 里边找。
+
 目前我在使用的主题是 `gruvbox.nvim` 推荐使用。
 
 ## 主题配色安装
