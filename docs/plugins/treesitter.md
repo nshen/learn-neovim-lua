@@ -2,9 +2,9 @@
 
 本章介绍如何给 nvim 安装和配置 [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) 插件。
 
-`nvim-treesitter` 插件提供基于 `tree-sitter` 的多个基础功能，它可以让你在 nvim 中高效的实现代码高亮，等功能。
+`nvim-treesitter` 插件提供基于 `tree-sitter` 的多个基础功能，它可以让你在 nvim 中高效的实现 **代码高亮**，**增量选择** 等功能。
 
-看一下之前的 `basic.lua` 安装前和安装后代码高亮效果对比：
+先看一下之前的 `basic.lua` 安装前和安装后代码高亮效果对比：
 
 <img src="../imgs/treesitter.gif" width="800">
 
@@ -83,9 +83,16 @@ end)
 
 安装后调用 `:TSBufToggle highlight` 可显示高亮
 
-其实不必手动安装，我们可以在配置文件中指定，自动安装
+其实 **不必手动安装** ，我们可以在配置文件中指定，自动安装
 
 ## 配置 nvim-treesitter
+
+`nvim-treesitter` 目前提供以下模块，默认都是关闭的，需要在配置文件中设置 `enable = true` 手动开启
+
+- 代码高亮
+- 增量选择
+- `=` 代码格式化
+- folding
 
 创建 `lua/plugin-config/treesitter.lua` 文件
 
@@ -101,7 +108,7 @@ require'nvim-treesitter.configs'.setup {
     enable = true,
     additional_vim_regex_highlighting = false
   },
-  -- 启用 incremental_selection
+  -- 启用增量选择
   incremental_selection = {
     enable = true,
     keymaps = {
@@ -111,7 +118,7 @@ require'nvim-treesitter.configs'.setup {
       scope_incremental = '<TAB>',
     }
   },
-  --Indentation based on treesitter for the = operator. NOTE: This is an experimental feature.
+  -- 启用基于Treesitter的代码格式化(=) . NOTE: This is an experimental feature.
   indent = {
     enable = true
   }
@@ -124,16 +131,20 @@ vim.wo.foldexpr = 'nvim_treesitter#foldexpr()'
 vim.wo.foldlevel = 99
 ```
 
-我在里边设置确保安装这些语言，你可以根据你的情况修改
+我设置了确保安装这些语言，你可以根据你的情况修改
 
 `ensure_installed = {"html", "css", "vim", "lua", "javascript", "typescript", "tsx"}`
 
-其他主要开启了 4 个模块，下边再细说
+查看安装情况，和支持语言运行：
 
-- 代码高亮
-- 增量选择
-- `=` 格式化
-- folding
+`:TSInstallInfo`
+
+我开启了全部 4 个模块，下边会逐个解释
+
+- 代码高亮模块
+- 增量选择模块
+- `=` 代码格式化模块
+- Folding模块
 
 打开 `init.vim`，加载 `lua/plugin-config/nvim-treesitter.lua` 配置文件，增加
 
@@ -147,9 +158,15 @@ lua require('plugin-config/nvim-treesitter')
 
 都打对号就成功了。
 
-## incremental selection
+## 代码高亮模块
 
-什么是增量选择，见图：
+代码高亮如文章开头介绍，成功开启后，效果如下
+
+<img src="../imgs/treesitter.gif" width="800">
+
+## 增量选择模块
+
+什么是增量选择 (incremental selection)，见图：
 
 <img src="../imgs/treesitter4.gif" width="800">
 
@@ -157,13 +174,24 @@ lua require('plugin-config/nvim-treesitter')
 
 不断的按 `Enter` 选择区域会从里层不断外扩， `Backspace` 则相反不断内收。
 
-## indent `=` 格式化
+## `=` 代码格式化(indent) 模块
 
 用 `=` 格式化代码， 如图
 
 <img src="../imgs/treesitter5.gif" width="800">
 
-## Folding
+### 格式化整个文件
+
+`gg=G` 相当于 `ggvG=` 选中整个文件然后 `=` 格式化
+
+可以考虑添加一个快捷键，编辑 `lua/keybindings.lua`
+
+```lua
+-- nvim-treesitter 代码格式化
+map("n", "<leader>i", "gg=G", opt)
+```
+
+## Folding 模块
 
 `zc`， `zo` 会 折叠 `{}` 里的内容，如图
 

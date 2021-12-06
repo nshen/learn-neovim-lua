@@ -7,7 +7,7 @@ require'nvim-treesitter.configs'.setup {
     enable = true,
     additional_vim_regex_highlighting = false
   },
-  -- 启用 incremental_selection
+  -- 启用增量选择
   incremental_selection = {
     enable = true,
     keymaps = {
@@ -17,7 +17,7 @@ require'nvim-treesitter.configs'.setup {
       scope_incremental = '<TAB>',
     }
   },
-  --Indentation based on treesitter for the = operator. NOTE: This is an experimental feature.
+  -- 启用基于Treesitter的代码格式化(=) . NOTE: This is an experimental feature.
   indent = {
     enable = true
   }
