@@ -115,7 +115,7 @@ map("n", "<C-l>", ":BufferLineCycleNext<CR>", opt)
 
 还有其他配置，暂不常用，未来再补充，详见 [bufferline.nvim](https://github.com/akinsho/bufferline.nvim) 主页
 
-下一章继续介绍其他插件，感谢关注。
+下一章介绍 Neovim 代码高亮插件，感谢关注。
 
-- 下一章： (正在写)
+- 下一章： [Neovim 代码高亮插件 nvim-treesitter 的安装与配置](./nvim-treesitter.md)
 - [回首页](../../README.md)

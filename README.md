@@ -37,9 +37,9 @@
 - 📦 [Neovim 插件管理与配置](./docs/packer-usage.md)
 - 🎭 [Neovim 主题配置](./docs/colorscheme.md)
 - 🛒 常用插件配置
-  - 📌 [nvim-tree](./docs/plugins/nvim-tree.md)
-  - 📌 [bufferline](./docs/plugins/bufferline.md)
-  - 📌 treesitter
+  - 📌 [nvim-tree 侧边栏插件](./docs/plugins/nvim-tree.md)
+  - 📌 [bufferline Tab 页插件](./docs/plugins/bufferline.md)
+  - 📌 [nvim-treesitter 语法高亮插件](./docs/plugins/nvim-treesitter.md)
   - 📌 telescope
   - 📌 nvim-cmp
   - 📌 surround
