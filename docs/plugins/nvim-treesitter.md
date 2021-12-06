@@ -89,10 +89,12 @@ end)
 
 `nvim-treesitter` 目前提供以下模块，默认都是关闭的，需要在配置文件中设置 `enable = true` 手动开启
 
-- 代码高亮
-- 增量选择
-- `=` 代码格式化
-- folding
+- 代码高亮模块
+- 增量选择模块
+- `=` 代码格式化模块
+- Folding 模块
+
+我配置文件中开启了全部 4 个模块，下边会逐个解释
 
 创建 `lua/plugin-config/treesitter.lua` 文件
 
@@ -131,7 +133,7 @@ vim.wo.foldexpr = 'nvim_treesitter#foldexpr()'
 vim.wo.foldlevel = 99
 ```
 
-我设置了确保安装这些语言，你可以根据你的情况修改
+上边我设置了确保安装这些语言，你可以根据你的情况修改
 
 `ensure_installed = {"html", "css", "vim", "lua", "javascript", "typescript", "tsx"}`
 
@@ -139,12 +141,7 @@ vim.wo.foldlevel = 99
 
 `:TSInstallInfo`
 
-我开启了全部 4 个模块，下边会逐个解释
-
-- 代码高亮模块
-- 增量选择模块
-- `=` 代码格式化模块
-- Folding模块
+加载配置文件：
 
 打开 `init.vim`，加载 `lua/plugin-config/nvim-treesitter.lua` 配置文件，增加
 
@@ -180,9 +177,7 @@ lua require('plugin-config/nvim-treesitter')
 
 <img src="../imgs/treesitter5.gif" width="800">
 
-### 格式化整个文件
-
-`gg=G` 相当于 `ggvG=` 选中整个文件然后 `=` 格式化
+`gg=G` 命令格式化整个文件， 相当于 `ggvG=` 选中整个文件然后 `=` 格式化
 
 可以考虑添加一个快捷键，编辑 `lua/keybindings.lua`
 
