@@ -177,8 +177,9 @@ vim.o.writebackup = false
 vim.o.swapfile = false
 -- smaller updatetime
 vim.o.updatetime = 300
--- 等待mappings
-vim.o.timeoutlen = 100
+-- 设置 timeoutlen 为等待键盘快捷键连击时间200毫秒，可根据需要设置
+-- 遇到问题详见：https://github.com/nshen/learn-neovim-lua/issues/1
+vim.o.timeoutlen = 200
 -- split window 从下边和右边出现
 vim.o.splitbelow = true
 vim.o.splitright = true
