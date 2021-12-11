@@ -1,32 +1,3 @@
--- vim.o   general setting
--- vim.g   global variables
--- vim.env environment variables
--- vim.wo  window-scoped options
--- vim.bo  buffer-scoped options
---
----------------------------------------
---[[
-
-vim.opt can set global, window and buffer settgings
-
--- buffer-scoped
-vim.opt.autoindent = true
--- window-scoped
-vim.opt.cursorline = true
--- global scope
-vim.opt.autowrite = true
-
--- vim.opt acts like the :set
-
-local set = vim.opt
--- Set the behavior of tab
-set.tabstop = 2
-
-查看：
-
-print(vim.inspect(vim.opt.autoindent))
-
---]] -----------------------------------------
 -- utf8
 vim.g.encoding = "UTF-8"
 vim.o.fileencoding = 'utf-8'
@@ -83,7 +54,7 @@ vim.o.mouse = "a"
 vim.o.backup = false
 vim.o.writebackup = false
 vim.o.swapfile = false
--- smaller updatetime 
+-- smaller updatetime
 vim.o.updatetime = 300
 -- 设置 timeoutlen 为等待键盘快捷键连击时间200毫秒，可根据需要设置
 -- 遇到问题详见：https://github.com/nshen/learn-neovim-lua/issues/1
