@@ -9,8 +9,8 @@ local opt = {
   silent = true
 }
 
-map("n", "<C-j>", "5j", opt)
-map("n", "<C-k>", "5k", opt)
+map("n", "<C-j>", "4j", opt)
+map("n", "<C-k>", "4k", opt)
 -- ctrl u / ctrl + d  只移动9行，默认移动半屏
 map("n", "<C-u>", "9k", opt)
 map("n", "<C-d>", "9j", opt)
