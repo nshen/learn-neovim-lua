@@ -33,7 +33,9 @@ cmp.setup {
     -- { name = 'ultisnips' },
     -- -- For snippy users.
     -- { name = 'snippy' },
-  }, { { name = 'buffer' } }),
+  }, { { name = 'buffer' },
+       { name = 'path' }
+    }),
 
   -- 快捷键
   mapping = require'keybindings'.cmp(cmp),
