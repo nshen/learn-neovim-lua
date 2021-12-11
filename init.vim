@@ -25,9 +25,6 @@ lua require('plugin-config/comment')
 lua require('lsp/setup')
 lua require('lsp/ui')
 lua require('lsp/nvim-cmp')
-" lua require('lsp/nvim-cmp-config')
-" lua require('lsp/language_servers')
-
 
 " windows problems
 
