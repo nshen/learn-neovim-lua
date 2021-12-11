@@ -1,8 +1,12 @@
 ## Neovim 代码补全内置 LSP 配置
 
-什么是 [Language Server Protocol (LSP)](https://microsoft.github.io/language-server-protocol/) ?
+目前位置最复杂的配置，但最终效果非常酷，值得一配。
 
-Language Server Protocol 是微软为开发工具提出的一个协议， 它将编程工具解耦成了`language server` 与 `language client` 两部分。
+<img src="./imgs/lsp.gif" width="850">
+
+什么是 Language Server Protocol ?
+
+[Language Server Protocol (LSP)](https://microsoft.github.io/language-server-protocol/) 是微软为开发工具提出的一个协议， 它将编程工具解耦成了`language server` 与 `language client` 两部分。
 
 <img src="./imgs/lsp.png" width="850">
 
@@ -67,6 +71,7 @@ end
 ```vimL
 lua require('lsp/setup')
 ```
+
 `:wq` 保存重启，下方显示 `Installing sumneko_lua` 表示自动安装。
 
 稍等片刻运行 `:LspInstallInfo` 安装成功如图
@@ -85,7 +90,7 @@ local servers = {
 
 `sumneko_lua` 这个名字是在[这里查询](https://github.com/williamboman/nvim-lsp-installer#available-lsps) 的
 
-我打算把每个语言单独配置，本章先配置 Lua, 毕竟我们的配置文件就是 Lua 的。 `require "lsp.lua"` 表示加载 `lua/lsp/lua.lua` 
+我打算把每个语言单独配置，本章先配置 Lua, 毕竟我们的配置文件就是 Lua 的。 `require "lsp.lua"` 表示加载 `lua/lsp/lua.lua`
 
 创建对应的配置文件 `lua/lsp/lua.lua`
 
@@ -185,6 +190,3 @@ end
 ```
 
 里边有 最常用的 `gd` 跳转到定义， 然后 `gh` 显示提示，等。
-
-
-
