@@ -41,11 +41,12 @@
   - 📌 [bufferline Tab 页插件](./docs/plugins/bufferline.md)
   - 📌 [nvim-treesitter 语法高亮插件](./docs/plugins/nvim-treesitter.md)
   - 📌 telescope
-  - 📌 nvim-cmp
   - 📌 surround
   - 📌 Comment
   - 📌 nvim-coloizer
 - ✨ 内置 LSP 配置
+  - 📌 [基础配置](./docs/lsp.md)
+  - 📌 代码补全
 - ⚔ 前端开发配置
 - 🦀 rust 开发配置
 - 🎉 直接使用我的配置
