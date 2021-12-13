@@ -11,6 +11,7 @@ local opt = {
 
 map("n", "<C-j>", "4j", opt)
 map("n", "<C-k>", "4k", opt)
+
 -- ctrl u / ctrl + d  只移动9行，默认移动半屏
 map("n", "<C-u>", "9k", opt)
 map("n", "<C-d>", "9j", opt)
@@ -20,8 +21,8 @@ map("v", "<", "<gv", opt)
 map("v", ">", ">gv", opt)
 
 -- magic search
-map("n", "/", "/\v", opt)
-map("v", "/", "/\v", opt)
+map("n", "/", "/\\v", { noremap = true , silent = false})
+map("v", "/", "/\\v", { noremap = true , silent = false})
 
 ------------------------------------------------------------------
 -- windows 分屏快捷键
@@ -70,18 +71,21 @@ local pluginKeys = {}
 -- 代码注释插件
 -- see ./lua/plugin-config/comment.lua
 pluginKeys.comment = {
-  -- normal 模式
   toggler = {
-    line = '<leader>c',
-    block = '<leader>bc'
+    ---Line-comment toggle keymap
+    line = 'gcc',
+    ---Block-comment toggle keymap
+    block = 'gbc',
   },
-  -- visual 模式
   opleader = {
-    -- ctrl + /
-    line = '<C-_>',
-    block = 'bc'
+    line = 'gc',
+    bock = 'gb'
   }
 }
+
+-- ctrl + /
+map("n", "<C-_>", "gcc", opt)
+map("v", "<C-_>", "gcc",opt)
 
 -- lsp 回调函数快捷键设置
 pluginKeys.maplsp = function(mapbuf)
