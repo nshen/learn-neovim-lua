@@ -80,13 +80,19 @@ lua require('lsp/setup')
 
 ## 配置 Lua
 
-上边 `lua/lsp/setup.lua` 配置文件列出安装的 Lua server 为什么叫做 `sumneko_lua` ？
+上边 `lua/lsp/setup.lua` 配置文件中定义了 `servers` 变量
 
 ```lua
 local servers = {
   sumneko_lua = require "lsp.lua", -- /lua/lsp/lua.lua
 }
 ```
+
+`Lua` 代码和 `JS` 差不多，上述代码定义了一个 table （也叫 object，map，或 dictionary），
+
+key 为 `sumneko_lua`，value 为 `lua/lsp/lua.lua` 文件内容
+
+Lua server 的 key 必须 `sumneko_lua` 才能正确安装。
 
 因为 `sumneko_lua` 这个名字是在[这里查询](https://github.com/williamboman/nvim-lsp-installer#available-lsps) 的。
 
