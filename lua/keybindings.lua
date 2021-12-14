@@ -11,6 +11,8 @@ local opt = {
 
 map("n", "<C-j>", "4j", opt)
 map("n", "<C-k>", "4k", opt)
+map("i", "<C-h>", "<ESC>I", opt)
+map("i", "<C-l>", "<ESC>A", opt)
 
 -- ctrl u / ctrl + d  只移动9行，默认移动半屏
 map("n", "<C-u>", "9k", opt)
@@ -84,8 +86,8 @@ pluginKeys.comment = {
 }
 
 -- ctrl + /
-map("n", "<C-_>", "gcc", opt)
-map("v", "<C-_>", "gcc",opt)
+map("n", "<C-_>", "gcc", {noremap = false})
+map("v", "<C-_>", "gcc", {noremap = false})
 
 -- lsp 回调函数快捷键设置
 pluginKeys.maplsp = function(mapbuf)
