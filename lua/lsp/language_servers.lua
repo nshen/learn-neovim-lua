@@ -55,7 +55,6 @@ rust-analyzer --version
 
 有输出证明安装成功
 
---]]
 
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 capabilities.textDocument.completion.completionItem.snippetSupport = true
@@ -92,3 +91,4 @@ end
 
 
 
+--]]

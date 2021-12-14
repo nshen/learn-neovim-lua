@@ -7,7 +7,7 @@ lua require('keybindings')
 " 皮肤设置
 " https://github.com/ellisonleao/gruvbox.nvim
 set background=dark " or light if you want light mode
-colorscheme zephyr
+colorscheme onedark
 
 " 插件配置
 lua require('plugin-config/nvim-tree')
@@ -23,8 +23,8 @@ lua require('plugin-config/comment')
 
 " lsp
 lua require('lsp/setup')
-lua require('lsp/ui')
 lua require('lsp/nvim-cmp')
+lua require('lsp/ui')
 
 " windows problems
 

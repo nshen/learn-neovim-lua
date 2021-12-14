@@ -12,7 +12,7 @@ cmp.setup {
       -- For `vsnip` users.
       vim.fn["vsnip#anonymous"](args.body)
 
-      -- For `luasn.p` users.
+      -- For `luasnip` users.
       -- require('luasnip').lsp_expand(args.body)
 
       -- For `ultisnips` users.
@@ -50,7 +50,8 @@ cmp.setup {
         return vim_item
       end
     })
-  }
+  },
+
 }
 
 -- Use buffer source for `/`.
