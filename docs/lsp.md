@@ -1,4 +1,4 @@
-## Neovim 代码补全内置 LSP 配置
+## Neovim 内置 LSP 配置 (一)：基础配置
 
 目前为止最复杂的配置，但最终效果非常酷，值得一配。
 
@@ -71,6 +71,8 @@ end
 ```vimL
 lua require('lsp/setup')
 ```
+
+还要先创建一个 `lua/lsp/lua.lua` 的空lua server配置文件，后边再填。
 
 `:wq` 保存重启，下方显示 `Installing sumneko_lua` 表示自动安装。
 
