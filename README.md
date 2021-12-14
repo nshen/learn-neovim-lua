@@ -46,7 +46,7 @@
   - 📌 nvim-coloizer
 - ✨ 内置 LSP 配置
   - 📌 [基础配置](./docs/lsp.md)
-  - 📌 代码补全
+  - 📌 [代码补全](./docs/lsp2.md)
 - ⚔ 前端开发配置
 - 🦀 rust 开发配置
 - 🎉 直接使用我的配置
