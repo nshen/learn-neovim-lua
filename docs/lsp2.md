@@ -132,6 +132,8 @@ cmp.setup.cmdline(':', {
 - 配置之前安装的补全来源
 - 调用 `keybindings.lua` 的`cmp()`方法配置补全弹窗的快捷键
 
+## 快捷键配置
+
 打开 `lua/keybindings.lua` 配置快捷键，增加：
 
 ```lua
