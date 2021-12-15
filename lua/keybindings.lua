@@ -74,9 +74,7 @@ local pluginKeys = {}
 -- see ./lua/plugin-config/comment.lua
 pluginKeys.comment = {
   toggler = {
-    ---Line-comment toggle keymap
     line = 'gcc',
-    ---Block-comment toggle keymap
     block = 'gbc',
   },
   opleader = {

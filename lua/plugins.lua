@@ -20,6 +20,8 @@ return require('packer').startup(function(use)
     run = ':TSUpdate'
   }
 
+  -- Comment
+  use 'numToStr/Comment.nvim'
   -------------------------- lsp -------------------------------------------
 
   -- lspconfig
@@ -94,8 +96,6 @@ return require('packer').startup(function(use)
   -- use "windwp/nvim-autopairs"
   -- surround
   -- use "blackCauldron7/surround.nvim"
-  -- Comment
-  use 'numToStr/Comment.nvim'
   -- nvim-coloizer
   -- use 'norcalli/nvim-colorizer.lua'
 end)
