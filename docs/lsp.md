@@ -171,6 +171,8 @@ require('keybindings').maplsp(buf_set_keymap)
 大部分都是 `g` 开头，表示 go XX
 
 ```lua
+local pluginKeys = {}
+
 -- lsp 回调函数快捷键设置
 pluginKeys.maplsp = function(mapbuf)
   -- rename
@@ -196,6 +198,8 @@ pluginKeys.maplsp = function(mapbuf)
   -- mapbuf('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opt)
   -- mapbuf('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opt)
 end
+
+return pluginKeys
 ```
 
 注意，这里是通用的设置，并不是所有的 Language Server 都实现了上述所有功能。
