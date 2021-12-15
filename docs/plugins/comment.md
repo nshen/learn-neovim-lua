@@ -1,33 +1,33 @@
 ## Neovim 代码注释插件 Comment.nvim 的安装与配置
 
-本章介绍如何给 Neovim 增加代码注释快捷
+本章介绍如何给 Neovim 增加代码注释快捷。
 
 ## 安装 [Comment.nvim](https://github.com/numToStr/Comment.nvim) 插件
 
-打开 `plugins.lua` ，增加 `Comment.nvim` 相关的代码
+打开 `plugins.lua` ，增加 `Comment.nvim` 相关的代码。
 
 ```lua
   -- Comment
   use 'numToStr/Comment.nvim'
 ```
 
-`:wq` 保存退出，重新打开后运行 `:PackerSync`
+`:wq` 保存退出，重新打开后运行 `:PackerSync` 安装插件。
 
 `Packer.nvim` 使用方式参看 [之前章节](../packer-usage.md)
 
-成功后如图所示，按 q 退出
+成功后如图所示，按 q 退出。
 
 如果报错网络错误，重新运行 `:PackerSync`
 
 ## 配置 Comment.nvim
 
-创建 `lua/plugin-config/comment.lua` 文件
+创建 `lua/plugin-config/comment.lua` 文件，增加：
 
 ```lua
 require('Comment').setup(require('keybindings').comment)
 ```
 
-只需要配置快捷键就可以，所以直接调用 `keybindings.lua` 绑定快捷键
+由于注释只需要配置快捷键触发就可以，所以直接调用 `keybindings.lua` 里设置的快捷键
 
 打开 `lua/keybindings.lua`，添加
 
@@ -53,18 +53,20 @@ map("v", "<C-_>", "gcc", {noremap = false})
 
 在 Normal 模式下
 
-- `gcc` - 行注释
-- `gbc` - 块注释
-- `gc[count]{motion}` - 很强大，比如 `gc3j` 注释下边两行
+- `gcc` - 行注释切换
+- `gbc` - 块注释切换
+- `gc[count]{motion}` - 例如 `gc3j` 注释下边三行
 - `gb[count]{motion}` - 例如 `gbi{` 把 `{}` 中的内容注释
 
-`gci(` 或 `gbi(` 把 `()` 中的内容注释，这个非常方便呀
+`gc` `gb` 很强大，`gc` 可以记为`go comment`， `gb` 可以记为 `go block comment`
+
+和其他动词一样，可以接[count]{motion}，比如 `gci(` 或 `gbi(` 把 `()` 中的内容注释，这个非常方便呀
 
 <img src="../imgs/comment1.gif" width="800">
 
 `gci{`  和 `gbi{`
 
-<img src="../imgs/comment1.gif" width="800">
+<img src="../imgs/comment2.gif" width="800">
 
 VISUAL 模式下
 
