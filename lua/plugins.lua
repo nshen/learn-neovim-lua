@@ -22,6 +22,9 @@ return require('packer').startup(function(use)
 
   -- Comment
   use 'numToStr/Comment.nvim'
+
+  -- nvim-autopairs
+  use 'windwp/nvim-autopairs'
   -------------------------- lsp -------------------------------------------
 
   -- lspconfig
@@ -40,6 +43,7 @@ return require('packer').startup(function(use)
   use 'onsails/lspkind-nvim'
   -- use 'github/copilot.vim'
 
+  use 'simrat39/rust-tools.nvim'
   --------------------------- colorscheme ------------------------------------
 
   -- gruvbox
