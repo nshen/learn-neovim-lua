@@ -6,4 +6,10 @@ require'nvim-tree'.setup {
   git = {
     enable = false
   },
+  -- wsl install -g wsl-open
+  -- https://github.com/4U6U57/wsl-open/
+  system_open = {
+    cmd = 'wsl-open'
+  }
+
 }
