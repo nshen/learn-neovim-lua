@@ -53,11 +53,17 @@ map("n", "<A-l>", "<C-w>l", opt)
 -- 插件快捷键
 -- nvimTree
 map('n', '<A-m>', ':NvimTreeToggle<CR>', opt)
-
--- bufferline 左右Tab切换
+--
+-- bufferline
+-- 左右Tab切换
 map("n", "<C-h>", ":BufferLineCyclePrev<CR>", opt)
 map("n", "<C-l>", ":BufferLineCycleNext<CR>", opt)
+-- 关闭
 map("n", "<C-w>", ":bd<CR>", opt)
+map("n", "<leader>bl", ":BufferLineCloseRight<CR>",opt)
+map("n", "<leader>bh", ":BufferLineCloseLeft<CR>",opt)
+map("n", "<leader>bc", ":BufferLinePickClose<CR>",opt)
+
 
 -- nvim-treesitter 代码格式化
 map("n", "<leader>i", "gg=G", opt)
@@ -67,6 +73,7 @@ map("n", "<C-p>", ":Telescope find_files<CR>", opt)
 -- map("n", "<leader>f", ":Telescope find_files<CR>", opt)
 map("n", "<leader>g", ":Telescope live_grep<CR>", opt)
 
+---
 
 local pluginKeys = {}
 
@@ -102,8 +109,8 @@ pluginKeys.maplsp = function(mapbuf)
   mapbuf('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opt)
   -- diagnostic
   mapbuf('n', 'go', '<cmd>lua vim.diagnostic.open_float()<CR>', opt)
-  mapbuf('n', 'gp', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opt)
-  mapbuf('n', 'gn', '<cmd>lua vim.diagnostic.goto_next()<CR>', opt)
+  mapbuf('n', 'gk', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opt)
+  mapbuf('n', 'gj', '<cmd>lua vim.diagnostic.goto_next()<CR>', opt)
   -- mapbuf('n', '<leader>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opt)
   mapbuf('n', '<gk>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opt)
   -- leader + =

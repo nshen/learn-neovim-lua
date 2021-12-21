@@ -36,10 +36,17 @@ autocmd TextYankPost * if v:event.operator ==# 'y' | call system('/mnt/c/Windows
 " 2052 英文语言
 augroup im_select
     autocmd!
-    autocmd InsertLeave * silent !./im-select.exe 1033
-    autocmd InsertEnter * silent !./im-select.exe 2052
-    autocmd BufRead * silent !./im-select.exe 1033
+    autocmd InsertLeave * silent ! ~/.config/nvim/im-select.exe 1033
+    autocmd InsertEnter * silent !~/.config/nvim/im-select.exe 2052
+    autocmd BufRead * silent !~/.config/nvim/im-select.exe 1033
     " autocmd CmdlineLeave * silent !./im-select.exe 1033
     " autocmd CmdlineEnter * silent !./im-select.exe 2052
 augroup END
+
+" let g:vimspector_enable_mappings = 'HUMAN'
+" nmap <leader>dd :call vimspector#Launch()<CR>
+" nmap <leader>dx :call vimspectorReset<CR>
+" nmap <leader>de :call vimspectorEval
+" nmap <leader>dw :call vimspectorWatch
+
 

@@ -43,6 +43,11 @@ return require('packer').startup(function(use)
   use 'onsails/lspkind-nvim'
   -- use 'github/copilot.vim'
 
+  -- dap
+  -- use 'mfussenegger/nvim-dap'
+  -- use 'nvim-lua/plenary.nvim'
+  -- vimspect
+  -- use 'puremourning/vimspector'
   use 'simrat39/rust-tools.nvim'
   --------------------------- colorscheme ------------------------------------
 
