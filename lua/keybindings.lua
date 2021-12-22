@@ -1,4 +1,4 @@
--- leader key 为空格
+-- leader key 为空
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
@@ -9,6 +9,14 @@ local opt = {
   silent = true
 }
 
+-- Modes
+--   normal_mode = "n",
+--   insert_mode = "i",
+--   visual_mode = "v",
+--   visual_block_mode = "x",
+--   term_mode = "t",
+--   command_mode = "c",
+
 map("n", "<C-j>", "4j", opt)
 map("n", "<C-k>", "4k", opt)
 map("i", "<C-h>", "<ESC>I", opt)
@@ -18,13 +26,18 @@ map("i", "<C-l>", "<ESC>A", opt)
 map("n", "<C-u>", "9k", opt)
 map("n", "<C-d>", "9j", opt)
 
--- visual模式下缩进代码
-map("v", "<", "<gv", opt)
-map("v", ">", ">gv", opt)
-
 -- magic search
 map("n", "/", "/\\v", { noremap = true , silent = false})
 map("v", "/", "/\\v", { noremap = true , silent = false})
+
+-- visual模式下缩进代码
+map("v", "<", "<gv", opt)
+map("v", ">", ">gv", opt)
+-- 在visual mode 里粘贴不要复制
+map("v", "p", '"_dP', opt)
+-- 上下移动选中文本
+map("v", "J", ":move '>+1<CR>gv-gv", opt)
+map("v", "K", ":move '<-2<CR>gv-gv", opt)
 
 ------------------------------------------------------------------
 -- windows 分屏快捷键
@@ -36,12 +49,18 @@ map("n", "sc", "<C-w>c", opt)
 -- 关闭其他
 map("n", "so", "<C-w>o", opt) -- close others
 
--- 比例控制
-map("n", "s.", ":vertical resize +20<CR>", opt)
+-- 左右比例控制
+map("n", "<C-Left>", ":vertical resize -2<CR>", opt)
+map("n", "<C-Right>", ":vertical resize +2<CR>", opt)
 map("n", "s,", ":vertical resize -20<CR>", opt)
-map("n", "s=", "<C-w>=", opt)
+map("n", "s.", ":vertical resize +20<CR>", opt)
+-- 上下比例
 map("n", "sj", ":resize +10<CR>", opt)
 map("n", "sk", ":resize -10<CR>", opt)
+map("n", "<C-Down>", ":resize +2<CR>", opt)
+map("n", "<C-Up>", ":resize -2<CR>", opt)
+-- 相等比例
+map("n", "s=", "<C-w>=", opt)
 
 -- alt + hjkl  窗口之间跳转
 map("n", "<A-h>", "<C-w>h", opt)
@@ -71,7 +90,7 @@ map("n", "<leader>i", "gg=G", opt)
 -- Telescope
 map("n", "<C-p>", ":Telescope find_files<CR>", opt)
 -- map("n", "<leader>f", ":Telescope find_files<CR>", opt)
-map("n", "<leader>g", ":Telescope live_grep<CR>", opt)
+map("n", "<C-f>", ":Telescope live_grep<CR>", opt)
 
 ---
 
@@ -89,18 +108,17 @@ pluginKeys.comment = {
     bock = 'gb'
   }
 }
-
 -- ctrl + /
 map("n", "<C-_>", "gcc", {noremap = false})
 map("v", "<C-_>", "gcc", {noremap = false})
+
 
 -- lsp 回调函数快捷键设置
 pluginKeys.maplsp = function(mapbuf)
   -- rename
   mapbuf('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opt)
   -- code action
-  mapbuf('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opt)
-
+  mapbuf('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opt)
   -- go xx
   mapbuf('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opt)
   mapbuf('n', 'gh', '<cmd>lua vim.lsp.buf.hover()<CR>', opt)
@@ -148,5 +166,84 @@ pluginKeys.cmp = function(cmp)
   }
 end
 
+----- diffview ----
+local status_ok, diffConfig = pcall(require, "diffview.config")
+if status_ok then
+  map("n", "<leader>df", ":DiffviewOpen<CR>", opt)
+  map("n", "<leader>dfc", ":DiffviewClose<CR>", opt)
+  map("n", "<leader>fh", ":DiffviewFileHistory<CR>", opt)
+  map("n", "<leader>fhc", ":DiffviewClose<CR>", opt)
+  local cb = diffConfig.diffview_callback
+  pluginKeys.diffview = {
+    disable_defaults = false,                   -- Disable the default key bindings
+    -- The `view` bindings are active in the diff buffers, only when the current
+    -- tabpage is a Diffview.
+    view = {
+      -- ["<tab>"]      = cb("select_next_entry"),  -- Open the diff for the next file
+      -- ["<s-tab>"]    = cb("select_prev_entry"),  -- Open the diff for the previous file
+      -- ["gf"]         = cb("goto_file"),          -- Open the file in a new split in previous tabpage
+      -- ["<C-w><C-f>"] = cb("goto_file_split"),    -- Open the file in a new split
+      -- ["<C-w>gf"]    = cb("goto_file_tab"),      -- Open the file in a new tabpage
+      -- ["<leader>e"]  = cb("focus_files"),        -- Bring focus to the files panel
+      ["<leader>b"]  = cb("toggle_files"),       -- Toggle the files panel.
+    },
+    file_panel = {
+      ["j"]             = cb("next_entry"),           -- Bring the cursor to the next file entry
+      ["<down>"]        = cb("next_entry"),
+      ["k"]             = cb("prev_entry"),           -- Bring the cursor to the previous file entry.
+      ["<up>"]          = cb("prev_entry"),
+      ["<cr>"]          = cb("select_entry"),         -- Open the diff for the selected entry.
+      ["o"]             = cb("select_entry"),
+      ["<2-LeftMouse>"] = cb("select_entry"),
+      ["-"]             = cb("toggle_stage_entry"),   -- Stage / unstage the selected entry.
+      ["S"]             = cb("stage_all"),            -- Stage all entries.
+      ["U"]             = cb("unstage_all"),          -- Unstage all entries.
+      ["X"]             = cb("restore_entry"),        -- Restore entry to the state on the left side.
+      ["R"]             = cb("refresh_files"),        -- Update stats and entries in the file list.
+      ["<tab>"]         = cb("select_next_entry"),
+      ["<s-tab>"]       = cb("select_prev_entry"),
+      ["gf"]            = cb("goto_file"),
+      ["<C-w><C-f>"]    = cb("goto_file_split"),
+      ["<C-w>gf"]       = cb("goto_file_tab"),
+      ["i"]             = cb("listing_style"),        -- Toggle between 'list' and 'tree' views
+      ["f"]             = cb("toggle_flatten_dirs"),  -- Flatten empty subdirectories in tree listing style.
+      ["<leader>e"]     = cb("focus_files"),
+      ["<leader>b"]     = cb("toggle_files"),
+    },
+    file_history_panel = {
+      ["g!"]            = cb("options"),            -- Open the option panel
+      ["<C-A-d>"]       = cb("open_in_diffview"),   -- Open the entry under the cursor in a diffview
+      ["y"]             = cb("copy_hash"),          -- Copy the commit hash of the entry under the cursor
+      ["zR"]            = cb("open_all_folds"),
+      ["zM"]            = cb("close_all_folds"),
+      ["j"]             = cb("next_entry"),
+      ["<down>"]        = cb("next_entry"),
+      ["k"]             = cb("prev_entry"),
+      ["<up>"]          = cb("prev_entry"),
+      ["<cr>"]          = cb("select_entry"),
+      ["o"]             = cb("select_entry"),
+      ["<2-LeftMouse>"] = cb("select_entry"),
+      ["<tab>"]         = cb("select_next_entry"),
+      ["<s-tab>"]       = cb("select_prev_entry"),
+      ["gf"]            = cb("goto_file"),
+      ["<C-w><C-f>"]    = cb("goto_file_split"),
+      ["<C-w>gf"]       = cb("goto_file_tab"),
+      ["<leader>e"]     = cb("focus_files"),
+      ["<leader>b"]     = cb("toggle_files"),
+    },
+    option_panel = {
+      ["<tab>"] = cb("select"),
+      ["q"]     = cb("close"),
+    },
+  }
+end
 
 return pluginKeys
+
+
+
+-- let g:vimspector_enable_mappings = 'HUMAN'
+-- nmap <leader>dd :call vimspector#Launch()<CR>
+-- nmap <leader>dx :call vimspectorReset<CR>
+-- nmap <leader>de :call vimspectorEval
+-- nmap <leader>dw :call vimspectorWatch
