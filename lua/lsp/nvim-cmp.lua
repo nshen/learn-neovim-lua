@@ -5,6 +5,7 @@
 local lspkind = require('lspkind')
 local cmp = require'cmp'
 
+---@diagnostic disable-next-line: redundant-parameter
 cmp.setup {
   -- 指定 snippet 引擎
   snippet = {

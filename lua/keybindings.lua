@@ -140,6 +140,9 @@ pluginKeys.maplsp = function(mapbuf)
 end
 
 -- nvim-cmp 自动补全
+local cmp_t = function(str)
+    return vim.api.nvim_replace_termcodes(str, true, true, true)
+end
 pluginKeys.cmp = function(cmp)
   return {
     -- 上一个
@@ -161,8 +164,62 @@ pluginKeys.cmp = function(cmp)
       behavior = cmp.ConfirmBehavior.Replace
     }),
     -- ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
+    -- 如果窗口内容太多，可以滚动
     ['<C-u>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
     ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
+    -- super Tab
+    ["<Tab>"] = cmp.mapping({
+      c = function()
+        if cmp.visible() then
+          cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
+        else
+          cmp.complete()
+        end
+      end,
+      i = function(fallback)
+        if cmp.visible() then
+          cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
+        elseif vim.fn["UltiSnips#CanJumpForwards"]() == 1 then
+          vim.api.nvim_feedkeys(cmp_t("<Plug>(ultisnips_jump_forward)"), 'm', true)
+        else
+          fallback()
+        end
+      end,
+      s = function(fallback)
+        if vim.fn["UltiSnips#CanJumpForwards"]() == 1 then
+          vim.api.nvim_feedkeys(cmp_t("<Plug>(ultisnips_jump_forward)"), 'm', true)
+        else
+          fallback()
+        end
+      end
+    }),
+    ["<S-Tab>"] = cmp.mapping({
+      c = function()
+        if cmp.visible() then
+          cmp.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
+        else
+          cmp.complete()
+        end
+      end,
+      i = function(fallback)
+        if cmp.visible() then
+          cmp.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
+        elseif vim.fn["UltiSnips#CanJumpBackwards"]() == 1 then
+          return vim.api.nvim_feedkeys( cmp_t("<Plug>(ultisnips_jump_backward)"), 'm', true)
+        else
+          fallback()
+        end
+      end,
+      s = function(fallback)
+        if vim.fn["UltiSnips#CanJumpBackwards"]() == 1 then
+          return vim.api.nvim_feedkeys( cmp_t("<Plug>(ultisnips_jump_backward)"), 'm', true)
+        else
+          fallback()
+        end
+      end
+    }),
+    -- end of super Tab
+
   }
 end
 
