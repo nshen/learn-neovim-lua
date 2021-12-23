@@ -34,16 +34,16 @@ cmp.setup {
     -- { name = 'ultisnips' },
     -- -- For snippy users.
     -- { name = 'snippy' },
-  }, { { name = 'buffer' },
-       { name = 'path' }
-    }),
+    },
+    { { name = 'buffer' }, { name = 'path' } }
+  ),
 
   -- 快捷键
   mapping = require'keybindings'.cmp(cmp),
   -- 使用lspkind-nvim显示类型图标
   formatting = {
     format = lspkind.cmp_format({
-      with_text = true, -- do not show text alongside icons
+      with_text = true, -- show text alongside icons
       maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
       before = function (entry, vim_item)
         -- Source 显示提示来源
@@ -52,7 +52,6 @@ cmp.setup {
       end
     })
   },
-
 }
 
 -- Use buffer source for `/`.
