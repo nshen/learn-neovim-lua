@@ -7,7 +7,7 @@ local install_path = fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
 local paccker_bootstrap
 if fn.empty(fn.glob(install_path)) > 0 then
   paccker_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
-  print '正在安装Pakcer.nvim...'
+  vim.notify('正在安装Pakcer.nvim...')
 end
 
 -- 每次保存 plugins.lua 自动安装插件
@@ -19,7 +19,13 @@ augroup end
 ]]
 
 
-return require('packer').startup(function(use)
+-- Use a protected call so we don't error out on first use
+local status_ok, packer = pcall(require, "packer")
+if not status_ok then
+  return
+end
+
+return packer.startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
