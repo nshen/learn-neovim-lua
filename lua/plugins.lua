@@ -85,6 +85,8 @@ return packer.startup(function(use)
   -- lspkind
   use 'onsails/lspkind-nvim'
   -- use 'github/copilot.vim'
+  -- jsonls schemas
+  use "b0o/schemastore.nvim"
 
   -- dap
   -- use 'mfussenegger/nvim-dap'

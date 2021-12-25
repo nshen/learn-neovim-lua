@@ -4,8 +4,10 @@ local lsp_installer = require "nvim-lsp-installer"
 -- https://github.com/williamboman/nvim-lsp-installer#available-lsps
 -- { key: 语言 value: 配置文件 }
 local servers = {
-  sumneko_lua = require "lsp.lua", -- /lua/lsp/lua.lua
-  rust_analyzer = require "lsp.rust",
+  sumneko_lua = require "lsp.lang.lua", -- /lua/lsp/lua.lua
+  rust_analyzer = require "lsp.lang.rust",
+  jsonls = require "lsp.lang.jsonls" ,
+
   -- html = {},
   -- jsonls = {},
   -- tsserver = {}
@@ -34,6 +36,11 @@ lsp_installer.on_server_ready(function(server)
     opts.flags = {
       debounce_text_changes = 150,
     }
+
+    --Enable (broadcasting) snippet capability for completion
+    -- local capabilities = vim.lsp.protocol.make_client_capabilities()
+    -- capabilities.textDocument.completion.completionItem.snippetSupport = true
+    -- opts.capabilities = capabilities
 
     if server.name == "rust_analyzer" then
       -- Initialize the LSP via rust-tools instead
