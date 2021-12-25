@@ -22,6 +22,7 @@ require('plugin-config/surround')
 require('plugin-config/nvim-colorizer')
 require('plugin-config/diffview')
 require('plugin-config/indent-blankline')
+require('plugin-config/feline')
 -- lua require('plugin-config/which-key')
 
 -- 内置LSP

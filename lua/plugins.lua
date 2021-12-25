@@ -65,6 +65,7 @@ return packer.startup(function(use)
     requires = {{'nvim-lua/plenary.nvim'}}
   }
   use "lukas-reineke/indent-blankline.nvim"
+  use 'feline-nvim/feline.nvim'
 
   -- which-key
   -- use 'folke/which-key.nvim'
