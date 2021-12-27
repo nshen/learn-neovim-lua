@@ -10,6 +10,11 @@ require'nvim-tree'.setup {
   -- https://github.com/4U6U57/wsl-open/
   system_open = {
     cmd = 'wsl-open'
-  }
-
+  },
+  -- project
+  update_cwd = true,
+  update_focused_file = {
+    enable = true,
+    update_cwd = true
+  },
 }

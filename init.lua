@@ -25,6 +25,7 @@ require('plugin-config/indent-blankline')
 require('plugin-config/lualine')
 -- require('plugin-config/feline')
 require('plugin-config/dashboard')
+require('plugin-config/project')
 -- lua require('plugin-config/which-key')
 
 -- 内置LSP

@@ -61,13 +61,14 @@ return packer.startup(function(use)
   use 'nvim-lua/popup.nvim'
   use 'nvim-lua/plenary.nvim'
   use { 'nvim-telescope/telescope.nvim', requires = {{'nvim-lua/plenary.nvim'}} }
-  use "lukas-reineke/indent-blankline.nvim"
+  use 'lukas-reineke/indent-blankline.nvim'
   -- use 'feline-nvim/feline.nvim'
   -- lualine
   use { 'nvim-lualine/lualine.nvim', requires = {'kyazdani42/nvim-web-devicons', opt = true } }
   use 'arkav/lualine-lsp-progress'
   -- dashboard-nvim
   use 'glepnir/dashboard-nvim'
+  use 'ahmedkhalf/project.nvim'
 
   -- which-key
   -- use 'folke/which-key.nvim'
