@@ -14,7 +14,7 @@ require("project_nvim").setup {
   -- lsp, while **"pattern"** uses vim-rooter like glob pattern matching. Here
   -- order matters: if one is not detected, the other is used as fallback. You
   -- can also delete or rearangne the detection methods.
-  detection_methods = { "pattern" },
+  detection_methods = {"pattern"},
   -- detection_methods = { "lsp", "pattern" },
 
   -- All the patterns used to detect root dir, when **"pattern"** is in

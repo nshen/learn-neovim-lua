@@ -68,6 +68,7 @@ return packer.startup(function(use)
   use 'arkav/lualine-lsp-progress'
   -- dashboard-nvim
   use 'glepnir/dashboard-nvim'
+  -- project
   use 'ahmedkhalf/project.nvim'
 
   -- which-key

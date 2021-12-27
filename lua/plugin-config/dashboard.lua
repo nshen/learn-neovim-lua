@@ -1,4 +1,6 @@
 vim.g.dashboard_default_executive = 'telescope'
+vim.g.dashboard_custom_footer = {'https://github.com/nshen/learn-neovim-lua'}
+
 vim.g.dashboard_custom_section = {
   a = { description = {'  Projects              '}, command = 'Telescope projects'},
   b = { description = {'  Recently files        '}, command = 'Telescope oldfiles'},
