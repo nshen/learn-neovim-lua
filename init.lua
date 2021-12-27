@@ -24,6 +24,7 @@ require('plugin-config/diffview')
 require('plugin-config/indent-blankline')
 require('plugin-config/lualine')
 -- require('plugin-config/feline')
+require('plugin-config/dashboard')
 -- lua require('plugin-config/which-key')
 
 -- 内置LSP

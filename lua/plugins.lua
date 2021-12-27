@@ -66,6 +66,8 @@ return packer.startup(function(use)
   -- lualine
   use { 'nvim-lualine/lualine.nvim', requires = {'kyazdani42/nvim-web-devicons', opt = true } }
   use 'arkav/lualine-lsp-progress'
+  -- dashboard-nvim
+  use 'glepnir/dashboard-nvim'
 
   -- which-key
   -- use 'folke/which-key.nvim'

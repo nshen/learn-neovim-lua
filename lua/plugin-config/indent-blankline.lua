@@ -17,7 +17,7 @@ require("indent_blankline").setup {
   -- char = '┆'
   -- char = '│'
   -- char = '⎸'
-  char = '▏'
+  char = '▏',
 
   -- 不同级别使用不同char
   -- char_list = {'|', '¦', '┆', '┊'}
@@ -31,3 +31,4 @@ require("indent_blankline").setup {
   --   "IndentBlanklineIndent6",
   -- },
 }
+vim.g.indent_blankline_filetype_exclude = { 'dashboard' }
