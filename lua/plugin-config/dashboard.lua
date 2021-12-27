@@ -1,6 +1,6 @@
 vim.g.dashboard_default_executive = 'telescope'
 vim.g.dashboard_custom_section = {
-  a = { description = {'  Recently used files'}, command = 'Telescope oldfiles'},
+  a = { description = {'  Recently files     '}, command = 'Telescope oldfiles'},
   b = { description = {'  Find file          '}, command = 'Telescope find_files'},
   c = { description = {'  Find text          '}, command = 'Telescope live_grep'},
   d = { description = {'  Edit init.lua      '}, command = 'edit ~/.config/nvim/init.lua'},
