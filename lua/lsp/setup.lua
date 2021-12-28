@@ -7,9 +7,7 @@ local servers = {
   sumneko_lua = require "lsp.lang.lua", -- /lua/lsp/lua.lua
   rust_analyzer = require "lsp.lang.rust",
   jsonls = require "lsp.lang.jsonls" ,
-
   -- html = {},
-  -- jsonls = {},
   -- tsserver = {}
 }
 -- 自动安装 LanguageServers

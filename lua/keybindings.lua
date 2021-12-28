@@ -4,6 +4,7 @@ vim.g.maplocalleader = " "
 
 -- 本地变量
 local map = vim.api.nvim_set_keymap
+
 local opt = {
   noremap = true,
   silent = true
@@ -142,9 +143,15 @@ pluginKeys.maplsp = function(mapbuf)
 end
 
 -- nvim-cmp 自动补全
-local cmp_t = function(str)
-    return vim.api.nvim_replace_termcodes(str, true, true, true)
+local has_words_before = function()
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
+
+local feedkey = function(key, mode)
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
+end
+
 pluginKeys.cmp = function(cmp)
   return {
     -- 上一个
@@ -170,58 +177,26 @@ pluginKeys.cmp = function(cmp)
     ['<C-u>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
     ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
     -- super Tab
-    ["<Tab>"] = cmp.mapping({
-      c = function()
-        if cmp.visible() then
-          cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
-        else
-          cmp.complete()
-        end
-      end,
-      i = function(fallback)
-        if cmp.visible() then
-          cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
-        elseif vim.fn["UltiSnips#CanJumpForwards"]() == 1 then
-          vim.api.nvim_feedkeys(cmp_t("<Plug>(ultisnips_jump_forward)"), 'm', true)
-        else
-          fallback()
-        end
-      end,
-      s = function(fallback)
-        if vim.fn["UltiSnips#CanJumpForwards"]() == 1 then
-          vim.api.nvim_feedkeys(cmp_t("<Plug>(ultisnips_jump_forward)"), 'm', true)
-        else
-          fallback()
-        end
+    ["<Tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      elseif vim.fn["vsnip#available"](1) == 1 then
+        feedkey("<Plug>(vsnip-expand-or-jump)", "")
+      elseif has_words_before() then
+        cmp.complete()
+      else
+        fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
       end
-    }),
-    ["<S-Tab>"] = cmp.mapping({
-      c = function()
-        if cmp.visible() then
-          cmp.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
-        else
-          cmp.complete()
-        end
-      end,
-      i = function(fallback)
-        if cmp.visible() then
-          cmp.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
-        elseif vim.fn["UltiSnips#CanJumpBackwards"]() == 1 then
-          return vim.api.nvim_feedkeys( cmp_t("<Plug>(ultisnips_jump_backward)"), 'm', true)
-        else
-          fallback()
-        end
-      end,
-      s = function(fallback)
-        if vim.fn["UltiSnips#CanJumpBackwards"]() == 1 then
-          return vim.api.nvim_feedkeys( cmp_t("<Plug>(ultisnips_jump_backward)"), 'm', true)
-        else
-          fallback()
-        end
-      end
-    }),
-    -- end of super Tab
+    end, { "i", "s" }),
 
+    ["<S-Tab>"] = cmp.mapping(function()
+      if cmp.visible() then
+        cmp.select_prev_item()
+      elseif vim.fn["vsnip#jumpable"](-1) == 1 then
+        feedkey("<Plug>(vsnip-jump-prev)", "")
+      end
+    end, { "i", "s" }),
+    -- end of super Tab
   }
 end
 
