@@ -1,3 +1,3 @@
-require('feline').setup{
-   preset = 'noicon'
-}
+require("feline").setup({
+  preset = "noicon",
+})

@@ -6,7 +6,7 @@
 -- vim.cmd [[highlight IndentBlanklineIndent6 guifg=#C678DD gui=nocombine]]
 -- vim.cmd [[ let g:indent_blankline_char = '¦' ]]
 
-require("indent_blankline").setup {
+require("indent_blankline").setup({
   -- 空行占位
   space_char_blankline = " ",
   -- 用 treesitter 判断上下文
@@ -17,7 +17,7 @@ require("indent_blankline").setup {
   -- char = '┆'
   -- char = '│'
   -- char = '⎸'
-  char = '▏',
+  char = "▏",
 
   -- 不同级别使用不同char
   -- char_list = {'|', '¦', '┆', '┊'}
@@ -30,5 +30,5 @@ require("indent_blankline").setup {
   --   "IndentBlanklineIndent5",
   --   "IndentBlanklineIndent6",
   -- },
-}
-vim.g.indent_blankline_filetype_exclude = { 'dashboard' }
+})
+vim.g.indent_blankline_filetype_exclude = { "dashboard" }
