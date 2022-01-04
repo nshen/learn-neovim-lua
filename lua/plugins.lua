@@ -76,7 +76,7 @@ return packer.startup(function(use)
   use("glepnir/dashboard-nvim")
   -- project
   use("ahmedkhalf/project.nvim")
-
+  -- use("akinsho/toggleterm.nvim")
   -- which-key
   -- use 'folke/which-key.nvim'
   -------------------------- lsp -------------------------------------------
@@ -107,6 +107,13 @@ return packer.startup(function(use)
   use("simrat39/rust-tools.nvim")
   -- use { 'jose-elias-alvarez/null-ls.nvim', requires = 'nvim-lua/plenary.nvim' }
   use("mhartington/formatter.nvim")
+  -- use({
+  --   "lewis6991/gitsigns.nvim",
+  --   requires = {
+  --     "nvim-lua/plenary.nvim",
+  --   },
+  -- })
+
   --------------------------- colorscheme ------------------------------------
 
   -- gruvbox

@@ -1,4 +1,4 @@
--- 基础设置
+
 require("basic")
 -- Packer插件管理
 require("plugins")
@@ -29,6 +29,9 @@ require("plugin-config.project")
 -- lua require('plugin-config/which-key')
 -- require('plugin-config.null-ls')
 require("plugin-config.formatter")
+-- require("plugin-config.toggleterm")
+-- gitsigns
+-- require("plugin-config.gitsigns")
 
 -- 内置LSP
 require("plugin-config/rust-tools")

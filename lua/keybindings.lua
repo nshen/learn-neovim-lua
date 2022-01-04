@@ -39,13 +39,19 @@ map("v", "p", '"_dP', opt)
 -- 上下移动选中文本
 map("v", "J", ":move '>+1<CR>gv-gv", opt)
 map("v", "K", ":move '<-2<CR>gv-gv", opt)
-map("n", "q", ":q!<CR>", opt)
+map("n", "q", ":q<CR>", opt)
+map("n", "qq", ":q!<CR>", opt)
 map("n", "Q", ":qa!<CR>", opt)
+
+map("t", "<Esc>", "<C-\\><C-n>", opt)
+map("n", "<leader>t", ":terminal<CR>", opt)
 
 ------------------------------------------------------------------
 -- windows 分屏快捷键
 map("n", "sv", ":vsp<CR>", opt)
 map("n", "sh", ":sp<CR>", opt)
+map("n", "stv", ":vsp | terminal<CR>", opt)
+map("n", "sth", ":sp | terminal<CR>", opt)
 
 -- 关闭当前
 map("n", "sc", "<C-w>c", opt)
@@ -71,6 +77,11 @@ map("n", "<A-j>", "<C-w>j", opt)
 map("n", "<A-k>", "<C-w>k", opt)
 map("n", "<A-l>", "<C-w>l", opt)
 
+map("t", "<A-h>", [[ <C-\><C-N><C-w>h ]], opt)
+map("t", "<A-j>", [[ <C-\><C-N><C-w>j ]], opt)
+map("t", "<A-k>", [[ <C-\><C-N><C-w>k ]], opt)
+map("t", "<A-l>", [[ <C-\><C-N><C-w>l ]], opt)
+
 --------------------------------------------------------------------
 -- 插件快捷键
 -- nvimTree
@@ -81,7 +92,7 @@ map("n", "<A-m>", ":NvimTreeToggle<CR>", opt)
 map("n", "<C-h>", ":BufferLineCyclePrev<CR>", opt)
 map("n", "<C-l>", ":BufferLineCycleNext<CR>", opt)
 -- 关闭
-map("n", "<C-w>", ":bd<CR>", opt)
+map("n", "<C-w>", ":bd!<CR>", opt)
 map("n", "<leader>bl", ":BufferLineCloseRight<CR>", opt)
 map("n", "<leader>bh", ":BufferLineCloseLeft<CR>", opt)
 map("n", "<leader>bc", ":BufferLinePickClose<CR>", opt)
