@@ -30,7 +30,7 @@ require("plugin-config.project")
 require("plugin-config.formatter")
 -- require("plugin-config.toggleterm")
 -- gitsigns
--- require("plugin-config.gitsigns")
+require("plugin-config.gitsigns")
 
 -- 内置LSP
 require("plugin-config/rust-tools")
