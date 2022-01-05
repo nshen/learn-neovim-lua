@@ -105,8 +105,8 @@ return packer.startup(function(use)
   -- vimspect
   -- use 'puremourning/vimspector'
   use("simrat39/rust-tools.nvim")
-  -- use { 'jose-elias-alvarez/null-ls.nvim', requires = 'nvim-lua/plenary.nvim' }
-  use("mhartington/formatter.nvim")
+  use({ "jose-elias-alvarez/null-ls.nvim", requires = "nvim-lua/plenary.nvim" })
+  -- use("mhartington/formatter.nvim")
   use({
     "lewis6991/gitsigns.nvim",
     requires = {
