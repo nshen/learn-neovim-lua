@@ -11,6 +11,7 @@ require("utils/im-select")
 require("utils/fix-yank")
 
 -- 插件配置
+require("utils.global")
 require("plugin-config.nvim-tree")
 require("plugin-config.bufferline")
 require("plugin-config.nvim-treesitter")

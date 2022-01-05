@@ -8,3 +8,11 @@ function _G.log(...)
   print(table.concat(objects, "\n"))
   return ...
 end
+
+function _G.requirePlugin(name)
+  local status_ok, plugin = pcall(require, name)
+  if not status_ok then
+    return nil
+  end
+  return plugin
+end
