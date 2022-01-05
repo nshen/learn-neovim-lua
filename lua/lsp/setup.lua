@@ -7,8 +7,8 @@ local servers = {
   sumneko_lua = require("lsp.lang.lua"), -- /lua/lsp/lua.lua
   rust_analyzer = require("lsp.lang.rust"),
   jsonls = require("lsp.lang.jsonls"),
+  tsserver = require("lsp.lang.tsserver"),
   -- html = {},
-  -- tsserver = {}
 }
 -- 自动安装 LanguageServers
 for name, _ in pairs(servers) do
@@ -22,42 +22,9 @@ for name, _ in pairs(servers) do
 end
 
 lsp_installer.on_server_ready(function(server)
-  local opts = servers[server.name]
-  if opts then
-    opts.on_attach = function(client, bufnr)
-      -- 禁用格式化功能，交给专门插件插件处理
-      client.resolved_capabilities.document_formatting = false
-      client.resolved_capabilities.document_range_formatting = false
-      local function buf_set_keymap(...)
-        vim.api.nvim_buf_set_keymap(bufnr, ...)
-      end
-      -- local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-      -- 绑定快捷键
-      require("keybindings").maplsp(buf_set_keymap)
-    end
-    opts.flags = {
-      debounce_text_changes = 150,
-    }
-
-    --Enable (broadcasting) snippet capability for completion
-    -- local capabilities = vim.lsp.protocol.make_client_capabilities()
-    -- capabilities.textDocument.completion.completionItem.snippetSupport = true
-    -- opts.capabilities = capabilities
-
-    -- 查看目录等信息
-    -- print(vim.inspect(server))
-    if server.name == "rust_analyzer" then
-      -- Initialize the LSP via rust-tools instead
-      require("rust-tools").setup({
-        -- The "server" property provided in rust-tools setup function are the
-        -- settings rust-tools will provide to lspconfig during init.            --
-        -- We merge the necessary settings from nvim-lsp-installer (server:get_default_options())
-        -- with the user's own settings (opts).
-        server = vim.tbl_deep_extend("force", server:get_default_options(), opts),
-      })
-      server:attach_buffers()
-    else
-      server:setup(opts)
-    end
-  end
+  local lang = servers[server.name]
+  lang.on_ready(server);
 end)
+
+
+
