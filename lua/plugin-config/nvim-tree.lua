@@ -17,4 +17,18 @@ require("nvim-tree").setup({
     enable = true,
     update_cwd = true,
   },
+  view = {
+    width = 30,
+    height = 30,
+    hide_root_folder = false,
+    side = "left",
+    auto_resize = true,
+    mappings = {
+      custom_only = false,
+      list = {},
+    },
+    number = false,
+    relativenumber = false,
+    signcolumn = "yes",
+  },
 })
