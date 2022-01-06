@@ -6,9 +6,9 @@ require("keybindings")
 -- 主题设置
 require("colorscheme")
 -- 输入法自动切换
-require("utils/im-select")
+require("utils.im-select")
 -- 复制到windows剪贴板
-require("utils/fix-yank")
+require("utils.fix-yank")
 
 -- 插件配置
 require("utils.global")
@@ -27,7 +27,6 @@ require("plugin-config.lualine")
 require("plugin-config.dashboard")
 require("plugin-config.project")
 -- lua require('plugin-config/which-key')
-require("plugin-config.null-ls")
 -- require("plugin-config.formatter")
 -- require("plugin-config.toggleterm")
 -- gitsigns
@@ -38,3 +37,4 @@ require("plugin-config/rust-tools")
 require("lsp/setup")
 require("lsp/nvim-cmp")
 require("lsp/ui")
+require("plugin-config.null-ls")
