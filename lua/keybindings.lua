@@ -126,7 +126,7 @@ map("n", "<C-_>", "gcc", { noremap = false })
 map("v", "<C-_>", "gcc", { noremap = false })
 
 -- lsp 回调函数快捷键设置
-pluginKeys.maplsp = function(mapbuf)
+pluginKeys.mapLSP = function(mapbuf)
   -- rename
   mapbuf("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opt)
   -- code action
