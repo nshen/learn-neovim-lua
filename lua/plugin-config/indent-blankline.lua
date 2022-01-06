@@ -25,6 +25,15 @@ require("indent_blankline").setup({
     "block",
     "arguments",
   },
+  filetype_exclude = {
+    "dashboard",
+    "packer",
+    "terminal",
+    "help",
+    "log",
+    "markdown",
+    "TelescopePrompt",
+  },
   -- 使用 char
   -- char = '¦'
   -- char = '┆'
@@ -44,4 +53,3 @@ require("indent_blankline").setup({
   --   "IndentBlanklineIndent6",
   -- },
 })
-vim.g.indent_blankline_filetype_exclude = { "dashboard", "packer", "terminal", "help" }
