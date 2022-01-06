@@ -12,15 +12,28 @@ require("indent_blankline").setup({
   -- 用 treesitter 判断上下文
   show_current_context = true,
   show_current_context_start = true,
+  context_patterns = {
+    "class",
+    "function",
+    "method",
+    "element",
+    "^if",
+    "^while",
+    "^for",
+    "^object",
+    "^table",
+    "block",
+    "arguments",
+  },
   -- 使用 char
   -- char = '¦'
   -- char = '┆'
   -- char = '│'
-  -- char = '⎸'
+  -- char = "⎸",
   char = "▏",
 
   -- 不同级别使用不同char
-  -- char_list = {'|', '¦', '┆', '┊'}
+  -- char_list = {  "|", "¦", "┆", "┊" },
   -- 自定义颜色
   -- char_highlight_list = {
   --   "IndentBlanklineIndent1",
@@ -31,4 +44,4 @@ require("indent_blankline").setup({
   --   "IndentBlanklineIndent6",
   -- },
 })
-vim.g.indent_blankline_filetype_exclude = { "dashboard" }
+vim.g.indent_blankline_filetype_exclude = { "dashboard", "packer", "terminal", "help" }
