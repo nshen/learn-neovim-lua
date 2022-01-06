@@ -214,8 +214,7 @@ local status_ok, diffConfig = pcall(require, "diffview.config")
 if status_ok then
   map("n", "<leader>df", ":DiffviewOpen<CR>", opt)
   map("n", "<leader>dfc", ":DiffviewClose<CR>", opt)
-  map("n", "<leader>fh", ":DiffviewFileHistory<CR>", opt)
-  map("n", "<leader>fhc", ":DiffviewClose<CR>", opt)
+  map("n", "<leader>dfh", ":DiffviewFileHistory<CR>", opt)
   local cb = diffConfig.diffview_callback
   pluginKeys.diffview = {
     disable_defaults = false, -- Disable the default key bindings
