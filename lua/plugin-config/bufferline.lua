@@ -1,6 +1,11 @@
 -- https://github.com/akinsho/bufferline.nvim
+
+local bufferline = requirePlugin("bufferline")
+if not bufferline then
+  return
+end
 vim.opt.termguicolors = true
-require("bufferline").setup({
+bufferline.setup({
   options = {
     close_command = "Bdelete! %d",
     -- 使用 nvim 内置lsp

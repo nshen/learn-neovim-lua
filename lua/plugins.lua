@@ -113,7 +113,7 @@ return packer.startup(function(use)
       "nvim-lua/plenary.nvim",
     },
   })
-  use "moll/vim-bbye"
+  use("moll/vim-bbye")
 
   --------------------------- colorscheme ------------------------------------
 
