@@ -79,6 +79,9 @@ return packer.startup(function(use)
   -- use("akinsho/toggleterm.nvim")
   -- which-key
   -- use 'folke/which-key.nvim'
+
+  -- :MarkdownPreview 命令，默认无需配置
+  use({ "iamcco/markdown-preview.nvim", run = "cd app && yarn install", cmd = "MarkdownPreview" })
   -------------------------- lsp -------------------------------------------
 
   -- lspconfig
