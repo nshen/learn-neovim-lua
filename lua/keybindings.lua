@@ -18,6 +18,9 @@ local opt = {
 --   term_mode = "t",
 --   command_mode = "c",
 
+map("c", "<C-j>", "<C-n>", { noremap = false })
+map("c", "<C-k>", "<C-p>", { noremap = false })
+
 map("n", "<C-j>", "4j", opt)
 map("n", "<C-k>", "4k", opt)
 map("i", "<C-h>", "<ESC>I", opt)
