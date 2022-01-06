@@ -147,7 +147,7 @@ lsp_installer.on_server_ready(function(server)
       local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
       -- local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
       -- 绑定快捷键
-      require('keybindings').maplsp(buf_set_keymap)
+      require('keybindings').mapLSP(buf_set_keymap)
     end
     opts.flags = {
       debounce_text_changes = 150,
@@ -157,14 +157,14 @@ lsp_installer.on_server_ready(function(server)
 end)
 ```
 
-由于我要把快捷键配置都放在一个文件里，所以上边配置文件中调用了 `lua/keybindings.lua` 的 maplsp 方法，用于配置 lsp 相关的快捷键
+由于我要把快捷键配置都放在一个文件里，所以上边配置文件中调用了 `lua/keybindings.lua` 的 mapLSP 方法，用于配置 LSP 相关的快捷键
 
 ```lua
 -- 绑定快捷键
-require('keybindings').maplsp(buf_set_keymap)
+require('keybindings').mapLSP(buf_set_keymap)
 ```
 
-打开 `lua/keybindings.lua` 添加 `maplsp` 方法
+打开 `lua/keybindings.lua` 添加 `mapLSP` 方法
 
 根据你的习惯修改，这是我目前的配置，可能未来会有修改
 
@@ -174,7 +174,7 @@ require('keybindings').maplsp(buf_set_keymap)
 local pluginKeys = {}
 
 -- lsp 回调函数快捷键设置
-pluginKeys.maplsp = function(mapbuf)
+pluginKeys.mapLSP = function(mapbuf)
   -- rename
   mapbuf('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opt)
   -- code action

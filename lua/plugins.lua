@@ -114,6 +114,7 @@ return packer.startup(function(use)
     },
   })
   use("moll/vim-bbye")
+  use("jose-elias-alvarez/nvim-lsp-ts-utils")
 
   --------------------------- colorscheme ------------------------------------
 
