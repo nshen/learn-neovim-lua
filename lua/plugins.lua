@@ -52,7 +52,7 @@ return packer.startup(function(use)
     "nvim-treesitter/nvim-treesitter",
     run = ":TSUpdate",
   })
-
+  use("p00f/nvim-ts-rainbow")
   -- Comment
   use("numToStr/Comment.nvim")
   -- nvim-autopairs
