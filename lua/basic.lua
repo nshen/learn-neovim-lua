@@ -79,3 +79,5 @@ vim.o.pumheight = 10
 vim.o.showtabline = 2
 -- 使用增强状态栏插件后不再需要 vim 的模式提示
 vim.o.showmode = false
+-- 进入Terminal 自动进入插入模式
+vim.cmd("autocmd TermOpen * startinsert")
