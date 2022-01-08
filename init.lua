@@ -5,6 +5,7 @@ require("plugins")
 require("keybindings")
 -- 主题设置
 require("colorscheme")
+require("utils.change-colorscheme")
 -- 输入法自动切换
 require("utils.im-select")
 -- 复制到windows剪贴板

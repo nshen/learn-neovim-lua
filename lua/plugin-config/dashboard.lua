@@ -6,7 +6,7 @@ vim.g.dashboard_custom_section = {
   b = { description = { "  Recently files        " }, command = "Telescope oldfiles" },
   -- b = { description = {'  Find file          '}, command = 'Telescope find_files'},
   -- c = { description = {'  Find text          '}, command = 'Telescope live_grep'},
-  c = { description = { "  Change colorscheme    " }, command = "Telescope colorscheme" },
+  c = { description = { "  Change colorscheme    " }, command = "ChangeColorScheme" },
   d = { description = { "  Edit init.lua         " }, command = "edit ~/.config/nvim/init.lua" },
   e = { description = { "  Edit keybindings      " }, command = "edit ~/.config/nvim/lua/keybindings.lua" },
   f = {
