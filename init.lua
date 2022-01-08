@@ -28,14 +28,19 @@ require("plugin-config.lualine")
 require("plugin-config.dashboard")
 require("plugin-config.project")
 -- lua require('plugin-config/which-key')
--- require("plugin-config.formatter")
 -- require("plugin-config.toggleterm")
 -- gitsigns
 require("plugin-config.gitsigns")
 
 -- 内置LSP
-require("plugin-config/rust-tools")
 require("lsp/setup")
 require("lsp/nvim-cmp")
 require("lsp/ui")
 require("plugin-config.null-ls")
+-- require("plugin-config.formatter")
+
+-- dap
+-- require("plugin-config.dap")
+-- require("plugin-config/rust-tools")
+-- require("plugin-config.dap-install")
+require("plugin-config.vimspector")

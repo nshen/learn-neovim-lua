@@ -319,9 +319,3 @@ pluginKeys.gitsigns = {
 }
 
 return pluginKeys
-
--- let g:vimspector_enable_mappings = 'HUMAN'
--- nmap <leader>dd :call vimspector#Launch()<CR>
--- nmap <leader>dx :call vimspectorReset<CR>
--- nmap <leader>de :call vimspectorEval
--- nmap <leader>dw :call vimspectorWatch

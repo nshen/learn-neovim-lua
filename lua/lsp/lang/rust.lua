@@ -24,6 +24,12 @@ return {
       -- We merge the necessary settings from nvim-lsp-installer (server:get_default_options())
       -- with the user's own settings (opts).
       server = vim.tbl_deep_extend("force", server:get_default_options(), opts),
+      -- dap = {
+      --   adapter = require("rust-tools.dap").get_codelldb_adapter(
+      --     "/home/simrat39/.vscode/extensions/vadimcn.vscode-lldb-1.6.7/adapter/codelldb",
+      --     "/home/simrat39/.vscode/extensions/vadimcn.vscode-lldb-1.6.7/lldb/lib/liblldb.so"
+      --   ),
+      -- },
     })
     server:attach_buffers()
   end,
