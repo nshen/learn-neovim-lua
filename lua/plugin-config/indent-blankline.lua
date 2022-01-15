@@ -33,6 +33,8 @@ require("indent_blankline").setup({
     "log",
     "markdown",
     "TelescopePrompt",
+    "lsp-installer",
+    "toggleterm",
   },
   -- 使用 char
   -- char = '¦'

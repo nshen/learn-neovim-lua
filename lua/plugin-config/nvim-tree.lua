@@ -27,7 +27,7 @@ require("nvim-tree").setup({
     width = 30,
     height = 30,
     -- 隐藏根目录
-    hide_root_folder = true,
+    hide_root_folder = false,
     side = "left",
     -- 打开第一个文件
     auto_resize = true,

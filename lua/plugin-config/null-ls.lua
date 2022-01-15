@@ -13,12 +13,12 @@ null_ls.setup({
     -- frontend
     -- diagnostics.eslint_d,
     -- code_actions.eslint_d,
-    diagnostics.eslint.with({
-      prefer_local = "node_modules/.bin",
-    }),
-    code_actions.eslint.with({
-      prefer_local = "node_modules/.bin",
-    }),
+    -- diagnostics.eslint.with({
+    --   prefer_local = "node_modules/.bin",
+    -- }),
+    -- code_actions.eslint.with({
+    --   prefer_local = "node_modules/.bin",
+    -- }),
     -- diagnostics.markdownlint,
     -- markdownlint-cli2
     -- diagnostics.markdownlint.with({
@@ -27,12 +27,25 @@ null_ls.setup({
     --   args = { "$FILENAME", "#node_modules" },
     -- }),
     --
-    formatting.prettier,
-
-    -- formatting.prettier.with({
-    --   filetypes = { "html", "json", "yaml", "markdown" },
-    --   prefer_local = "node_modules/.bin",
-    -- }),
+    -- formatting.prettier,
+    formatting.prettier.with({
+      -- 比默认少了 markdown
+      filetypes = {
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+        "vue",
+        "css",
+        "scss",
+        "less",
+        "html",
+        "json",
+        "yaml",
+        "graphql",
+      },
+      prefer_local = "node_modules/.bin",
+    }),
     -- lua
     formatting.stylua,
   },
