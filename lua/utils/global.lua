@@ -12,6 +12,7 @@ end
 function _G.requirePlugin(name)
   local status_ok, plugin = pcall(require, name)
   if not status_ok then
+    vim.notify(" 没有找到插件：" .. name)
     return nil
   end
   return plugin
