@@ -1,12 +1,16 @@
 ## 📜 Neovim 配置实战：从 0 到 1 打造自己的 IDE
 
-好消息《学习 Neovim 全 lua 配置》已经在稀土掘金专业编辑的指点下完全重写，新名字是：[《Neovim 配置实战：从 0 到 1 打造自己的 IDE》](https://juejin.cn/book/7051157342770954277)。
+《学习 Neovim 全 lua 配置》已经在稀土掘金专业编辑的指点下完全重写。
 
-新版本由掘金把关，目录经过了优化，解释也更加详细，所有动图都重新截取了，内容翻新的同时代码也进行了比较大幅的改动。
+新名字是：[《Neovim 配置实战：从 0 到 1 打造自己的 IDE》](https://juejin.cn/book/7051157342770954277)
+
+好消息是新版本由掘金专业把关，目录经过了优化，解释也更加详细，所有动图都重新截取了。
+
+内容翻新的同时代码也进行了比较大幅的改动，文章质量肯定更高了。
 
 坏消息是变成了收费小册了，但价格不高，现在预售中，前 7 天是限时最低折扣可直接无脑付款，后来的朋友可以找我索取最低 7 折的折扣码。
 
-第一次写收费小册，希望大家能够少喝一杯咖啡，十几块钱支持一下。 但如果你跟我一样手头很紧的话也仍然查看 [旧版备份](https://github.com/nshen/learn-neovim-lua/tree/bak)，但旧版不会再更新了。
+第一次写收费小册，希望大家能够少喝一杯咖啡，十几块钱支持一下。 但如果你跟我一样手头很紧的话也仍然查看 [旧版备份](https://github.com/nshen/learn-neovim-lua/tree/bak)，但不会更新了。
 
 ## 新版购买链接
 
@@ -14,7 +18,8 @@
 
 下边是掘金小册介绍：
 
-![Neovim课程介绍(1624x623).jpg](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0a0f17793e35487d939955ce1ddc1ba5~tplv-k3u1fbpfcp-watermark.image?)
+![0a0f17793e35487d939955ce1ddc1ba5_tplv-k3u1fbpfcp-watermark](https://user-images.githubusercontent.com/181506/158575190-4cc79ee3-1485-45d6-a82c-6449242cbfc7.jpg)
+
 
 由于近来 VSCode 越来越臃肿，已经逐渐脱离了其高性能、轻量级的定位。而随着 Neovim 0.5+ 版本的发布，内置 LSP 的支持，让 Lua  成了编辑器的一等语言，使得古老的 VIM 编辑器变得更加现代化了。
 
@@ -26,7 +31,7 @@
 
 这里展示一下学完本小册后，大致的配置效果：
 
-![features2.gif](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/82fd07bc9d6746be9c786009a0321b71~tplv-k3u1fbpfcp-watermark.image?)
+![features2](https://user-images.githubusercontent.com/181506/158575466-2d3be027-a4a3-482f-b884-02b20f66fba3.gif)
 
 从 VSCode 转移到 Neovim 时 ，我也看了很多文档，参考了很多配置资料，尝试了很多插件，走了很多弯路，最终我对 Neovim 的配置已经完全可以满足我对代码编辑器的需求了。我把配置方法写成小册，通过对这个小册的学习，你也可以把 Neovim  配置成你希望的样子，也许跟我的完全不同。
 
