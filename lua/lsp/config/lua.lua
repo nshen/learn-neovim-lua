@@ -46,15 +46,14 @@ local opts = {
   end,
 }
 
---Enable (broadcasting) snippet capability for completion
 -- local capabilities = vim.lsp.protocol.make_client_capabilities()
--- capabilities.textDocument.completion.completionItem.snippetSupport = true
+-- capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 -- opts.capabilities = capabilities
 
 -- 查看目录等信息
 -- print(vim.inspect(server))
 return {
-  on_ready = function(server)
+  on_setup = function(server)
     server:setup(opts)
   end,
 }

@@ -1,13 +1,21 @@
-require("nvim-treesitter.configs").setup({
+local status, treesitter = pcall(require, "nvim-treesitter.configs")
+if not status then
+  vim.notify("没有找到 nvim-treesitter")
+  return
+end
+
+treesitter.setup({
   -- 安装 language parser
   -- :TSInstallInfo 命令查看支持的语言
-  ensure_installed = { "json", "html", "css", "vim", "lua", "javascript", "typescript", "tsx" },
-  -- 启用代码高亮功能
+  -- ensure_installed = { "json", "html", "css", "vim", "lua", "javascript", "typescript", "tsx" },
+  ensure_installed = "maintained",
+
+  -- 启用代码高亮模块
   highlight = {
     enable = true,
     additional_vim_regex_highlighting = false,
   },
-  -- 启用增量选择
+  -- 启用增量选择模块
   incremental_selection = {
     enable = true,
     keymaps = {
@@ -17,7 +25,7 @@ require("nvim-treesitter.configs").setup({
       scope_incremental = "<TAB>",
     },
   },
-  -- 启用基于Treesitter的代码格式化(=) . NOTE: This is an experimental feature.
+  -- 启用代码缩进模块 (=) 
   indent = {
     enable = true,
   },
@@ -31,10 +39,9 @@ require("nvim-treesitter.configs").setup({
     -- termcolors = {} -- table of colour name strings
   },
 })
-
--- 开启 Folding
-vim.wo.foldmethod = "expr"
-vim.wo.foldexpr = "nvim_treesitter#foldexpr()"
+-- 开启 Folding 模块
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 -- 默认不要折叠
 -- https://stackoverflow.com/questions/8316139/how-to-set-the-default-to-unfolded-when-you-open-a-file
-vim.wo.foldlevel = 99
+vim.opt.foldlevel = 99

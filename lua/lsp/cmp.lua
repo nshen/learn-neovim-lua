@@ -2,10 +2,9 @@
 -- https://github.com/hrsh7th/nvim-cmp
 -- https://github.com/onsails/lspkind-nvim
 
-local lspkind = require("lspkind")
+--local lspkind = require("lspkind")
 local cmp = require("cmp")
 
----@diagnostic disable-next-line: redundant-parameter
 cmp.setup({
   -- 指定 snippet 引擎
   snippet = {
@@ -28,28 +27,19 @@ cmp.setup({
     { name = "nvim_lsp" },
     -- For vsnip users.
     { name = "vsnip" },
+    { name = "buffer" },
     -- For luasnip users.
     -- { name = 'luasnip' },
     --For ultisnips users.
     -- { name = 'ultisnips' },
     -- -- For snippy users.
     -- { name = 'snippy' },
-  }, { { name = "buffer" }, { name = "path" } }),
+  }, {  { name = "path" } }),
 
   -- 快捷键
   mapping = require("keybindings").cmp(cmp),
   -- 使用lspkind-nvim显示类型图标
-  formatting = {
-    format = lspkind.cmp_format({
-      with_text = true, -- show text alongside icons
-      maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
-      before = function(entry, vim_item)
-        -- Source 显示提示来源
-        vim_item.menu = "[" .. string.upper(entry.source.name) .. "]"
-        return vim_item
-      end,
-    }),
-  },
+  formatting = require('lsp.ui').formatting
 })
 
 -- Use buffer source for `/`.

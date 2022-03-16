@@ -7,7 +7,7 @@ local map = vim.api.nvim_set_keymap
 
 local opt = {
   noremap = true,
-  silent = true,
+  silent = true
 }
 
 -- Modes
@@ -19,8 +19,12 @@ local opt = {
 --   command_mode = "c",
 
 -- 命令行下 Ctrl+j/k  上一个下一个
-map("c", "<C-j>", "<C-n>", { noremap = false })
-map("c", "<C-k>", "<C-p>", { noremap = false })
+map("c", "<C-j>", "<C-n>", {
+  noremap = false
+})
+map("c", "<C-k>", "<C-p>", {
+  noremap = false
+})
 
 -- 上下滚动浏览
 map("n", "<C-j>", "4j", opt)
@@ -30,8 +34,14 @@ map("n", "<C-u>", "9k", opt)
 map("n", "<C-d>", "9j", opt)
 
 -- magic search
-map("n", "/", "/\\v", { noremap = true, silent = false })
-map("v", "/", "/\\v", { noremap = true, silent = false })
+map("n", "/", "/\\v", {
+  noremap = true,
+  silent = false
+})
+map("v", "/", "/\\v", {
+  noremap = true,
+  silent = false
+})
 
 -- visual模式下缩进代码
 map("v", "<", "<gv", opt)
@@ -48,8 +58,8 @@ map("n", "q", ":q<CR>", opt)
 map("n", "qq", ":q!<CR>", opt)
 map("n", "Q", ":qa!<CR>", opt)
 -- insert 模式下，跳到行首行尾
-map("i", "<C-h>", "<ESC>I", opt)
-map("i", "<C-l>", "<ESC>A", opt)
+-- map("i", "<C-h>", "<ESC>I", opt)
+-- map("i", "<C-l>", "<ESC>A", opt)
 
 -- Terminal相关
 -- map("n", "<leader>t", ":sp | terminal<CR>", opt)
@@ -94,30 +104,57 @@ local pluginKeys = {}
 -- nvim-tree
 map("n", "<A-m>", ":NvimTreeToggle<CR>", opt)
 -- 列表快捷键
-pluginKeys.nvimTreeList = {
-  -- 打开文件或文件夹
-  { key = {"<CR>", "o", "<2-LeftMouse>"}, action = "edit" },
-  -- 分屏打开文件
-  { key = "v", action = "vsplit" },
-  { key = "h", action = "split" },
-  -- 显示隐藏文件
-  { key = "i", action = "toggle_ignored" }, -- Ignore (node_modules)
-  { key = ".", action = "toggle_dotfiles" }, -- Hide (dotfiles)
+pluginKeys.nvimTreeList = { -- 打开文件或文件夹
+{
+    key = {"<CR>", "o", "<2-LeftMouse>"},
+    action = "edit"
+  }, -- 分屏打开文件
+{
+    key = "v",
+    action = "vsplit"
+  }, {
+    key = "h",
+    action = "split"
+  }, -- 显示隐藏文件
+{
+    key = "i",
+    action = "toggle_ignored"
+  }, -- Ignore (node_modules)
+{
+    key = ".",
+    action = "toggle_dotfiles"
+  }, -- Hide (dotfiles)
   -- 文件操作
-  { key = "<F5>", action = "refresh" },
-  { key = "a", action = "create" },
-  { key = "d", action = "remove" },
-  { key = "r", action = "rename" },
-  { key = "x", action = "cut" },
-  { key = "c", action = "copy" },
-  { key = "p", action = "paste" },
-  { key = "s", action = "system_open" },
-}
+{
+    key = "<F5>",
+    action = "refresh"
+  }, {
+    key = "a",
+    action = "create"
+  }, {
+    key = "d",
+    action = "remove"
+  }, {
+    key = "r",
+    action = "rename"
+  }, {
+    key = "x",
+    action = "cut"
+  }, {
+    key = "c",
+    action = "copy"
+  }, {
+    key = "p",
+    action = "paste"
+  }, {
+    key = "s",
+    action = "system_open"
+  }}
 -- bufferline
 -- 左右Tab切换
 map("n", "<C-h>", ":BufferLineCyclePrev<CR>", opt)
 map("n", "<C-l>", ":BufferLineCycleNext<CR>", opt)
---"moll/vim-bbye" 关闭当前 buffer
+-- "moll/vim-bbye" 关闭当前 buffer
 map("n", "<C-w>", ":Bdelete!<CR>", opt)
 -- 关闭左/右侧标签页
 map("n", "<leader>bl", ":BufferLineCloseRight<CR>", opt)
@@ -144,60 +181,81 @@ pluginKeys.telescopeList = {
     ["<C-c>"] = "close",
     -- 预览窗口上下滚动
     ["<C-u>"] = "preview_scrolling_up",
-    ["<C-d>"] = "preview_scrolling_down",
-  },
+    ["<C-d>"] = "preview_scrolling_down"
+  }
 }
-
-
-
-
--- nvim-treesitter 代码格式化
-map("n", "<leader>i", "gg=G", opt)
-
-
----
-
 
 -- 代码注释插件
 -- see ./lua/plugin-config/comment.lua
 pluginKeys.comment = {
   toggler = {
     line = "gcc",
-    block = "gbc",
+    block = "gbc"
   },
   opleader = {
     line = "gc",
-    bock = "gb",
-  },
+    bock = "gb"
+  }
 }
 -- ctrl + /
-map("n", "<C-_>", "gcc", { noremap = false })
-map("v", "<C-_>", "gcc", { noremap = false })
+map("n", "<C-_>", "gcc", {
+  noremap = false
+})
+map("v", "<C-_>", "gcc", {
+  noremap = false
+})
 
 -- lsp 回调函数快捷键设置
 pluginKeys.mapLSP = function(mapbuf)
   -- rename
+  --[[
+  Lspsaga 替换 rn
   mapbuf("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opt)
+  --]]
+  mapbuf("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", opt)
   -- code action
+  --[[
+  Lspsaga 替换 ca
   mapbuf("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opt)
+  --]]
+  mapbuf("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opt)
   -- go xx
+  --[[
+  Lspsaga 替换 gd
   mapbuf("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opt)
+  --]]
+  mapbuf("n", "gd", "<cmd>Lspsaga preview_definition<CR>", opt)
+  --[[
+  Lspsaga 替换 gh
   mapbuf("n", "gh", "<cmd>lua vim.lsp.buf.hover()<CR>", opt)
-  mapbuf("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opt)
-  mapbuf("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opt)
+  --]]
+  mapbuf("n", "gh", "<cmd>Lspsaga hover_doc<cr>", opt)
+  --[[
+  Lspsaga 替换 gr
   mapbuf("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opt)
-  -- diagnostic
+  --]]
+  mapbuf("n", "gr", "<cmd>Lspsaga lsp_finder<CR>", opt)
+  --[[
+  Lspsaga 替换 gp, gj, gk
   mapbuf("n", "gp", "<cmd>lua vim.diagnostic.open_float()<CR>", opt)
-  mapbuf("n", "gk", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opt)
   mapbuf("n", "gj", "<cmd>lua vim.diagnostic.goto_next()<CR>", opt)
-  -- mapbuf('n', '<leader>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opt)
-  mapbuf("n", "<gk>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opt)
-  -- leader + =
+  mapbuf("n", "gk", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opt)
+  --]]
+  -- diagnostic
+  mapbuf("n", "gp", "<cmd>Lspsaga show_line_diagnostics<CR>",opt)
+  mapbuf("n", "gj", "<cmd>Lspsaga diagnostic_jump_next<cr>", opt)
+  mapbuf("n", "gk", "<cmd>Lspsaga diagnostic_jump_prev<cr>", opt)
   mapbuf("n", "<leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opt)
+  -- 未用
+  -- mapbuf("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opt)
+  -- mapbuf("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opt)
+  -- mapbuf('n', '<leader>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opt)
+  -- mapbuf("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opt)
   -- mapbuf('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opt)
   -- mapbuf('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opt)
   -- mapbuf('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opt)
   -- mapbuf('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opt)
+
 end
 
 -- typescript 快捷键
@@ -208,39 +266,51 @@ pluginKeys.mapTsLSP = function(mapbuf)
 end
 
 -- nvim-cmp 自动补全
-local has_words_before = function()
-  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
-end
-
-local feedkey = function(key, mode)
-  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
-end
-
 pluginKeys.cmp = function(cmp)
+
+  local feedkey = function(key, mode)
+    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
+  end
+  local has_words_before = function()
+    local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+    return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+  end
+
   return {
     -- 上一个
     ["<C-k>"] = cmp.mapping.select_prev_item(),
     -- 下一个
     ["<C-j>"] = cmp.mapping.select_next_item(),
     -- 出现补全
-    ["<A-.>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
+    ["<A-.>"] = cmp.mapping(cmp.mapping.complete(), {"i", "c"}),
     -- 取消
     ["<A-,>"] = cmp.mapping({
       i = cmp.mapping.abort(),
-      c = cmp.mapping.close(),
+      c = cmp.mapping.close()
     }),
     -- 确认
     -- Accept currently selected item. If none selected, `select` first item.
     -- Set `select` to `false` to only confirm explicitly selected items.
     ["<CR>"] = cmp.mapping.confirm({
       select = true,
-      behavior = cmp.ConfirmBehavior.Replace,
+      behavior = cmp.ConfirmBehavior.Replace
     }),
     -- ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
     -- 如果窗口内容太多，可以滚动
-    ["<C-u>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
-    ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
+    ["<C-u>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), {"i", "c"}),
+    ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(4), {"i", "c"}),
+    -- snippets 跳转
+    ["<C-l>"] = cmp.mapping(function(_)
+      if vim.fn["vsnip#available"](1) == 1 then
+        feedkey("<Plug>(vsnip-expand-or-jump)", "")
+      end
+    end, {"i", "s"}),
+    ["<C-h>"] = cmp.mapping(function()
+      if vim.fn["vsnip#jumpable"](-1) == 1 then
+        feedkey("<Plug>(vsnip-jump-prev)", "")
+      end
+    end, {"i", "s"}),
+
     -- super Tab
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
@@ -252,7 +322,7 @@ pluginKeys.cmp = function(cmp)
       else
         fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
       end
-    end, { "i", "s" }),
+    end, {"i", "s"}),
 
     ["<S-Tab>"] = cmp.mapping(function()
       if cmp.visible() then
@@ -260,7 +330,7 @@ pluginKeys.cmp = function(cmp)
       elseif vim.fn["vsnip#jumpable"](-1) == 1 then
         feedkey("<Plug>(vsnip-jump-prev)", "")
       end
-    end, { "i", "s" }),
+    end, {"i", "s"})
     -- end of super Tab
   }
 end
@@ -283,7 +353,7 @@ if status_ok then
       -- ["<C-w><C-f>"] = cb("goto_file_split"),    -- Open the file in a new split
       -- ["<C-w>gf"]    = cb("goto_file_tab"),      -- Open the file in a new tabpage
       -- ["<leader>e"]  = cb("focus_files"),        -- Bring focus to the files panel
-      ["<leader>b"] = cb("toggle_files"), -- Toggle the files panel.
+      ["<leader>b"] = cb("toggle_files") -- Toggle the files panel.
     },
     file_panel = {
       ["j"] = cb("next_entry"), -- Bring the cursor to the next file entry
@@ -306,7 +376,7 @@ if status_ok then
       ["i"] = cb("listing_style"), -- Toggle between 'list' and 'tree' views
       ["f"] = cb("toggle_flatten_dirs"), -- Flatten empty subdirectories in tree listing style.
       ["<leader>e"] = cb("focus_files"),
-      ["<leader>b"] = cb("toggle_files"),
+      ["<leader>b"] = cb("toggle_files")
     },
     file_history_panel = {
       ["g!"] = cb("options"), -- Open the option panel
@@ -327,12 +397,12 @@ if status_ok then
       ["<C-w><C-f>"] = cb("goto_file_split"),
       ["<C-w>gf"] = cb("goto_file_tab"),
       ["<leader>e"] = cb("focus_files"),
-      ["<leader>b"] = cb("toggle_files"),
+      ["<leader>b"] = cb("toggle_files")
     },
     option_panel = {
       ["<tab>"] = cb("select"),
-      ["q"] = cb("close"),
-    },
+      ["q"] = cb("close")
+    }
   }
 end
 
@@ -341,8 +411,14 @@ pluginKeys.gitsigns = {
   -- Default keymap options
   noremap = true,
 
-  ["n <leader>hj"] = { expr = true, "&diff ? ']c' : '<cmd>Gitsigns next_hunk<CR>'" },
-  ["n <leader>hk"] = { expr = true, "&diff ? '[c' : '<cmd>Gitsigns prev_hunk<CR>'" },
+  ["n <leader>hj"] = {
+    expr = true,
+    "&diff ? ']c' : '<cmd>Gitsigns next_hunk<CR>'"
+  },
+  ["n <leader>hk"] = {
+    expr = true,
+    "&diff ? '[c' : '<cmd>Gitsigns prev_hunk<CR>'"
+  },
 
   -- stage
   ["n <leader>hs"] = "<cmd>Gitsigns stage_hunk<CR>",
@@ -361,7 +437,7 @@ pluginKeys.gitsigns = {
 
   -- Text objects
   ["o ih"] = ":<C-U>Gitsigns select_hunk<CR>",
-  ["x ih"] = ":<C-U>Gitsigns select_hunk<CR>",
+  ["x ih"] = ":<C-U>Gitsigns select_hunk<CR>"
 }
 
 return pluginKeys
