@@ -25,6 +25,7 @@ cmp.setup({
   -- 来源
   sources = cmp.config.sources({
     { name = "nvim_lsp" },
+    { name = "nvim_lsp_signature_help" },
     -- For vsnip users.
     { name = "vsnip" },
     { name = "buffer" },
@@ -34,12 +35,12 @@ cmp.setup({
     -- { name = 'ultisnips' },
     -- -- For snippy users.
     -- { name = 'snippy' },
-  }, {  { name = "path" } }),
+  }, { { name = "path" } }),
 
   -- 快捷键
   mapping = require("keybindings").cmp(cmp),
   -- 使用lspkind-nvim显示类型图标
-  formatting = require('lsp.ui').formatting
+  formatting = require("lsp.ui").formatting,
 })
 
 -- Use buffer source for `/`.
