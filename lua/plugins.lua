@@ -114,6 +114,7 @@ packer.startup({
     use("EdenEast/nightfox.nvim")
 
     -------------------------------------------------------
+    use({ "akinsho/toggleterm.nvim" })
     -- surround
     use("ur4ltz/surround.nvim")
     -- git
