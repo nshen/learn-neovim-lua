@@ -1,15 +1,3 @@
--- leader key 为空
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
-
--- 本地变量
-local map = vim.api.nvim_set_keymap
-
-local opt = {
-  noremap = true,
-  silent = true
-}
-
 -- Modes
 --   normal_mode = "n",
 --   insert_mode = "i",
@@ -18,13 +6,23 @@ local opt = {
 --   term_mode = "t",
 --   command_mode = "c",
 
+-- leader key 为空
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
+local opt = {
+  noremap = true,
+  silent = true,
+}
+
+-- 本地变量
+local map = vim.api.nvim_set_keymap
+
 -- 命令行下 Ctrl+j/k  上一个下一个
-map("c", "<C-j>", "<C-n>", {
-  noremap = false
-})
-map("c", "<C-k>", "<C-p>", {
-  noremap = false
-})
+map("c", "<C-j>", "<C-n>", { noremap = false })
+map("c", "<C-k>", "<C-p>", { noremap = false })
+
+map("n", "<leader>w", ":w<CR>", opt)
 
 -- 上下滚动浏览
 map("n", "<C-j>", "4j", opt)
