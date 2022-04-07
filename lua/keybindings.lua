@@ -152,12 +152,14 @@ pluginKeys.nvimTreeList = { -- 打开文件或文件夹
 map("n", "<C-h>", ":BufferLineCyclePrev<CR>", opt)
 map("n", "<C-l>", ":BufferLineCycleNext<CR>", opt)
 -- "moll/vim-bbye" 关闭当前 buffer
-map("n", "<C-w>", ":Bdelete!<CR>", opt)
+map("n", "<leader>bc", ":Bdelete!<CR>", opt)
 -- 关闭左/右侧标签页
-map("n", "<leader>bl", ":BufferLineCloseRight<CR>", opt)
 map("n", "<leader>bh", ":BufferLineCloseLeft<CR>", opt)
+map("n", "<leader>bl", ":BufferLineCloseRight<CR>", opt)
+-- 关闭其他标签页
+map("n", "<leader>bo", ":BufferLineCloseRight<CR>:BufferLineCloseLeft<CR>", opt)
 -- 关闭选中标签页
-map("n", "<leader>bc", ":BufferLinePickClose<CR>", opt)
+map("n", "<leader>bp", ":BufferLinePickClose<CR>", opt)
 
 -- Telescope
 map("n", "<C-p>", ":Telescope find_files<CR>", opt)
@@ -178,8 +180,8 @@ pluginKeys.telescopeList = {
     ["<C-c>"] = "close",
     -- 预览窗口上下滚动
     ["<C-u>"] = "preview_scrolling_up",
-    ["<C-d>"] = "preview_scrolling_down"
-  }
+    ["<C-d>"] = "preview_scrolling_down",
+  },
 }
 
 -- 代码注释插件
