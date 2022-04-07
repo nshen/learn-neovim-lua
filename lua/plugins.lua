@@ -92,8 +92,11 @@ packer.startup({
     -- 代码格式化
     use("mhartington/formatter.nvim")
     use({ "jose-elias-alvarez/null-ls.nvim", requires = "nvim-lua/plenary.nvim" })
+    use({ "jose-elias-alvarez/nvim-lsp-ts-utils", requires = "nvim-lua/plenary.nvim" })
     -- Lua 增强
     use("folke/lua-dev.nvim")
+    -- JSON 增强
+    use("b0o/schemastore.nvim")
 
     --------------------- colorschemes --------------------
     -- tokyonight
@@ -150,8 +153,8 @@ packer.startup({
   },
 })
 
--- move to autocmds.lua
 -- 每次保存 plugins.lua 自动安装插件
+-- move to autocmds.lua
 -- pcall(
 --   vim.cmd,
 --   [[
