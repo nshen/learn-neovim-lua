@@ -126,6 +126,7 @@ packer.startup({
     use({ "lewis6991/gitsigns.nvim" })
 
     ----------------------------------------------
+
     if paccker_bootstrap then
       packer.sync()
     end
@@ -149,11 +150,14 @@ packer.startup({
   },
 })
 
+-- move to autocmds.lua
 -- 每次保存 plugins.lua 自动安装插件
-pcall(vim.cmd, [[
-augroup packer_user_config
-autocmd!
-autocmd BufWritePost plugins.lua source <afile> | PackerSync
-augroup end
-]])
-
+-- pcall(
+--   vim.cmd,
+--   [[
+-- augroup packer_user_config
+-- autocmd!
+-- autocmd BufWritePost plugins.lua source <afile> | PackerSync
+-- augroup end
+-- ]]
+-- )
