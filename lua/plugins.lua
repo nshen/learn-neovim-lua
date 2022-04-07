@@ -85,6 +85,8 @@ packer.startup({
 
     -- surround
     -- use("blackCauldron7/surround.nvim")
+    -- Lua 增强
+    use("folke/lua-dev.nvim")
 
     --------------------- colorschemes --------------------
     -- tokyonight
