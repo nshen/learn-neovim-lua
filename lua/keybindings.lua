@@ -32,14 +32,8 @@ map("n", "<C-u>", "10k", opt)
 map("n", "<C-d>", "10j", opt)
 
 -- magic search
-map("n", "/", "/\\v", {
-  noremap = true,
-  silent = false
-})
-map("v", "/", "/\\v", {
-  noremap = true,
-  silent = false
-})
+map("n", "/", "/\\v", { noremap = true, silent = false })
+map("v", "/", "/\\v", { noremap = true, silent = false })
 
 -- visual模式下缩进代码
 map("v", "<", "<gv", opt)
@@ -55,18 +49,10 @@ map("v", "p", '"_dP', opt)
 map("n", "q", ":q<CR>", opt)
 map("n", "qq", ":q!<CR>", opt)
 map("n", "Q", ":qa!<CR>", opt)
+
 -- insert 模式下，跳到行首行尾
 -- map("i", "<C-h>", "<ESC>I", opt)
 -- map("i", "<C-l>", "<ESC>A", opt)
-
--- Terminal相关
--- map("n", "<leader>t", ":sp | terminal<CR>", opt)
--- map("n", "<leader>vt", ":vsp | terminal<CR>", opt)
-map("t", "<Esc>", "<C-\\><C-n>", opt)
-map("t", "<A-h>", [[ <C-\><C-N><C-w>h ]], opt)
-map("t", "<A-j>", [[ <C-\><C-N><C-w>j ]], opt)
-map("t", "<A-k>", [[ <C-\><C-N><C-w>k ]], opt)
-map("t", "<A-l>", [[ <C-\><C-N><C-w>l ]], opt)
 
 ------------------------------------------------------------------
 -- windows 分屏快捷键
@@ -95,6 +81,19 @@ map("n", "<C-Up>", ":resize -2<CR>", opt)
 -- 相等比例
 map("n", "s=", "<C-w>=", opt)
 
+-- Terminal相关
+map("n", "st", ":sp | terminal<CR>", opt)
+map("n", "stv", ":vsp | terminal<CR>", opt)
+-- Esc 回 Normal 模式
+map("t", "<Esc>", "<C-\\><C-n>", opt)
+map("t", "<A-h>", [[ <C-\><C-N><C-w>h ]], opt)
+map("t", "<A-j>", [[ <C-\><C-N><C-w>j ]], opt)
+map("t", "<A-k>", [[ <C-\><C-N><C-w>k ]], opt)
+map("t", "<A-l>", [[ <C-\><C-N><C-w>l ]], opt)
+map("t", "<leader>h", [[ <C-\><C-N><C-w>h ]], opt)
+map("t", "<leader>j", [[ <C-\><C-N><C-w>j ]], opt)
+map("t", "<leader>k", [[ <C-\><C-N><C-w>k ]], opt)
+map("t", "<leader>l", [[ <C-\><C-N><C-w>l ]], opt)
 --------------------------------------------------------------------
 -- 插件快捷键
 local pluginKeys = {}
