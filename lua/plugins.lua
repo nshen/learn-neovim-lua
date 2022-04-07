@@ -88,6 +88,7 @@ packer.startup({
     -- use("blackCauldron7/surround.nvim")
     -- 代码格式化
     use("mhartington/formatter.nvim")
+    use({ "jose-elias-alvarez/null-ls.nvim", requires = "nvim-lua/plenary.nvim" })
     -- Lua 增强
     use("folke/lua-dev.nvim")
 

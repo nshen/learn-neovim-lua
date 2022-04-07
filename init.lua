@@ -19,7 +19,9 @@ require("lsp.setup")
 require("lsp.cmp")
 require("lsp.ui")
 -- require("lsp.formatter")
+require("lsp.null-ls")
 
+----------------
 
 -- require("utils.change-colorscheme")
 -- 输入法自动切换
