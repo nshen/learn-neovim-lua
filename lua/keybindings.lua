@@ -56,6 +56,9 @@ map("n", "Q", ":qa!<CR>", opt)
 
 ------------------------------------------------------------------
 -- windows 分屏快捷键
+------------------------------------------------------------------
+-- 取消 s 默认功能
+map("n", "s", "", opt)
 map("n", "sv", ":vsp<CR>", opt)
 map("n", "sh", ":sp<CR>", opt)
 -- 关闭当前
@@ -67,7 +70,6 @@ map("n", "<A-h>", "<C-w>h", opt)
 map("n", "<A-j>", "<C-w>j", opt)
 map("n", "<A-k>", "<C-w>k", opt)
 map("n", "<A-l>", "<C-w>l", opt)
-
 -- 左右比例控制
 map("n", "<C-Left>", ":vertical resize -2<CR>", opt)
 map("n", "<C-Right>", ":vertical resize +2<CR>", opt)
