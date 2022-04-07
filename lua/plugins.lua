@@ -114,6 +114,8 @@ packer.startup({
     use("EdenEast/nightfox.nvim")
 
     -------------------------------------------------------
+    -- surround
+    use("ur4ltz/surround.nvim")
 
     if paccker_bootstrap then
       packer.sync()
