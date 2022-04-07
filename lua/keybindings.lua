@@ -388,37 +388,54 @@ if status_ok then
 end
 
 -- gitsigns
-pluginKeys.gitsigns = {
-  -- Default keymap options
-  noremap = true,
+pluginKeys.gitsigns_on_attach = function(bufnr)
+  local gs = package.loaded.gitsigns
 
-  ["n <leader>hj"] = {
-    expr = true,
-    "&diff ? ']c' : '<cmd>Gitsigns next_hunk<CR>'"
-  },
-  ["n <leader>hk"] = {
-    expr = true,
-    "&diff ? '[c' : '<cmd>Gitsigns prev_hunk<CR>'"
-  },
+  local function map(mode, l, r, opts)
+    opts = opts or {}
+    opts.buffer = bufnr
+    vim.keymap.set(mode, l, r, opts)
+  end
 
-  -- stage
-  ["n <leader>hs"] = "<cmd>Gitsigns stage_hunk<CR>",
-  ["v <leader>hs"] = ":Gitsigns stage_hunk<CR>",
-  ["n <leader>hu"] = "<cmd>Gitsigns undo_stage_hunk<CR>",
-  ["n <leader>hS"] = "<cmd>Gitsigns stage_buffer<CR>",
-  ["n <leader>hU"] = "<cmd>Gitsigns reset_buffer_index<CR>",
+  -- Navigation
+  map("n", "<leader>gj", function()
+    if vim.wo.diff then
+      return "]c"
+    end
+    vim.schedule(function()
+      gs.next_hunk()
+    end)
+    return "<Ignore>"
+  end, { expr = true })
 
-  -- reset
-  ["n <leader>hr"] = "<cmd>Gitsigns reset_hunk<CR>",
-  ["v <leader>hr"] = ":Gitsigns reset_hunk<CR>",
-  ["n <leader>hR"] = "<cmd>Gitsigns reset_buffer<CR>",
+  map("n", "<leader>gk", function()
+    if vim.wo.diff then
+      return "[c"
+    end
+    vim.schedule(function()
+      gs.prev_hunk()
+    end)
+    return "<Ignore>"
+  end, { expr = true })
 
-  ["n <leader>hp"] = "<cmd>Gitsigns preview_hunk<CR>",
-  ["n <leader>hb"] = '<cmd>lua require"gitsigns".blame_line{full=false}<CR>',
-
-  -- Text objects
-  ["o ih"] = ":<C-U>Gitsigns select_hunk<CR>",
-  ["x ih"] = ":<C-U>Gitsigns select_hunk<CR>"
-}
+  map({ "n", "v" }, "<leader>gs", ":Gitsigns stage_hunk<CR>")
+  map("n", "<leader>gS", gs.stage_buffer)
+  map("n", "<leader>gu", gs.undo_stage_hunk)
+  map({ "n", "v" }, "<leader>gr", ":Gitsigns reset_hunk<CR>")
+  map("n", "<leader>gR", gs.reset_buffer)
+  map("n", "<leader>gp", gs.preview_hunk)
+  map("n", "<leader>gb", function()
+    gs.blame_line({ full = true })
+  end)
+  map("n", "<leader>gd", gs.diffthis)
+  map("n", "<leader>gD", function()
+    gs.diffthis("~")
+  end)
+  -- toggle
+  map("n", "<leader>gtd", gs.toggle_deleted)
+  map("n", "<leader>gtb", gs.toggle_current_line_blame)
+  -- Text object
+  map({ "o", "x" }, "ig", ":<C-U>Gitsigns select_hunk<CR>")
+end
 
 return pluginKeys

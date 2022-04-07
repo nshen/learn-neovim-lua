@@ -116,7 +116,10 @@ packer.startup({
     -------------------------------------------------------
     -- surround
     use("ur4ltz/surround.nvim")
+    -- git
+    use({ "lewis6991/gitsigns.nvim" })
 
+    ----------------------------------------------
     if paccker_bootstrap then
       packer.sync()
     end

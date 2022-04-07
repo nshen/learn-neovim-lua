@@ -16,6 +16,9 @@ require("plugin-config.project")
 require("plugin-config.nvim-treesitter")
 require("plugin-config.indent-blankline")
 require("plugin-config.surround")
+-- Git
+-- require("plugin-config.gitsigns")
+
 -- 内置LSP
 require("lsp.setup")
 require("lsp.cmp")
