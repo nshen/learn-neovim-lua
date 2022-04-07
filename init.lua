@@ -17,6 +17,7 @@ require("plugin-config.nvim-treesitter")
 require("plugin-config.indent-blankline")
 require("plugin-config.toggleterm")
 require("plugin-config.surround")
+require("plugin-config.nvim-autopairs")
 -- Git
 -- require("plugin-config.gitsigns")
 

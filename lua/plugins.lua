@@ -117,6 +117,8 @@ packer.startup({
     use({ "akinsho/toggleterm.nvim" })
     -- surround
     use("ur4ltz/surround.nvim")
+    -- nvim-autopairs
+    use("windwp/nvim-autopairs")
     -- git
     use({ "lewis6991/gitsigns.nvim" })
 
