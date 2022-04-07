@@ -86,6 +86,8 @@ packer.startup({
 
     -- surround
     -- use("blackCauldron7/surround.nvim")
+    -- 代码格式化
+    use("mhartington/formatter.nvim")
     -- Lua 增强
     use("folke/lua-dev.nvim")
 

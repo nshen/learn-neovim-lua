@@ -16,49 +16,9 @@ require("plugin-config.project")
 require("plugin-config.nvim-treesitter")
 -- 内置LSP
 require("lsp.setup")
-require("lsp/cmp")
-require("lsp/ui")
-
-
-
-
-
-
--- require("plugin-config.null-ls")
--- require("plugin-config.formatter")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+require("lsp.cmp")
+require("lsp.ui")
+-- require("lsp.formatter")
 
 
 -- require("utils.change-colorscheme")
