@@ -100,6 +100,10 @@ map("t", "<leader>l", [[ <C-\><C-N><C-w>l ]], opt)
 -- 插件快捷键
 local pluginKeys = {}
 
+-- treesitter 折叠
+map("n", "zz", ":foldclose<CR>", opt)
+map("n", "Z", ":foldopen<CR>", opt)
+
 -- nvim-tree
 map("n", "<A-m>", ":NvimTreeToggle<CR>", opt)
 -- 列表快捷键
