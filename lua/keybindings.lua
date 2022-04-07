@@ -104,51 +104,28 @@ local pluginKeys = {}
 map("n", "<A-m>", ":NvimTreeToggle<CR>", opt)
 -- 列表快捷键
 pluginKeys.nvimTreeList = { -- 打开文件或文件夹
-{
-    key = {"<CR>", "o", "<2-LeftMouse>"},
-    action = "edit"
-  }, -- 分屏打开文件
-{
-    key = "v",
-    action = "vsplit"
-  }, {
-    key = "h",
-    action = "split"
-  }, -- 显示隐藏文件
-{
-    key = "i",
-    action = "toggle_ignored"
-  }, -- Ignore (node_modules)
-{
-    key = ".",
-    action = "toggle_dotfiles"
-  }, -- Hide (dotfiles)
+  { key = { "<CR>", "o", "<2-LeftMouse>" }, action = "edit" },
+  -- 分屏打开文件
+  { key = "v", action = "vsplit" },
+  -- 显示隐藏文件
+  { key = "h", action = "split" },
+  -- Ignore (node_modules)
+  { key = "i", action = "toggle_ignored" },
+  -- Hide (dotfiles)
+  { key = ".", action = "toggle_dotfiles" },
   -- 文件操作
-{
-    key = "<F5>",
-    action = "refresh"
-  }, {
-    key = "a",
-    action = "create"
-  }, {
-    key = "d",
-    action = "remove"
-  }, {
-    key = "r",
-    action = "rename"
-  }, {
-    key = "x",
-    action = "cut"
-  }, {
-    key = "c",
-    action = "copy"
-  }, {
-    key = "p",
-    action = "paste"
-  }, {
-    key = "s",
-    action = "system_open"
-  }}
+  { key = "<F5>", action = "refresh" },
+  { key = "a", action = "create" },
+  { key = "d", action = "remove" },
+  { key = "r", action = "rename" },
+  { key = "x", action = "cut" },
+  { key = "c", action = "copy" },
+  { key = "p", action = "paste" },
+  -- mac
+  { key = "s", action = "open" },
+  -- windows
+  -- { key = 's', action = 'system_open' },
+}
 -- bufferline
 -- 左右Tab切换
 map("n", "<C-h>", ":BufferLineCyclePrev<CR>", opt)
@@ -191,20 +168,16 @@ pluginKeys.telescopeList = {
 pluginKeys.comment = {
   toggler = {
     line = "gcc",
-    block = "gbc"
+    block = "gbc",
   },
   opleader = {
     line = "gc",
-    bock = "gb"
-  }
+    bock = "gb",
+  },
 }
 -- ctrl + /
-map("n", "<C-_>", "gcc", {
-  noremap = false
-})
-map("v", "<C-_>", "gcc", {
-  noremap = false
-})
+map("n", "<C-_>", "gcc", { noremap = false })
+map("v", "<C-_>", "gcc", { noremap = false })
 
 -- lsp 回调函数快捷键设置
 pluginKeys.mapLSP = function(mapbuf)
@@ -243,7 +216,7 @@ pluginKeys.mapLSP = function(mapbuf)
   mapbuf("n", "gk", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opt)
   --]]
   -- diagnostic
-  mapbuf("n", "gp", "<cmd>Lspsaga show_line_diagnostics<CR>",opt)
+  mapbuf("n", "gp", "<cmd>Lspsaga show_line_diagnostics<CR>", opt)
   mapbuf("n", "gj", "<cmd>Lspsaga diagnostic_jump_next<cr>", opt)
   mapbuf("n", "gk", "<cmd>Lspsaga diagnostic_jump_prev<cr>", opt)
   mapbuf("n", "<leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opt)
@@ -256,7 +229,6 @@ pluginKeys.mapLSP = function(mapbuf)
   -- mapbuf('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opt)
   -- mapbuf('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opt)
   -- mapbuf('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opt)
-
 end
 
 -- typescript 快捷键
@@ -268,7 +240,6 @@ end
 
 -- nvim-cmp 自动补全
 pluginKeys.cmp = function(cmp)
-
   local feedkey = function(key, mode)
     vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
   end
@@ -283,34 +254,34 @@ pluginKeys.cmp = function(cmp)
     -- 下一个
     ["<C-j>"] = cmp.mapping.select_next_item(),
     -- 出现补全
-    ["<A-.>"] = cmp.mapping(cmp.mapping.complete(), {"i", "c"}),
+    ["<A-.>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
     -- 取消
     ["<A-,>"] = cmp.mapping({
       i = cmp.mapping.abort(),
-      c = cmp.mapping.close()
+      c = cmp.mapping.close(),
     }),
     -- 确认
     -- Accept currently selected item. If none selected, `select` first item.
     -- Set `select` to `false` to only confirm explicitly selected items.
     ["<CR>"] = cmp.mapping.confirm({
       select = true,
-      behavior = cmp.ConfirmBehavior.Replace
+      behavior = cmp.ConfirmBehavior.Replace,
     }),
     -- ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
     -- 如果窗口内容太多，可以滚动
-    ["<C-u>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), {"i", "c"}),
-    ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(4), {"i", "c"}),
+    ["<C-u>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
+    ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
     -- snippets 跳转
     ["<C-l>"] = cmp.mapping(function(_)
       if vim.fn["vsnip#available"](1) == 1 then
         feedkey("<Plug>(vsnip-expand-or-jump)", "")
       end
-    end, {"i", "s"}),
+    end, { "i", "s" }),
     ["<C-h>"] = cmp.mapping(function()
       if vim.fn["vsnip#jumpable"](-1) == 1 then
         feedkey("<Plug>(vsnip-jump-prev)", "")
       end
-    end, {"i", "s"}),
+    end, { "i", "s" }),
 
     -- super Tab
     ["<Tab>"] = cmp.mapping(function(fallback)
@@ -323,7 +294,7 @@ pluginKeys.cmp = function(cmp)
       else
         fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
       end
-    end, {"i", "s"}),
+    end, { "i", "s" }),
 
     ["<S-Tab>"] = cmp.mapping(function()
       if cmp.visible() then
@@ -331,7 +302,7 @@ pluginKeys.cmp = function(cmp)
       elseif vim.fn["vsnip#jumpable"](-1) == 1 then
         feedkey("<Plug>(vsnip-jump-prev)", "")
       end
-    end, {"i", "s"})
+    end, { "i", "s" }),
     -- end of super Tab
   }
 end
@@ -354,7 +325,7 @@ if status_ok then
       -- ["<C-w><C-f>"] = cb("goto_file_split"),    -- Open the file in a new split
       -- ["<C-w>gf"]    = cb("goto_file_tab"),      -- Open the file in a new tabpage
       -- ["<leader>e"]  = cb("focus_files"),        -- Bring focus to the files panel
-      ["<leader>b"] = cb("toggle_files") -- Toggle the files panel.
+      ["<leader>b"] = cb("toggle_files"), -- Toggle the files panel.
     },
     file_panel = {
       ["j"] = cb("next_entry"), -- Bring the cursor to the next file entry
@@ -377,7 +348,7 @@ if status_ok then
       ["i"] = cb("listing_style"), -- Toggle between 'list' and 'tree' views
       ["f"] = cb("toggle_flatten_dirs"), -- Flatten empty subdirectories in tree listing style.
       ["<leader>e"] = cb("focus_files"),
-      ["<leader>b"] = cb("toggle_files")
+      ["<leader>b"] = cb("toggle_files"),
     },
     file_history_panel = {
       ["g!"] = cb("options"), -- Open the option panel
@@ -398,12 +369,12 @@ if status_ok then
       ["<C-w><C-f>"] = cb("goto_file_split"),
       ["<C-w>gf"] = cb("goto_file_tab"),
       ["<leader>e"] = cb("focus_files"),
-      ["<leader>b"] = cb("toggle_files")
+      ["<leader>b"] = cb("toggle_files"),
     },
     option_panel = {
       ["<tab>"] = cb("select"),
-      ["q"] = cb("close")
-    }
+      ["q"] = cb("close"),
+    },
   }
 end
 
