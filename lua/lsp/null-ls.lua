@@ -35,7 +35,10 @@ null_ls.setup({
       prefer_local = "node_modules/.bin",
     }),
     -- formatting.fixjson,
-    -- formatting.black.with({ extra_args = { "--fast" } }),
+    ----------------------------------------------------
+    -- pip install pip
+    -- asdf reshim python
+    formatting.black.with({ extra_args = { "--fast" } }),
 
     -- Diagnostics  ---------------------
     diagnostics.eslint.with({
@@ -62,7 +65,7 @@ null_ls.setup({
   -- #{c}: code (if available)
   diagnostics_format = "[#{s}] #{m}",
   on_attach = function(client)
-    -- vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()']])
+    vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()']])
     -- if client.resolved_capabilities.document_formatting then
     --   vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
     -- end
