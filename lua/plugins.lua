@@ -67,6 +67,8 @@ packer.startup({
       "nvim-treesitter/nvim-treesitter",
       run = ":TSUpdate",
     })
+    -- indent-blankline
+    use("lukas-reineke/indent-blankline.nvim")
     --------------------- LSP --------------------
     -- Lspconfig
     use({ "neovim/nvim-lspconfig", "williamboman/nvim-lsp-installer" })
