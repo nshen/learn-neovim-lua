@@ -34,12 +34,17 @@ null_ls.setup({
       },
       prefer_local = "node_modules/.bin",
     }),
-    -- formatting.fixjson,
-    ----------------------------------------------------
-    -- pip install pip
+    -----------------------------------------------------
+    -- Python
+    -- pip install black
     -- asdf reshim python
     formatting.black.with({ extra_args = { "--fast" } }),
-
+    -----------------------------------------------------
+    -- Ruby
+    -- gem install rubocop
+    formatting.rubocop,
+    -----------------------------------------------------
+    -- formatting.fixjson,
     -- Diagnostics  ---------------------
     diagnostics.eslint.with({
       prefer_local = "node_modules/.bin",
