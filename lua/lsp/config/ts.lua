@@ -1,8 +1,4 @@
-local keybindings = requirePlugin("keybindings")
-if not keybindings then
-  return
-end
-
+local keybindings = require("keybindings")
 local opts = {
   flags = {
     debounce_text_changes = 150,
@@ -53,7 +49,7 @@ local opts = {
 }
 
 return {
-  on_ready = function(server)
+  on_setup = function(server)
     server:setup(opts)
   end,
 }
