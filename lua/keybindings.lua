@@ -137,6 +137,10 @@ pluginKeys.nvimTreeList = { -- 打开文件或文件夹
   { key = "x", action = "cut" },
   { key = "c", action = "copy" },
   { key = "p", action = "paste" },
+  -- 进入下一级
+  { key = { "]" }, action = "cd" },
+  -- 进入上一级
+  { key = { "[" }, action = "dir_up" },
   -- mac
   { key = "s", action = "open" },
   -- windows
