@@ -2,18 +2,20 @@ local lsp_installer = require("nvim-lsp-installer")
 
 -- 安装列表
 -- { key: 服务器名， value: 配置文件 }
--- key 必须为下列网址列出的 server name
+-- key 必须为下列网址列出的 server name，不可以随便写
 -- https://github.com/williamboman/nvim-lsp-installer#available-lsps
 local servers = {
   sumneko_lua = require("lsp.config.lua"), -- lua/lsp/config/lua.lua
   bashls = require("lsp.config.bash"),
+  html = require("lsp.config.html"),
+  cssls = require("lsp.config.css"),
+  emmet_ls = require("lsp.config.emmet"),
   jsonls = require("lsp.config.json"),
   tsserver = require("lsp.config.ts"),
   pyright = require("lsp.config.pyright")
 
   -- rust_analyzer = require("lsp.lang.rust"),
   -- remark_ls = require("lsp.lang.markdown"),
-  -- html = {},
 }
 
 -- 自动安装 Language Servers

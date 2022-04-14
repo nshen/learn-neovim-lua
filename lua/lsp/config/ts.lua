@@ -1,8 +1,10 @@
 local keybindings = require("keybindings")
+local ts_utils = require("nvim-lsp-ts-utils")
 local opts = {
   flags = {
     debounce_text_changes = 150,
   },
+  capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities()),
   on_attach = function(client, bufnr)
     -- 禁用格式化功能，交给专门插件插件处理
     client.resolved_capabilities.document_formatting = false
@@ -10,11 +12,9 @@ local opts = {
     local function buf_set_keymap(...)
       vim.api.nvim_buf_set_keymap(bufnr, ...)
     end
-    -- local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
     -- 绑定快捷键
     keybindings.mapLSP(buf_set_keymap)
-
-    local ts_utils = require("nvim-lsp-ts-utils")
+    -- defaults
     ts_utils.setup({
       debug = false,
       disable_commands = false,
@@ -30,12 +30,31 @@ local opts = {
       },
       import_all_scan_buffers = 100,
       import_all_select_source = false,
+      -- if false will avoid organizing imports
+      always_organize_imports = true,
+
       -- filter diagnostics
       filter_out_diagnostics_by_severity = {},
       filter_out_diagnostics_by_code = {},
+
       -- inlay hints
       auto_inlay_hints = true,
       inlay_hints_highlight = "Comment",
+      inlay_hints_priority = 200, -- priority of the hint extmarks
+      inlay_hints_throttle = 150, -- throttle the inlay hint request
+      inlay_hints_format = { -- format options for individual hint kind
+        Type = {},
+        Parameter = {},
+        Enum = {},
+        -- Example format customization for `Type` kind:
+        -- Type = {
+        --     highlight = "Comment",
+        --     text = function(text)
+        --         return "->" .. text:sub(2)
+        --     end,
+        -- },
+      },
+
       -- update imports on file move
       update_imports_on_move = false,
       require_confirmation_on_move = false,

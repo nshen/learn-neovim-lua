@@ -32,6 +32,7 @@ null_ls.setup({
         "yaml",
         "graphql",
       },
+      extra_filetypes = { "njk" },
       prefer_local = "node_modules/.bin",
     }),
     -----------------------------------------------------
@@ -49,9 +50,6 @@ null_ls.setup({
     diagnostics.eslint.with({
       prefer_local = "node_modules/.bin",
     }),
-    code_actions.eslint.with({
-      prefer_local = "node_modules/.bin",
-    }),
     -- diagnostics.markdownlint,
     -- markdownlint-cli2
     -- diagnostics.markdownlint.with({
@@ -62,8 +60,9 @@ null_ls.setup({
     --
     -- code actions ---------------------
     code_actions.gitsigns,
-    code_actions.eslint,
-    -- code_actions.refactoring,
+    code_actions.eslint.with({
+      prefer_local = "node_modules/.bin",
+    }),
   },
   -- #{m}: message
   -- #{s}: source name (defaults to null-ls if not specified)
