@@ -35,7 +35,10 @@ local opts = {
 
       -- filter diagnostics
       filter_out_diagnostics_by_severity = {},
-      filter_out_diagnostics_by_code = {},
+      -- https://github.com/microsoft/TypeScript/blob/main/src/compiler/diagnosticMessages.json
+      filter_out_diagnostics_by_code = {
+        80001,
+      },
 
       -- inlay hints
       auto_inlay_hints = true,
