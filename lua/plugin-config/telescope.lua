@@ -19,7 +19,16 @@ telescope.setup({
       -- theme = "dropdown", -- 可选参数： dropdown, cursor, ivy
     },
   },
-  extensions = {},
+  extensions = {
+    ["ui-select"] = {
+      require("telescope.themes").get_dropdown({
+        -- even more opts
+      }),
+    },
+  },
 })
 
 pcall(telescope.load_extension, "env")
+-- To get ui-select loaded and working with telescope, you need to call
+-- load_extension, somewhere after setup function:
+pcall(telescope.load_extension, "ui-select")
