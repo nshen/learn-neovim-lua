@@ -32,10 +32,11 @@ null_ls.setup({
         "yaml",
         "graphql",
       },
-      extra_filetypes = { "njk" },
       prefer_local = "node_modules/.bin",
     }),
-    -----------------------------------------------------
+    -- rustfmt
+    -- rustup component add rustfmt
+    formatting.rustfmt,
     -- Python
     -- pip install black
     -- asdf reshim python
@@ -68,7 +69,7 @@ null_ls.setup({
   -- #{s}: source name (defaults to null-ls if not specified)
   -- #{c}: code (if available)
   diagnostics_format = "[#{s}] #{m}",
-  on_attach = function(client)
+  on_attach = function(_)
     vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()']])
     -- if client.resolved_capabilities.document_formatting then
     --   vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
