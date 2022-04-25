@@ -7,24 +7,28 @@ local lsp_installer = require("nvim-lsp-installer")
 local servers = {
   sumneko_lua = require("lsp.config.lua"), -- lua/lsp/config/lua.lua
   bashls = require("lsp.config.bash"),
+  pyright = require("lsp.config.pyright"),
   html = require("lsp.config.html"),
   cssls = require("lsp.config.css"),
   emmet_ls = require("lsp.config.emmet"),
   jsonls = require("lsp.config.json"),
   tsserver = require("lsp.config.ts"),
-  pyright = require("lsp.config.pyright")
-
-  -- rust_analyzer = require("lsp.lang.rust"),
+  rust_analyzer = require("lsp.config.rust"),
   -- remark_ls = require("lsp.lang.markdown"),
 }
 
 -- 自动安装 Language Servers
-for name, _ in pairs(servers) do
+for name, config in pairs(servers) do
   local server_is_found, server = lsp_installer.get_server(name)
   if server_is_found then
     if not server:is_installed() then
       print("Installing " .. name)
       server:install()
+    else
+      if type(config) == "table" and config.on_init then
+        config.on_init(server)
+        print("onInit " .. type(config))
+      end
     end
   end
 end
