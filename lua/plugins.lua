@@ -93,11 +93,14 @@ packer.startup({
     -- 代码格式化
     use("mhartington/formatter.nvim")
     use({ "jose-elias-alvarez/null-ls.nvim", requires = "nvim-lua/plenary.nvim" })
+    -- TypeScript 增强
     use({ "jose-elias-alvarez/nvim-lsp-ts-utils", requires = "nvim-lua/plenary.nvim" })
     -- Lua 增强
     use("folke/lua-dev.nvim")
     -- JSON 增强
     use("b0o/schemastore.nvim")
+    -- Rust 增强
+    use("simrat39/rust-tools.nvim")
 
     --------------------- colorschemes --------------------
     -- tokyonight
@@ -128,7 +131,8 @@ packer.startup({
     use("windwp/nvim-autopairs")
     -- git
     use({ "lewis6991/gitsigns.nvim" })
-
+    -- vimspector
+    use("puremourning/vimspector")
     ----------------------------------------------
 
     if paccker_bootstrap then

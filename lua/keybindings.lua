@@ -259,6 +259,23 @@ pluginKeys.mapTsLSP = function(mapbuf)
   mapbuf("n", "gi", ":TSLspImportAll<CR>", opt)
 end
 
+-- vimspector
+pluginKeys.mapVimspector = function()
+  -- 开始
+  map("n", "<leader>dd", ":call vimspector#Launch()<CR>", opt)
+  -- 结束
+  map("n", "<Leader>de", ":call vimspector#Reset()<CR>", opt)
+  -- 继续
+  map("n", "<Leader>dc", ":call vimspector#Continue()<CR>", opt)
+  -- 设置断点
+  map("n", "<Leader>dt", ":call vimspector#ToggleBreakpoint()<CR>", opt)
+  map("n", "<Leader>dT", ":call vimspector#ClearBreakpoints()<CR>", opt)
+  --  stepOver, stepOut, stepInto
+  map("n", "<leader>dj", "<Plug>VimspectorStepOver", opt)
+  map("n", "<leader>dk", "<Plug>VimspectorStepOut", opt)
+  map("n", "<leader>dl", "<Plug>VimspectorStepInto", opt)
+end
+
 -- nvim-cmp 自动补全
 pluginKeys.cmp = function(cmp)
   local feedkey = function(key, mode)
