@@ -49,3 +49,12 @@ autocmd("BufWritePost", {
     end
   end,
 })
+
+-- Highlight on yank
+autocmd("TextYankPost", {
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+  group = myAutoGroup,
+  pattern = "*",
+})
