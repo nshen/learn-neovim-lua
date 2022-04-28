@@ -65,8 +65,9 @@ vim.g.completeopt = "menu,menuone,noselect,noinsert"
 -- 样式
 vim.o.termguicolors = true
 vim.opt.termguicolors = true
+-- 是否显示不可见字符
+vim.o.list = false
 -- 不可见字符的显示，这里只把空格显示为一个点
-vim.o.list = true
 vim.o.listchars = "space:·,tab:··"
 -- 补全增强
 vim.o.wildmenu = true
