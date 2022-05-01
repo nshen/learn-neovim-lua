@@ -374,6 +374,12 @@ pluginKeys.cmp = function(cmp)
   }
 end
 
+local toggleterm = require("lua.plugin-config.toggleterm")
+vim.keymap.set({ "n", "t" }, "<leader>ta", toggleterm.toggleA)
+vim.keymap.set({ "n", "t" }, "<leader>tb", toggleterm.toggleB)
+vim.keymap.set({ "n", "t" }, "<leader>tc", toggleterm.toggleC)
+vim.keymap.set({ "n", "t" }, "<leader>tg", toggleterm.toggleG)
+
 -- gitsigns
 pluginKeys.gitsigns_on_attach = function(bufnr)
   local gs = package.loaded.gitsigns
