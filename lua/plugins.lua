@@ -72,8 +72,9 @@ packer.startup({
     -- indent-blankline
     use("lukas-reineke/indent-blankline.nvim")
     --------------------- LSP --------------------
+    use({ "williamboman/nvim-lsp-installer", commit = "36b44679f7cc73968dbb3b09246798a19f7c14e0" })
     -- Lspconfig
-    use({ "neovim/nvim-lspconfig", "williamboman/nvim-lsp-installer" })
+    use({ "neovim/nvim-lspconfig" })
     -- 补全引擎
     use("hrsh7th/nvim-cmp")
     -- Snippet 引擎
@@ -101,7 +102,6 @@ packer.startup({
     use("b0o/schemastore.nvim")
     -- Rust 增强
     use("simrat39/rust-tools.nvim")
-
     --------------------- colorschemes --------------------
     -- tokyonight
     use("folke/tokyonight.nvim")
@@ -140,6 +140,7 @@ packer.startup({
     -- use("Pocco81/DAPInstall.nvim")
     -- use("jbyuki/one-small-step-for-vimkind")
 
+    use("j-hui/fidget.nvim")
     if paccker_bootstrap then
       packer.sync()
     end
