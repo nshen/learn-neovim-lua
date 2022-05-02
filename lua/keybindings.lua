@@ -380,11 +380,12 @@ end
 -- <leader>tc 下方
 -- 特殊lazygit 窗口，需要安装lazygit
 -- <leader>tg lazygit
-local toggleterm = require("plugin-config.toggleterm")
-vim.keymap.set({ "n", "t" }, "<leader>ta", toggleterm.toggleA)
-vim.keymap.set({ "n", "t" }, "<leader>tb", toggleterm.toggleB)
-vim.keymap.set({ "n", "t" }, "<leader>tc", toggleterm.toggleC)
-vim.keymap.set({ "n", "t" }, "<leader>tg", toggleterm.toggleG)
+pluginKeys.mapToggleTerm = function(toggleterm)
+  vim.keymap.set({ "n", "t" }, "<leader>ta", toggleterm.toggleA)
+  vim.keymap.set({ "n", "t" }, "<leader>tb", toggleterm.toggleB)
+  vim.keymap.set({ "n", "t" }, "<leader>tc", toggleterm.toggleC)
+  vim.keymap.set({ "n", "t" }, "<leader>tg", toggleterm.toggleG)
+end
 
 -- gitsigns
 pluginKeys.gitsigns_on_attach = function(bufnr)

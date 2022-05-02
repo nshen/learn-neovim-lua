@@ -95,4 +95,4 @@ M.toggleG = function()
   lazygit:toggle()
 end
 
-return M
+require("keybindings").mapToggleTerm(M)
