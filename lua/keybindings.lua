@@ -30,6 +30,10 @@ map("c", "<C-k>", "<C-p>", { noremap = false })
 
 map("n", "<leader>w", ":w<CR>", opt)
 
+-- fix :set wrap
+vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+
 -- 上下滚动浏览
 map("n", "<C-j>", "5j", opt)
 map("n", "<C-k>", "5k", opt)
