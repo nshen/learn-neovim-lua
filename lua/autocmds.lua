@@ -15,7 +15,8 @@ autocmd("BufEnter", {
   end,
 })
 
--- 自动切换输入法
+-- 自动切换输入法，需要安装 im-select
+-- https://github.com/daipeihust/im-select
 autocmd("InsertLeave", {
   group = myAutoGroup,
   callback = require("utils.im-select").macInsertLeave,
