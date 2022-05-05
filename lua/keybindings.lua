@@ -37,6 +37,8 @@ vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = tr
 -- 上下滚动浏览
 map("n", "<C-j>", "5j", opt)
 map("n", "<C-k>", "5k", opt)
+map("v", "<C-j>", "5j", opt)
+map("v", "<C-k>", "5k", opt)
 -- ctrl u / ctrl + d  只移动9行，默认移动半屏
 map("n", "<C-u>", "10k", opt)
 map("n", "<C-d>", "10j", opt)
@@ -56,7 +58,6 @@ map("v", "K", ":move '<-2<CR>gv-gv", opt)
 map("v", "p", '"_dP', opt)
 
 -- 退出
-map("n", "q", ":q<CR>", opt)
 map("n", "qq", ":q!<CR>", opt)
 map("n", "<leader>q", ":qa!<CR>", opt)
 
@@ -134,10 +135,10 @@ pluginKeys.nvimTreeList = { -- 打开文件或文件夹
   -- Hide (dotfiles)
   { key = ".", action = "toggle_dotfiles" },
   -- 文件操作
-  { key = "<F5>", action = "refresh" },
   { key = "a", action = "create" },
   { key = "d", action = "remove" },
   { key = "r", action = "rename" },
+  { key = "R", action = "refresh" },
   { key = "x", action = "cut" },
   { key = "c", action = "copy" },
   { key = "p", action = "paste" },
@@ -149,6 +150,7 @@ pluginKeys.nvimTreeList = { -- 打开文件或文件夹
   { key = "s", action = "open" },
   -- windows
   -- { key = 's', action = 'system_open' },
+  { key = "?", action = "toggle_help" },
 }
 -- bufferline
 -- 左右Tab切换
@@ -259,7 +261,7 @@ end
 -- typescript 快捷键
 pluginKeys.mapTsLSP = function(mapbuf)
   mapbuf("n", "gs", ":TSLspOrganize<CR>", opt)
-  mapbuf("n", "gr", ":TSLspRenameFile<CR>", opt)
+  mapbuf("n", "gR", ":TSLspRenameFile<CR>", opt)
   mapbuf("n", "gi", ":TSLspImportAll<CR>", opt)
 end
 
