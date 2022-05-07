@@ -22,9 +22,10 @@ nvim_tree.setup({
     enable = true,
     update_cwd = true,
   },
-  -- 隐藏 .文件 和 node_modules 文件夹
   filters = {
-    dotfiles = true,
+    -- 不隐藏 .文件
+    dotfiles = false,
+    -- 隐藏 node_modules 文件夹
     custom = { "node_modules" },
   },
   view = {
@@ -36,7 +37,8 @@ nvim_tree.setup({
     hide_root_folder = false,
     -- 自定义列表中快捷键
     mappings = {
-      custom_only = false,
+      -- 只用内置快捷键
+      custom_only = true,
       list = list_keys,
     },
     -- 不显示行数

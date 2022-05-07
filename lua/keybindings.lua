@@ -126,31 +126,32 @@ map("n", "<leader>m", ":NvimTreeToggle<CR>", opt)
 -- 列表快捷键
 pluginKeys.nvimTreeList = { -- 打开文件或文件夹
   { key = { "<CR>", "o", "<2-LeftMouse>" }, action = "edit" },
-  -- 分屏打开文件
+  -- v分屏打开文件
   { key = "v", action = "vsplit" },
-  -- 显示隐藏文件
+  -- h分屏打开文件
   { key = "h", action = "split" },
   -- Ignore (node_modules)
   { key = "i", action = "toggle_ignored" },
   -- Hide (dotfiles)
   { key = ".", action = "toggle_dotfiles" },
+  { key = "R", action = "refresh" },
   -- 文件操作
   { key = "a", action = "create" },
   { key = "d", action = "remove" },
   { key = "r", action = "rename" },
-  { key = "R", action = "refresh" },
   { key = "x", action = "cut" },
   { key = "c", action = "copy" },
   { key = "p", action = "paste" },
+  { key = "y", action = "copy_name" },
+  { key = "Y", action = "copy_path" },
+  { key = "gy", action = "copy_absolute_path" },
+  { key = "I", action = "toggle_file_info" },
+  { key = "n", action = "tabnew" },
   -- 进入下一级
   { key = { "]" }, action = "cd" },
   -- 进入上一级
   { key = { "[" }, action = "dir_up" },
-  -- mac
-  { key = "s", action = "open" },
-  -- windows
-  -- { key = 's', action = 'system_open' },
-  { key = "?", action = "toggle_help" },
+  { key = "s", action = "system_open" },
 }
 -- bufferline
 -- 左右Tab切换
