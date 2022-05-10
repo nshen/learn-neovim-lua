@@ -50,9 +50,10 @@ local opts = {
 
 -- 查看目录等信息
 -- print(vim.inspect(server))
+
 return {
   on_setup = function(server)
     opts = require("lua-dev").setup({ lspconfig = opts })
-    server:setup(opts)
+    server.setup(opts)
   end,
 }

@@ -1,5 +1,5 @@
 return {
   on_setup = function(server)
-    server:setup({})
+    server.setup({})
   end,
 }

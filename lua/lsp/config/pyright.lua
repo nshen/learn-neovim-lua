@@ -1,6 +1,6 @@
 return {
   on_setup = function(server)
-    server:setup({
+    server.setup({
       flags = {
         debounce_text_changes = 150,
       },

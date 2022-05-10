@@ -21,6 +21,8 @@ require("plugin-config.toggleterm")
 require("plugin-config.surround")
 require("plugin-config.comment")
 require("plugin-config.nvim-autopairs")
+-- require("plugin-config.fidget")
+
 -- Git
 -- require("plugin-config.gitsigns")
 -- 内置LSP
@@ -29,7 +31,9 @@ require("lsp.cmp")
 require("lsp.ui")
 -- require("lsp.formatter")
 require("lsp.null-ls")
+
 -- utils
+
 -- require("utils.change-colorscheme")
 -- 复制到windows剪贴板
 -- require('utils.fix-yank')

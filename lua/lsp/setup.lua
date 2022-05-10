@@ -1,4 +1,9 @@
-local lsp_installer = require("nvim-lsp-installer")
+-- local lsp_installer = require("nvim-lsp-installer")
+require("nvim-lsp-installer").setup({
+  -- 自动安装 Language Servers
+  automatic_installation = true,
+})
+local lspconfig = require("lspconfig")
 
 -- 安装列表
 -- { key: 服务器名， value: 配置文件 }
@@ -14,35 +19,16 @@ local servers = {
   jsonls = require("lsp.config.json"),
   tsserver = require("lsp.config.ts"),
   rust_analyzer = require("lsp.config.rust"),
-  -- remark_ls = require("lsp.lang.markdown"),
+  yamlls = require("lsp.config.yamlls"),
+  remark_ls = require("lsp.config.markdown"),
 }
 
--- 自动安装 Language Servers
 for name, config in pairs(servers) do
-  local server_is_found, server = lsp_installer.get_server(name)
-  if server_is_found then
-    if not server:is_installed() then
-      print("Installing " .. name)
-      server:install()
-    else
-      if type(config) == "table" and config.on_init then
-        config.on_init(server)
-        print("onInit " .. type(config))
-      end
-    end
-  end
-end
-
-lsp_installer.on_server_ready(function(server)
-  local config = servers[server.name]
-  if config == nil then
-    return
-  end
-  if type(config) == "table" and config.on_setup then
+  if config ~= nil and type(config) == "table" then
     -- 自定义初始化配置文件必须实现on_setup 方法
-    config.on_setup(server)
+    config.on_setup(lspconfig[name])
   else
     -- 使用默认参数
-    server:setup({})
+    lspconfig[name].setup({})
   end
-end)
+end

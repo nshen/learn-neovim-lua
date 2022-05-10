@@ -1,6 +1,6 @@
 return {
   on_setup = function(server)
-    server:setup({
+    server.setup({
       settings = {
         json = {
           schemas = require("schemastore").json.schemas(),
