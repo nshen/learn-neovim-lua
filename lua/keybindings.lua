@@ -29,6 +29,7 @@ map("c", "<C-j>", "<C-n>", { noremap = false })
 map("c", "<C-k>", "<C-p>", { noremap = false })
 
 map("n", "<leader>w", ":w<CR>", opt)
+map("n", "<leader>wq", ":wqa!<CR>", opt)
 
 -- fix :set wrap
 vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
@@ -89,8 +90,8 @@ map("n", "<leader>l", "<C-w>l", opt)
 -- 左右比例控制
 map("n", "<C-Left>", ":vertical resize -2<CR>", opt)
 map("n", "<C-Right>", ":vertical resize +2<CR>", opt)
-map("n", "s,", ":vertical resize -20<CR>", opt)
-map("n", "s.", ":vertical resize +20<CR>", opt)
+map("n", "s,", ":vertical resize -10<CR>", opt)
+map("n", "s.", ":vertical resize +10<CR>", opt)
 -- 上下比例
 map("n", "sj", ":resize +10<CR>", opt)
 map("n", "sk", ":resize -10<CR>", opt)
@@ -125,7 +126,8 @@ map("n", "<A-m>", ":NvimTreeToggle<CR>", opt)
 map("n", "<leader>m", ":NvimTreeToggle<CR>", opt)
 -- 列表快捷键
 pluginKeys.nvimTreeList = { -- 打开文件或文件夹
-  { key = { "<CR>", "o", "<2-LeftMouse>" }, action = "edit" },
+  { key = { "o", "<2-LeftMouse>" }, action = "edit" },
+  { key = "<CR>", action = "system_open" },
   -- v分屏打开文件
   { key = "v", action = "vsplit" },
   -- h分屏打开文件
@@ -151,7 +153,6 @@ pluginKeys.nvimTreeList = { -- 打开文件或文件夹
   { key = { "]" }, action = "cd" },
   -- 进入上一级
   { key = { "[" }, action = "dir_up" },
-  { key = "s", action = "system_open" },
 }
 -- bufferline
 -- 左右Tab切换
@@ -159,6 +160,7 @@ map("n", "<C-h>", ":BufferLineCyclePrev<CR>", opt)
 map("n", "<C-l>", ":BufferLineCycleNext<CR>", opt)
 -- "moll/vim-bbye" 关闭当前 buffer
 map("n", "<leader>bc", ":Bdelete!<CR>", opt)
+map("n", "<C-w>", ":Bdelete!<CR>", opt)
 -- 关闭左/右侧标签页
 map("n", "<leader>bh", ":BufferLineCloseLeft<CR>", opt)
 map("n", "<leader>bl", ":BufferLineCloseRight<CR>", opt)
@@ -213,20 +215,21 @@ pluginKeys.mapLSP = function(mapbuf)
   -- rename
   --[[
   Lspsaga 替换 rn
-  mapbuf("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opt)
-  --]]
   mapbuf("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", opt)
+  --]]
+  mapbuf("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opt)
   -- code action
   --[[
   Lspsaga 替换 ca
-  mapbuf("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opt)
-  --]]
   mapbuf("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opt)
+  --]]
+  mapbuf("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opt)
   -- go xx
   --[[
     mapbuf('n', 'gd', '<cmd>Lspsaga preview_definition<CR>', opt)
-  --]]
   mapbuf("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opt)
+  --]]
+  mapbuf("n", "gd", "<cmd>lua require'telescope.builtin'.lsp_definitions({ initial_mode = 'normal', })<CR>", opt)
   --[[
   mapbuf("n", "gh", "<cmd>Lspsaga hover_doc<cr>", opt)
   Lspsaga 替换 gh

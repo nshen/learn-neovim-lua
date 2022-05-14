@@ -23,10 +23,10 @@ nvim_tree.setup({
     update_cwd = true,
   },
   filters = {
-    -- 不隐藏 .文件
-    dotfiles = false,
+    -- 隐藏 .文件
+    dotfiles = true,
     -- 隐藏 node_modules 文件夹
-    custom = { "node_modules" },
+    -- custom = { "node_modules" },
   },
   view = {
     -- 宽度
