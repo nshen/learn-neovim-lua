@@ -10,8 +10,9 @@ if fn.empty(fn.glob(install_path)) > 0 then
     "git",
     "clone",
     "--depth",
-    "1", -- "https://github.com/wbthomason/packer.nvim",
-    "https://gitcode.net/mirrors/wbthomason/packer.nvim",
+    "1",
+    "https://github.com/wbthomason/packer.nvim",
+    -- "https://gitcode.net/mirrors/wbthomason/packer.nvim",
     install_path,
   })
 
@@ -147,6 +148,11 @@ packer.startup({
     end
   end,
   config = {
+    -- 锁定插件版本在snapshots目录
+    snapshot_path = require("packer.util").join_paths(vim.fn.stdpath("config"), "snapshots"),
+    -- 这里锁定插件版本在v1，不会继续更新插件
+    snapshot = "v1",
+
     -- 最大并发数
     max_jobs = 16,
     -- 自定义源
