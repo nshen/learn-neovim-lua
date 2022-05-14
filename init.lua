@@ -22,24 +22,16 @@ require("plugin-config.surround")
 require("plugin-config.comment")
 require("plugin-config.nvim-autopairs")
 require("plugin-config.fidget")
-
--- Git
--- require("plugin-config.gitsigns")
 -- 内置LSP
 require("lsp.setup")
 require("lsp.cmp")
 require("lsp.ui")
+-- 格式化
 -- require("lsp.formatter")
 require("lsp.null-ls")
-
--- utils
-
--- require("utils.change-colorscheme")
--- 复制到windows剪贴板
--- require('utils.fix-yank')
--- require("utils.global")
---
---
-
+-- DAP
 -- require("dap.vimspector")
 require("dap.nvim-dap")
+-- utils
+-- 复制到windows剪贴板
+-- require('utils.fix-yank')
