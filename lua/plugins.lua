@@ -73,14 +73,14 @@ packer.startup({
     -- indent-blankline
     use("lukas-reineke/indent-blankline.nvim")
     --------------------- LSP --------------------
-    -- use({ "williamboman/nvim-lsp-installer", commit = "36b44679f7cc73968dbb3b09246798a19f7c14e0" })
     use({ "williamboman/nvim-lsp-installer" })
     -- Lspconfig
     use({ "neovim/nvim-lspconfig" })
     -- 补全引擎
     use("hrsh7th/nvim-cmp")
     -- Snippet 引擎
-    use("hrsh7th/vim-vsnip")
+    use("L3MON4D3/LuaSnip")
+    use("saadparwaiz1/cmp_luasnip")
     -- 补全源
     use("hrsh7th/cmp-vsnip")
     use("hrsh7th/cmp-nvim-lsp") -- { name = nvim_lsp }

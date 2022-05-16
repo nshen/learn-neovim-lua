@@ -24,8 +24,9 @@ require("plugin-config.nvim-autopairs")
 require("plugin-config.fidget")
 -- 内置LSP
 require("lsp.setup")
-require("lsp.cmp")
 require("lsp.ui")
+-- 自动补全
+require("cmp.cmp")
 -- 格式化
 -- require("lsp.formatter")
 require("lsp.null-ls")

@@ -348,39 +348,6 @@ pluginKeys.cmp = function(cmp)
     -- 如果窗口内容太多，可以滚动
     ["<C-u>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
     ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
-    -- snippets 跳转
-    ["<C-l>"] = cmp.mapping(function(_)
-      if vim.fn["vsnip#available"](1) == 1 then
-        feedkey("<Plug>(vsnip-expand-or-jump)", "")
-      end
-    end, { "i", "s" }),
-    ["<C-h>"] = cmp.mapping(function()
-      if vim.fn["vsnip#jumpable"](-1) == 1 then
-        feedkey("<Plug>(vsnip-jump-prev)", "")
-      end
-    end, { "i", "s" }),
-
-    -- super Tab
-    ["<Tab>"] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      elseif vim.fn["vsnip#available"](1) == 1 then
-        feedkey("<Plug>(vsnip-expand-or-jump)", "")
-      elseif has_words_before() then
-        cmp.complete()
-      else
-        fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
-      end
-    end, { "i", "s" }),
-
-    ["<S-Tab>"] = cmp.mapping(function()
-      if cmp.visible() then
-        cmp.select_prev_item()
-      elseif vim.fn["vsnip#jumpable"](-1) == 1 then
-        feedkey("<Plug>(vsnip-jump-prev)", "")
-      end
-    end, { "i", "s" }),
-    -- end of super Tab
   }
 end
 
