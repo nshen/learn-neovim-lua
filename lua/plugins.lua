@@ -129,6 +129,7 @@ packer.startup({
     use("ur4ltz/surround.nvim")
     -- Comment
     use("numToStr/Comment.nvim")
+    use("JoosepAlviste/nvim-ts-context-commentstring")
     -- nvim-autopairs
     use("windwp/nvim-autopairs")
     -- git

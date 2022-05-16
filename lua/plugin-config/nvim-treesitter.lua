@@ -45,6 +45,11 @@ treesitter.setup({
     }, -- table of hex strings
     -- termcolors = { } -- table of colour name strings
   },
+  -- https://github.com/JoosepAlviste/nvim-ts-context-commentstring
+  context_commentstring = {
+    enable = true,
+    enable_autocmd = false,
+  },
 })
 -- 开启 Folding 模块
 vim.opt.foldmethod = "expr"
