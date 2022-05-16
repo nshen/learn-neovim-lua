@@ -23,13 +23,14 @@ lualine.setup({
   },
   extensions = { "nvim-tree" },
   sections = {
-    lualine_c = {
-      "filename",
-      {
-        "lsp_progress",
-        spinner_symbols = { " ", " ", " ", " ", " ", " " },
-      },
-    },
+    -- lualine_c = {
+    --   "filename",
+    --   {
+    -----  arkav/lualine-lsp-progress
+    --     "lsp_progress",
+    --     spinner_symbols = { " ", " ", " ", " ", " ", " " },
+    --   },
+    -- },
     lualine_x = {
       "filesize",
       {

@@ -51,7 +51,6 @@ packer.startup({
       "nvim-lualine/lualine.nvim",
       requires = { "kyazdani42/nvim-web-devicons" },
     })
-    use("arkav/lualine-lsp-progress")
     -- telescope
     use({
       "nvim-telescope/telescope.nvim",
