@@ -70,3 +70,16 @@ autocmd("BufEnter", {
       + "r" -- But do continue when pressing enter.
   end,
 })
+
+-- 保存Fold
+local saveable_type = { "*.lua", "*.js", "*.jsx", "*.ts", "*.tsx" }
+autocmd("BufEnter", {
+  group = myAutoGroup,
+  pattern = saveable_type,
+  command = "silent! loadview",
+})
+autocmd("BufWinLeave", {
+  group = myAutoGroup,
+  pattern = saveable_type,
+  command = "mkview",
+})
