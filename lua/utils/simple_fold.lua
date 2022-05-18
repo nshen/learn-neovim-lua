@@ -6,6 +6,7 @@ return {
     local start_line = vim.fn.getline(fs):gsub("\t", ("\t"):rep(vim.opt.ts:get()))
     local end_line = vim.trim(vim.fn.getline(fe))
     local spaces = (" "):rep(vim.o.columns - start_line:len() - end_line:len() - 7)
-    return start_line .. "  " .. end_line .. spaces
+
+    return " " .. start_line .. "  " .. end_line .. spaces
   end,
 }
