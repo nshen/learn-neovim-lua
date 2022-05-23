@@ -73,12 +73,13 @@ autocmd("BufEnter", {
 
 -- 保存Fold
 local saveable_type = { "*.lua", "*.js", "*.jsx", "*.ts", "*.tsx" }
-autocmd("BufEnter", {
+
+autocmd("BufWinEnter", {
   group = myAutoGroup,
   pattern = saveable_type,
   command = "silent! loadview",
 })
-autocmd("BufWinLeave", {
+autocmd("BufWrite", {
   group = myAutoGroup,
   pattern = saveable_type,
   command = "mkview",
