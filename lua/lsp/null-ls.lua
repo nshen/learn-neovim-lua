@@ -45,6 +45,9 @@ null_ls.setup({
     -- Ruby
     -- gem install rubocop
     formatting.rubocop,
+    -- json
+    -- npm install -g fixjson
+    formatting.fixjson,
     -----------------------------------------------------
     -- formatting.fixjson,
     -- Diagnostics  ---------------------
