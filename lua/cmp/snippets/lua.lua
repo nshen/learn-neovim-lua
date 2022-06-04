@@ -14,26 +14,26 @@ local rep = require("luasnip.extras").rep
 local snippets, autosnippets = {}, {}
 
 local myFirstSnippet = s("myFirstSnippet", {
-  t("Hi! That is my first snippet in Luasnip"),
-  i(1, "placeholder"),
-  t("Hi! That is my first snippet in Luasnip"),
+	t("Hi! That is my first snippet in Luasnip"),
+	i(1, "placeholder"),
+	t("Hi! That is my first snippet in Luasnip"),
 })
 table.insert(snippets, myFirstSnippet)
 
 local mySecondSnippet = s(
-  "mySecondSnippet",
-  fmt(
-    [[
+	"mySecondSnippet",
+	fmt(
+		[[
   local {} = function({})
     {}
   end
   ]],
-    {
-      i(1, ""),
-      c(2, { t("aaa"), t("myArg"), t("3333") }),
-      i(3, ""),
-    }
-  )
+		{
+			i(1, ""),
+			c(2, { t("aaa"), t("myArg"), t("3333") }),
+			i(3, ""),
+		}
+	)
 )
 table.insert(snippets, mySecondSnippet)
 

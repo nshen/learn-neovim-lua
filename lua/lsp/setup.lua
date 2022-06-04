@@ -1,7 +1,7 @@
 -- local lsp_installer = require("nvim-lsp-installer")
 require("nvim-lsp-installer").setup({
-  -- 自动安装 Language Servers
-  automatic_installation = true,
+	-- 自动安装 Language Servers
+	automatic_installation = true,
 })
 local lspconfig = require("lspconfig")
 
@@ -10,25 +10,39 @@ local lspconfig = require("lspconfig")
 -- key 必须为下列网址列出的 server name，不可以随便写
 -- https://github.com/williamboman/nvim-lsp-installer#available-lsps
 local servers = {
-  sumneko_lua = require("lsp.config.lua"), -- lua/lsp/config/lua.lua
-  bashls = require("lsp.config.bash"),
-  pyright = require("lsp.config.pyright"),
-  html = require("lsp.config.html"),
-  cssls = require("lsp.config.css"),
-  emmet_ls = require("lsp.config.emmet"),
-  jsonls = require("lsp.config.json"),
-  tsserver = require("lsp.config.ts"),
-  rust_analyzer = require("lsp.config.rust"),
-  yamlls = require("lsp.config.yamlls"),
-  -- remark_ls = require("lsp.config.markdown"),
+	"sumneko_lua",
+	"bashls",
+	"pyright",
+	"html",
+	"cssls",
+	"jsonls",
+	"tsserver",
+	"yamlls",
+	"remark_ls",
+	"gopls",
+	"dartls",
 }
 
-for name, config in pairs(servers) do
-  if config ~= nil and type(config) == "table" then
-    -- 自定义初始化配置文件必须实现on_setup 方法
-    config.on_setup(lspconfig[name])
-  else
-    -- 使用默认参数
-    lspconfig[name].setup({})
-  end
+for _, server in pairs(servers) do
+	_G.usePlugin("lsp.config." .. server, function(config)
+		-- 自定义初始化配置文件必须实现on_setup 方法
+		config.on_setup(lspconfig[server])
+	end, true).fail(function()
+		-- 使用默认参数
+		lspconfig[server].setup({
+			flags = {
+				debounce_text_changes = 150,
+			},
+			on_attach = function(client, bufnr)
+				-- 禁用格式化功能，交给专门插件插件处理
+				client.resolved_capabilities.document_formatting = false
+				client.resolved_capabilities.document_range_formatting = false
+
+				-- 绑定快捷键
+				require("keybindings").mapLSP(function(...)
+					vim.api.nvim_buf_set_keymap(bufnr, ...)
+				end)
+			end,
+		})
+	end)
 end
