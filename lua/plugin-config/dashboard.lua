@@ -1,22 +1,64 @@
-vim.g.dashboard_default_executive = "telescope"
-vim.g.dashboard_custom_footer = { "https://github.com/nshen/learn-neovim-lua" }
+local status, db = pcall(require, "dashboard")
+if not status then
+  vim.notify("没有找到 dashboard")
+  return
+end
 
-vim.g.dashboard_custom_section = {
-  a = { description = { "  Projects              " }, command = "Telescope projects" },
-  b = { description = { "  Recently files        " }, command = "Telescope oldfiles" },
-  c = { description = { "  Edit keybindings      " }, command = "edit ~/.config/nvim/lua/keybindings.lua" },
-  d = {
-    description = { "  Edit Projects         " },
-    command = "edit ~/.local/share/nvim/project_nvim/project_history",
-  },
-  -- e = { description = { "  Edit .bashrc          " }, command = "edit ~/.bashrc" },
-  -- f = { description = { "  Change colorscheme    " }, command = "ChangeColorScheme" },
-  -- g = { description = { "  Edit init.lua         " }, command = "edit ~/.config/nvim/init.lua" },
-  -- h = { description = {'  Find file          '}, command = 'Telescope find_files'},
-  -- i = { description = {'  Find text          '}, command = 'Telescope live_grep'},
+db.custom_footer = {
+  "",
+  "",
+  "https://github.com/nshen/learn-neovim-lua",
 }
 
-vim.g.dashboard_custom_header = {
+db.custom_center = {
+  {
+    icon = "  ",
+    desc = "Projects                            ",
+    action = "Telescope projects",
+  },
+  {
+    icon = "  ",
+    desc = "Recently files                      ",
+    action = "Telescope oldfiles",
+  },
+  {
+    icon = "  ",
+    desc = "Edit keybindings                    ",
+    action = "edit ~/.config/nvim/lua/keybindings.lua",
+  },
+  {
+    icon = "  ",
+    desc = "Edit Projects                       ",
+    action = "edit ~/.local/share/nvim/project_nvim/project_history",
+  },
+  -- {
+  --   icon = "  ",
+  --   desc = "Edit .bashrc                        ",
+  --   action = "edit ~/.bashrc",
+  -- },
+  -- {
+  --   icon = "  ",
+  --   desc = "Change colorscheme                  ",
+  --   action = "ChangeColorScheme",
+  -- },
+  -- {
+  --   icon = "  ",
+  --   desc = "Edit init.lua                       ",
+  --   action = "edit ~/.config/nvim/init.lua",
+  -- },
+  -- {
+  --   icon = "  ",
+  --   desc = "Find file                           ",
+  --   action = "Telescope find_files",
+  -- },
+  -- {
+  --   icon = "  ",
+  --   desc = "Find text                           ",
+  --   action = "Telescopecope live_grep",
+  -- },
+}
+db.custom_header = {
+  [[]],
   [[███╗   ██╗███████╗██╗  ██╗███████╗███╗   ██╗]],
   [[████╗  ██║██╔════╝██║  ██║██╔════╝████╗  ██║]],
   [[██╔██╗ ██║███████╗███████║█████╗  ██╔██╗ ██║]],
@@ -25,7 +67,8 @@ vim.g.dashboard_custom_header = {
   [[╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═══╝]],
 }
 
-vim.g.dashboard_custom_header = {
+db.custom_header = {
+  [[]],
   [[          ▀████▀▄▄              ▄█ ]],
   [[            █▀    ▀▀▄▄▄▄▄    ▄▄▀▀█ ]],
   [[    ▄        █          ▀▀▀▀▄  ▄▀  ]],
@@ -37,7 +80,8 @@ vim.g.dashboard_custom_header = {
   [[   █   █  █      ▄▄           ▄▀   ]],
 }
 
-vim.g.dashboard_custom_header = {
+db.custom_header = {
+  [[]],
   [[ ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗]],
   [[ ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║]],
   [[ ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║]],
@@ -48,7 +92,8 @@ vim.g.dashboard_custom_header = {
   [[                [ version : 1.0.0 ]                ]],
 }
 
-vim.g.dashboard_custom_header = {
+db.custom_header = {
+  [[]],
   [[     ██╗██╗   ██╗███████╗     ██╗██╗███╗   ██╗    ██████╗███╗   ██╗]],
   [[     ██║██║   ██║██╔════╝     ██║██║████╗  ██║   ██╔════╝████╗  ██║]],
   [[     ██║██║   ██║█████╗       ██║██║██╔██╗ ██║   ██║     ██╔██╗ ██║]],
@@ -59,7 +104,8 @@ vim.g.dashboard_custom_header = {
   [[                         [ version : 1.0.0 ]                       ]],
 }
 
-vim.g.dashboard_custom_header = {
+db.custom_header = {
+  [[]],
   [[     ██╗██╗   ██╗███████╗     ██╗██╗███╗   ██╗]],
   [[     ██║██║   ██║██╔════╝     ██║██║████╗  ██║]],
   [[     ██║██║   ██║█████╗       ██║██║██╔██╗ ██║]],
@@ -68,4 +114,6 @@ vim.g.dashboard_custom_header = {
   [[ ╚════╝  ╚═════╝ ╚══════╝ ╚════╝ ╚═╝╚═╝  ╚═══╝]],
   [[                                              ]],
   [[             [ version : 1.0.0 ]              ]],
+  [[]],
+  [[]],
 }
