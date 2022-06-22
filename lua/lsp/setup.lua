@@ -21,6 +21,7 @@ local servers = {
   rust_analyzer = require("lsp.config.rust"),
   yamlls = require("lsp.config.yamlls"),
   dockerls = require("lsp.config.docker"),
+  tailwindcss = require("lsp.config.tailwindcss"),
   -- remark_ls = require("lsp.config.markdown"),
 }
 
