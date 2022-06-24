@@ -67,8 +67,14 @@ packer.startup({
     use({
       "nvim-treesitter/nvim-treesitter",
       run = ":TSUpdate",
+      requires = {
+        { "p00f/nvim-ts-rainbow" },
+        { "JoosepAlviste/nvim-ts-context-commentstring" },
+        { "windwp/nvim-ts-autotag" },
+        { "nvim-treesitter/nvim-treesitter-refactor" },
+        { "nvim-treesitter/nvim-treesitter-textobjects" },
+      },
     })
-    use("p00f/nvim-ts-rainbow")
     -- indent-blankline
     use("lukas-reineke/indent-blankline.nvim")
     --------------------- LSP --------------------
@@ -128,7 +134,6 @@ packer.startup({
     use("ur4ltz/surround.nvim")
     -- Comment
     use("numToStr/Comment.nvim")
-    use("JoosepAlviste/nvim-ts-context-commentstring")
     -- nvim-autopairs
     use("windwp/nvim-autopairs")
     -- git
