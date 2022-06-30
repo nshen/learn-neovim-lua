@@ -32,6 +32,7 @@ null_ls.setup({
         "yaml",
         "graphql",
       },
+      timeout = 10000,
       prefer_local = "node_modules/.bin",
     }),
     -- rustfmt
@@ -48,10 +49,16 @@ null_ls.setup({
     -- json
     -- npm install -g fixjson
     formatting.fixjson,
+    -- toml
+    -- cargo install taplo-cli
+    formatting.taplo,
     -----------------------------------------------------
-    -- formatting.fixjson,
     -- Diagnostics  ---------------------
-    diagnostics.eslint.with({
+    -- diagnostics.eslint.with({
+    --   prefer_local = "node_modules/.bin",
+    -- }),
+    -- npm install -g eslint_d
+    diagnostics.eslint_d.with({
       prefer_local = "node_modules/.bin",
     }),
     -- diagnostics.markdownlint,
@@ -64,9 +71,11 @@ null_ls.setup({
     --
     -- code actions ---------------------
     code_actions.gitsigns,
-    code_actions.eslint.with({
-      prefer_local = "node_modules/.bin",
-    }),
+    -- code_actions.eslint.with({
+    --   prefer_local = "node_modules/.bin",
+    -- }),
+    -- npm install -g eslint_d
+    code_actions.eslint_d,
   },
   -- #{m}: message
   -- #{s}: source name (defaults to null-ls if not specified)
