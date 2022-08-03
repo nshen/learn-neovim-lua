@@ -1,8 +1,6 @@
 local opts = {
-  flags = {
-    debounce_text_changes = 150,
-  },
-  on_attach = function(_, bufnr)
+  on_attach = function(client, bufnr)
+    require("lsp.common-config").disableFormat(client)
     require("lsp.common-config").keyAttach(bufnr)
   end,
 }

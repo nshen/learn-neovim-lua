@@ -10,16 +10,12 @@ return {
       flags = {
         debounce_text_changes = 150,
       },
+
+      -- use fixjson to format
+      -- https://github.com/rhysd/fixjson
       on_attach = function(client, bufnr)
-        -- use fixjson to format
-        -- https://github.com/rhysd/fixjson
-        client.resolved_capabilities.document_formatting = false
-        client.resolved_capabilities.document_range_formatting = false
-        -- 绑定快捷键
-        local function buf_set_keymap(...)
-          vim.api.nvim_buf_set_keymap(bufnr, ...)
-        end
-        require("keybindings").mapLSP(buf_set_keymap)
+        require("lsp.common-config").disableFormat(client)
+        require("lsp.common-config").keyAttach(bufnr)
       end,
     })
   end,

@@ -5,26 +5,30 @@ return {
       settings = {
         css = {
           validate = true,
+          -- tailwindcss
+          lint = {
+            unknownAtRules = "ignore",
+          },
         },
         less = {
           validate = true,
+          lint = {
+            unknownAtRules = "ignore",
+          },
         },
         scss = {
           validate = true,
+          lint = {
+            unknownAtRules = "ignore",
+          },
         },
       },
       flags = {
         debounce_text_changes = 150,
       },
       on_attach = function(client, bufnr)
-        -- 禁用格式化功能，交给专门插件插件处理
-        client.resolved_capabilities.document_formatting = false
-        client.resolved_capabilities.document_range_formatting = false
-        local function buf_set_keymap(...)
-          vim.api.nvim_buf_set_keymap(bufnr, ...)
-        end
-        -- 绑定快捷键
-        require("keybindings").mapLSP(buf_set_keymap)
+        require("lsp.common-config").disableFormat(client)
+        require("lsp.common-config").keyAttach(bufnr)
       end,
     })
   end,

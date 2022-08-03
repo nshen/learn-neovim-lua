@@ -23,14 +23,8 @@ local opts = {
   },
 
   on_attach = function(client, bufnr)
-    -- 禁用格式化功能，交给专门插件插件处理
-    client.resolved_capabilities.document_formatting = false
-    client.resolved_capabilities.document_range_formatting = false
-    local function buf_set_keymap(...)
-      vim.api.nvim_buf_set_keymap(bufnr, ...)
-    end
-    -- 绑定快捷键
-    keybindings.mapLSP(buf_set_keymap)
+    require("lsp.common-config").disableFormat(client)
+    require("lsp.common-config").keyAttach(bufnr)
     -- defaults
     ts_utils.setup({
       debug = false,
@@ -83,7 +77,7 @@ local opts = {
     -- required to fix code action ranges and filter diagnostics
     ts_utils.setup_client(client)
     -- no default maps, so you may want to define some here
-    keybindings.mapTsLSP(buf_set_keymap)
+    keybindings.mapTsLSP(bufnr)
   end,
 }
 

@@ -18,10 +18,11 @@ local servers = {
   emmet_ls = require("lsp.config.emmet"),
   jsonls = require("lsp.config.json"),
   tsserver = require("lsp.config.ts"),
-  rust_analyzer = require("lsp.config.rust"),
   yamlls = require("lsp.config.yamlls"),
   dockerls = require("lsp.config.docker"),
   tailwindcss = require("lsp.config.tailwindcss"),
+  rust_analyzer = require("lsp.config.rust"),
+  taplo = require("lsp.config.taplo"), -- toml
   -- remark_ls = require("lsp.config.markdown"),
 }
 
