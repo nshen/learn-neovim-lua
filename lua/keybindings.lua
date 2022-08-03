@@ -1,3 +1,6 @@
+local uConfig = require("uConfig")
+local keys = uConfig.keys
+
 -- Modes
 --   normal_mode = "n",
 --   insert_mode = "i",
@@ -211,35 +214,49 @@ map("n", "<C-_>", "gcc", { noremap = false })
 map("v", "<C-_>", "gcc", { noremap = false })
 
 -- lsp 回调函数快捷键设置
+local lsp = uConfig.lsp
 pluginKeys.mapLSP = function(mapbuf)
   -- rename
   --[[
   Lspsaga 替换 rn
   mapbuf("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", opt)
   --]]
-  mapbuf("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opt)
+  mapbuf("n", lsp.rename, "<cmd>lua vim.lsp.buf.rename()<CR>")
   -- code action
   --[[
   Lspsaga 替换 ca
   mapbuf("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opt)
   --]]
-  mapbuf("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opt)
+  mapbuf("n", lsp.code_action, "<cmd>lua vim.lsp.buf.code_action()<CR>")
   -- go xx
   --[[
     mapbuf('n', 'gd', '<cmd>Lspsaga preview_definition<CR>', opt)
   mapbuf("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opt)
   --]]
-  mapbuf("n", "gd", "<cmd>lua require'telescope.builtin'.lsp_definitions({ initial_mode = 'normal', })<CR>", opt)
+
+  mapbuf("n", lsp.definition, function()
+    require("telescope.builtin").lsp_definitions({
+      initial_mode = "normal",
+      -- ignore_filename = false,
+    })
+  end)
   --[[
   mapbuf("n", "gh", "<cmd>Lspsaga hover_doc<cr>", opt)
   Lspsaga 替换 gh
   --]]
-  mapbuf("n", "gh", "<cmd>lua vim.lsp.buf.hover()<CR>", opt)
+  mapbuf("n", lsp.hover, "<cmd>lua vim.lsp.buf.hover()<CR>")
   --[[
   Lspsaga 替换 gr
   mapbuf("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opt)
-  --]]
   mapbuf("n", "gr", "<cmd>Lspsaga lsp_finder<CR>", opt)
+  --]]
+  mapbuf(
+    "n",
+    lsp.references,
+    "<cmd>lua require'telescope.builtin'.lsp_references(require('telescope.themes').get_ivy())<CR>"
+  )
+
+  mapbuf("n", lsp.format, "<cmd>lua vim.lsp.buf.formatting()<CR>")
   --[[
   Lspsaga 替换 gp, gj, gk
   mapbuf("n", "gp", "<cmd>lua vim.diagnostic.open_float()<CR>", opt)
@@ -247,10 +264,13 @@ pluginKeys.mapLSP = function(mapbuf)
   mapbuf("n", "gk", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opt)
   --]]
   -- diagnostic
-  mapbuf("n", "gp", "<cmd>Lspsaga show_line_diagnostics<CR>", opt)
-  mapbuf("n", "gj", "<cmd>Lspsaga diagnostic_jump_next<cr>", opt)
-  mapbuf("n", "gk", "<cmd>Lspsaga diagnostic_jump_prev<cr>", opt)
-  mapbuf("n", "<leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opt)
+  -- mapbuf("n", "gp", "<cmd>Lspsaga show_line_diagnostics<CR>", opt)
+  -- mapbuf("n", "gj", "<cmd>Lspsaga diagnostic_jump_next<cr>", opt)
+  -- mapbuf("n", "gk", "<cmd>Lspsaga diagnostic_jump_prev<cr>", opt)
+
+  mapbuf("n", lsp.open_flow, "<cmd>lua vim.diagnostic.open_float()<CR>")
+  mapbuf("n", lsp.goto_next, "<cmd>lua vim.diagnostic.goto_next()<CR>")
+  mapbuf("n", lsp.goto_prev, "<cmd>lua vim.diagnostic.goto_prev()<CR>")
   -- 未用
   -- mapbuf("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opt)
   -- mapbuf("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opt)
@@ -263,10 +283,11 @@ pluginKeys.mapLSP = function(mapbuf)
 end
 
 -- typescript 快捷键
-pluginKeys.mapTsLSP = function(mapbuf)
-  mapbuf("n", "gs", ":TSLspOrganize<CR>", opt)
-  mapbuf("n", "gR", ":TSLspRenameFile<CR>", opt)
-  mapbuf("n", "gi", ":TSLspImportAll<CR>", opt)
+pluginKeys.mapTsLSP = function(bufnr)
+  local bufopts = { noremap = true, silent = true, buffer = bufnr }
+  keymap("n", lsp.ts_organize, ":TSLspOrganize<CR>", bufopts)
+  keymap("n", lsp.ts_rename_file, ":TSLspRenameFile<CR>", bufopts)
+  keymap("n", lsp.ts_import_all, ":TSLspImportAll<CR>", bufopts)
 end
 
 -- nvim-dap
