@@ -20,12 +20,33 @@ local opt = {
 
 -- 本地变量
 local map = vim.api.nvim_set_keymap
+local opts_default = {
+  remap = false,
+  silent = true,
+}
 
 -- $跳到行尾不带空格 (交换$ 和 g_)
 map("v", "$", "g_", opt)
 map("v", "g_", "$", opt)
 map("n", "$", "g_", opt)
 map("n", "g_", "$", opt)
+local opts_remap = {
+  remap = true,
+  silent = true,
+}
+
+local opts_expr = {
+  expr = true,
+  silent = true,
+}
+
+local keymap = function(mode, lhs, rhs, opts)
+  if not (type(lhs) == "string") then
+    return
+  end
+  opts = opts or opts_default
+  vim.keymap.set(mode, lhs, rhs, opts)
+end
 
 -- 命令行下 Ctrl+j/k  上一个下一个
 map("c", "<C-j>", "<C-n>", { noremap = false })
