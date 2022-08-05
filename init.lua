@@ -1,3 +1,6 @@
+-- require("impatient")
+require("utils.global")
+
 -- 基础配置
 require("basic")
 -- 快捷键映射
