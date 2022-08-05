@@ -2,7 +2,11 @@ local ls = require("luasnip")
 local config = require("uConfig")
 local types = require("luasnip.util.types")
 
-require("luasnip.loaders.from_lua").load({ paths = config.config_path .. "/lua/cmp/snippets/" })
+-- custom snippets
+require("luasnip.loaders.from_lua").load({ paths = config.config_path .. "/lua/cmp/snippets/lua" })
+require("luasnip.loaders.from_vscode").lazy_load({ paths = config.config_path .. "/lua/cmp/snippets/vscode" })
+
+-- https://github.com/rafamadriz/friendly-snippets/
 require("luasnip.loaders.from_vscode").lazy_load()
 
 ls.config.set_config({

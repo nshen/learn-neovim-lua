@@ -1,0 +1,374 @@
+{
+    "Arrow Function": {
+        "prefix": "af",
+        "body": ["($1) => { $2 }"],
+        "description": "arrow function"
+    },
+    "Export Function": {
+        "prefix": "ef",
+        "body": [
+            "export function ${1:name}()$2 {",
+            "\treturn $3;",
+            "}"
+        ],
+        "description": "Export Function"
+    },
+    "Export Default Function": {
+        "prefix": "edf",
+        "body": [
+            "export default function ${1:name}()$2 {",
+            "\treturn $3;",
+            "}"
+        ],
+        "description": "Export Default Function"
+    },
+    "Function": {
+        "prefix": "func",
+        "body": [
+            "function ${1:name}()$2 {",
+            "\treturn $3;",
+            "}"
+        ],
+        "description": "Function"
+    },
+    "Async Function": {
+        "prefix": "async",
+        "body": [
+            "async function ${1:name}()$2 {",
+            "\treturn $3;",
+            "}"
+        ],
+        "description": "Async function"
+    },
+    "For Loop": {
+        "prefix": "for",
+        "body": [
+            "for (let ${1:index} = 0; ${1:index} < ${2:array}.length; ${1:index}++) {",
+            "\tconst ${3:element} = ${2:array}[${1:index}];",
+            "\t$0",
+            "}"
+        ],
+        "description": "For Loop"
+    },
+    "For-Each Loop using =>": {
+        "prefix": "foreach =>",
+        "body": ["${1:array}.forEach(${2:element} => {", "\t$0", "});"],
+        "description": "For-Each Loop using =>"
+    },
+    "For-In Loop": {
+        "prefix": "forin",
+        "body": [
+            "for (const ${1:key} in ${2:object}) {",
+            "\tif (${2:object}.hasOwnProperty(${1:key})) {",
+            "\t\tconst ${3:element} = ${2:object}[${1:key}];",
+            "\t\t$0",
+            "\t}",
+            "}"
+        ],
+        "description": "For-In Loop"
+    },
+    "For-Of Loop": {
+        "prefix": "forof",
+        "body": ["for (const ${1:iterator} of ${2:object}) {", "\t$0", "}"],
+        "description": "For-Of Loop"
+    },
+    "Switch Statement": {
+        "prefix": "switch",
+        "body": [
+            "switch (${1:key}) {",
+            "\tcase ${2:value}:",
+            "\t\t$0",
+            "\t\tbreak;",
+            "",
+            "\tdefault:",
+            "\t\tbreak;",
+            "}"
+        ],
+        "description": "Switch Statement"
+    },
+    "Try-Catch Statement": {
+        "prefix": "try",
+        "body": ["try {", "\t$0", "} catch (${1:error}) {", "\t", "}"],
+        "description": "Try-Catch Statement"
+    },
+    "import destructing": {
+        "key": "importDestructing",
+        "prefix": "imd",
+        "body": ["import { ${2:second} } from '${1:first}'"],
+        "scope": "typescript,typescriptreact,javascript,javascriptreact"
+    },
+    "import default": {
+        "key": "import",
+        "prefix": "imp",
+        "body": ["import ${2:second} from '${1:first}'"],
+        "scope": "typescript,typescriptreact,javascript,javascriptreact"
+    },
+    "import react": {
+        "key": "import react",
+        "prefix": "imr",
+        "body": ["import React from 'react';"],
+        "scope": "typescript,typescriptreact,javascript,javascriptreact"
+    },
+    "import test": {
+        "key": "importTest",
+        "prefix": "imt",
+        "body": [
+            "import React from 'react';",
+            "import {screen, render, fireEvent, waitFor} from '@testing-library/react';",
+            "import user from '@testing-library/user-event';"
+        ],
+        "scope": "typescript,typescriptreact,javascript,javascriptreact"
+    },
+    "require": {
+        "key": "require",
+        "prefix": "requ",
+        "body": ["const { ${2:second} } = require('${1:first}')"],
+        "scope": "typescript,typescriptreact,javascript,javascriptreact"
+    },
+    "setInterval": {
+        "key": "setInterval",
+        "prefix": "sti",
+        "body": ["setInterval(() => { ${1:first} }, ${2:second})"],
+        "description": "Executes the given function at specified intervals",
+        "scope": "typescript,typescriptreact,javascript,javascriptreact"
+    },
+    "setTimeOut": {
+        "key": "setTimeOut",
+        "prefix": "sto",
+        "body": ["setTimeout(() => { ${1:first} }, ${2:second})"],
+        "description": "Executes the given function after the specified delay",
+        "scope": "typescript,typescriptreact,javascript,javascriptreact"
+    },
+    "promise": {
+        "key": "promise",
+        "prefix": "prom",
+        "body": ["return new Promise((resolve, reject) => { ${1:first} })"],
+        "description": "Creates and returns a new Promise in the standard ES7 syntax",
+        "scope": "typescript,typescriptreact,javascript,javascriptreact"
+    },
+    "------------------------------------------------------------------------": {
+        "body": "console.xxx()"
+    },
+    "Console Assert": {
+        "prefix": "cas",
+        "body": "console.assert(${1:expression}, ${2:object})",
+        "description": "If the specified expression is false, the message is written to the console along with a stack trace"
+    },
+    "Console Clear": {
+        "prefix": "ccl",
+        "body": "console.clear()",
+        "description": "Clears the console"
+    },
+    "Console Count": {
+        "prefix": "cco",
+        "body": "console.count(${1:label})",
+        "description": "Writes the the number of times that count() has been invoked at the same line and with the same label"
+    },
+    "Console Dir": {
+        "prefix": "cdi",
+        "body": "console.dir(${1:object})",
+        "description": "Prints a JavaScript representation of the specified object"
+    },
+    "Console Error": {
+        "prefix": "cer",
+        "body": "console.error(${1:object})",
+        "description": "Displays a message in the console and also includes a stack trace from where the method was called"
+    },
+    "Console Group": {
+        "prefix": "cgr",
+        "body": "console.group(\"${1:label}\")",
+        "description": "Groups and indents all following output by an additional level, until console.groupEnd() is called."
+    },
+    "Console Group End": {
+        "prefix": "cge",
+        "body": "console.groupEnd()",
+        "description": "Closes out the corresponding console.group()."
+    },
+    "Console Log": {
+        "prefix": "clg",
+        "body": "console.log(${1:object})",
+        "description": "Displays a message in the console"
+    },
+    "Console Log": {
+        "prefix": "log",
+        "body": "console.log(${1:object})",
+        "description": "Displays a message in the console"
+    },
+    "Console Trace": {
+        "prefix": "ctr",
+        "body": "console.trace(${1:object})",
+        "description": "Prints a stack trace from the point where the method was called"
+    },
+    "Console Warn": {
+        "prefix": "cwa",
+        "body": "console.warn(${1:object})",
+        "description": "Displays a message in the console but also displays a yellow warning icon along with the logged message"
+    },
+    "Console Info": {
+        "prefix": "cin",
+        "body": "console.info(${1:object})",
+        "description": "Displays a message in the console but also displays a blue information icon along with the logged message"
+    },
+    "------------------------------------------------------------------------": {
+        "body": "react hooks"
+    },
+    "typescriptReactFunctionalExportComponent": {
+        "key": "typescriptReactFunctionalExportComponent",
+        "prefix": "rfc",
+        "body": [
+            "import React from 'react'",
+            "",
+            "type ${2}Props = {}",
+            "",
+            "export const ${1:${TM_FILENAME_BASE}} = (props: ${2}Props) => {",
+            "  return (",
+            "    <div>${1:first}</div>",
+            "  )",
+            "}",
+            ""
+        ],
+        "description": "Creates a React Functional Component with ES7 module system and TypeScript interface",
+        "scope": "typescript,typescriptreact,javascript,javascriptreact"
+    },
+    "useState": {
+        "prefix": "useState",
+        "body": [
+            "const [${1:state}, set${2:state}] = useState(${3:initialState})"
+        ]
+    },
+    "setState": {
+        "prefix": "setS",
+        "body": [
+            "set${1:State}((state)=>({",
+            "\t...state,",
+            "\t${2:loading : true},",
+            "}))"
+        ]
+    },
+    "useEffect": {
+        "prefix": "useEffect",
+        "body": [
+            "useEffect(() => {",
+            "\t${1:effect}",
+            "\treturn () => {",
+            "\t\t${2:cleanup}",
+            "\t}",
+            "}, [${3:input}])"
+        ]
+    },
+    "useContext": {
+        "prefix": "useContext",
+        "body": ["const ${1:context} = useContext(${2:contextValue})"]
+    },
+    "useReducer": {
+        "prefix": "useReducer",
+        "body": [
+            "const [state, dispatch] = useReducer(${1:reducer}, ${2:initialState}, ${3:init})"
+        ]
+    },
+    "useCallback": {
+        "prefix": "useCallback",
+        "body": [
+            "useCallback(",
+            "\t() => {",
+            "\t\t${1:callback}",
+            "\t},",
+            "\t[${2:input}],",
+            ")"
+        ]
+    },
+    "useMemo": {
+        "prefix": "useMemo",
+        "body": ["useMemo(() => ${1:function}, ${2:input})"]
+    },
+    "useRef": {
+        "prefix": "useRef",
+        "body": ["const ${1:ref} = useRef(${2:initialValue})"]
+    },
+    "useImperativeHandle": {
+        "prefix": "useImperativeHandle",
+        "body": [
+            "useImperativeHandle(",
+            "\t${1:ref},",
+            "\t() => {",
+            "\t\t${2:handler}",
+            "\t},",
+            "\t[${3:input}],",
+            ")"
+        ]
+    },
+    "useDebugValue": {
+        "prefix": "useDebugValue",
+        "body": ["useDebugValue(${1:value})"]
+    },
+    "useLayoutEffect": {
+        "prefix": "useLayoutEffect",
+        "body": [
+            "useLayoutEffect(() => {",
+            "\t${1:effect}",
+            "\treturn () => {",
+            "\t\t${2:cleanup}",
+            "\t};",
+            "}, [${3:input}])"
+        ]
+    },
+    "useSelector": {
+        "prefix": "useSelector",
+        "body": ["const ${1:state} = useSelector(state => state.${1:state})"]
+    },
+    "useDispatch": {
+        "prefix": "useDispatch",
+        "body": ["const dispatch = useDispatch(${1:function})"]
+    },
+    "------------------------------------------------------------------------": {
+        "body": "jest - test"
+    },
+    "describeBlock": {
+        "key": "describeBlock",
+        "prefix": "desc",
+        "body": [
+            "describe('${1:first}', () => { ",
+            "\tit('${2:should}', ${3|,async |}() => {",
+            "\t\texpect($4)$5",
+            "\t})",
+            "})"
+        ],
+        "description": "Testing `describe` block",
+        "scope": "typescript,typescriptreact,javascript,javascriptreact"
+    },
+    "itBlock": {
+        "key": "itBlock",
+        "prefix": "it",
+        "body": ["it('${2:should }', ${3|,async |}() => {", "\t$4", "})"],
+        "description": "Testing `it` block",
+        "scope": "typescript,typescriptreact,javascript,javascriptreact"
+    },
+    "beforeEach": {
+        "key": "beforeEach",
+        "prefix": "beforeEach",
+        "body": ["beforeEach(() => {", "\t${1}", "})"],
+        "description": "Testing `beforeEach` block",
+        "scope": "typescript,typescriptreact,javascript,javascriptreact"
+    },
+    "afterEach": {
+        "key": "afterEach",
+        "prefix": "afterEach",
+        "body": ["afterEach(() => {", "\t${1}", "})"],
+        "description": "Testing `afterEach` block",
+        "scope": "typescript,typescriptreact,javascript,javascriptreact"
+    },
+    "beforeAll": {
+        "key": "beforeAll",
+        "prefix": "beforeAll",
+        "body": ["beforeAll(() => {", "\t${1}", "})"],
+        "description": "Testing `beforeAll` block",
+        "scope": "typescript,typescriptreact,javascript,javascriptreact"
+    },
+    "afterAll": {
+        "key": "afterAll",
+        "prefix": "afterAll",
+        "body": ["afterAll(() => {", "\t${1}", "})"],
+        "description": "Testing `afterAll` block",
+        "scope": "typescript,typescriptreact,javascript,javascriptreact"
+    }
+}

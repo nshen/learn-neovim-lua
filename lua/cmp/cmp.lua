@@ -84,6 +84,7 @@ cmp.setup.cmdline(":", {
 
 cmp.setup.filetype({ "markdown", "help" }, {
   sources = {
+    { name = "luasnip" },
     { name = "buffer" },
     { name = "path" },
   },

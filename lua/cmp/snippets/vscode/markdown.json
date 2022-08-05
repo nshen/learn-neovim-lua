@@ -1,0 +1,17 @@
+{
+    "Insert ts code block": {
+        "prefix": "ts",
+        "body": ["```${1|ts ,js|}", "$0", "```"],
+        "description": "Insert fenced code block"
+    },
+    "Insert js code block": {
+        "prefix": "js",
+        "body": ["```${1|js ,ts|}", "$0", "```"],
+        "description": "Insert fenced code block"
+    },
+    "Insert json code block": {
+        "prefix": "json",
+        "body": ["```json", "$0", "```"],
+        "description": "Insert fenced code block"
+    }
+}
