@@ -174,7 +174,8 @@ packer.startup({
     -- 锁定插件版本在snapshots目录
     snapshot_path = require("packer.util").join_paths(vim.fn.stdpath("config"), "snapshots"),
     -- 这里锁定插件版本在v1，不会继续更新插件
-    snapshot = "v1",
+    -- snapshot = require("packer.util").join_paths(vim.fn.stdpath("config"), "snapshots") .. "/v1",
+    -- snapshot = "v1",
 
     -- 最大并发数
     max_jobs = 16,
