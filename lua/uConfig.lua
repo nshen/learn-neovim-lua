@@ -159,16 +159,14 @@ local M = {
   },
 
   mkdnflow = {
-
     enable = true,
-
-    next_link = "mn",
-    prev_link = "mp",
-    next_heading = "mj",
-    prev_heading = "mk",
-    go_back = "<BS>",
-    follow_link = "m<CR>",
-    toggle_item = "mt",
+    next_link = "gn",
+    prev_link = "gp",
+    next_heading = "gj",
+    prev_heading = "gk",
+    go_back = "<C-o>",
+    follow_link = "gd",
+    toggle_item = "tt",
   },
 
   comment = {

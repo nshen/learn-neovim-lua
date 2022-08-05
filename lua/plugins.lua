@@ -158,6 +158,13 @@ packer.startup({
         vim.notify = require("notify")
       end,
     })
+    use({
+      "jakewvincent/mkdnflow.nvim",
+      ft = { "markdown" },
+      config = function()
+        require("plugin-config.mkdnflow")
+      end,
+    })
 
     if paccker_bootstrap then
       packer.sync()
