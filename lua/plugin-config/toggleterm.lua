@@ -61,7 +61,7 @@ local tc = Terminal:new({
 
 local M = {}
 
-M.toggleA = function()
+M.toggleA = function(cmd)
   if ta:is_open() then
     ta:close()
     return
@@ -69,6 +69,9 @@ M.toggleA = function()
   tb:close()
   tc:close()
   ta:open()
+  if cmd ~= nil then
+    ta:send(cmd)
+  end
 end
 
 M.toggleB = function()
