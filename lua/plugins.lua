@@ -48,6 +48,9 @@ packer.startup({
     use({
       "akinsho/bufferline.nvim",
       requires = { "kyazdani42/nvim-web-devicons", "moll/vim-bbye" },
+      config = function()
+        require("plugin-config.bufferline")
+      end,
     })
     -- lualine
     use({

@@ -128,6 +128,9 @@ local M = {
   },
 
   bufferLine = {
+
+    enable = true,
+
     prev = "<C-h>",
     next = "<C-l>",
     close = "<C-w>",
