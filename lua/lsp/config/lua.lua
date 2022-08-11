@@ -3,7 +3,15 @@ local runtime_path = vim.split(package.path, ";")
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
 
+local common = require("lsp.common-config")
+
 local opts = {
+  capabilities = common.capabilities,
+  flags = common.flags,
+  on_attach = function(client, bufnr)
+    common.disableFormat(client)
+    common.keyAttach(bufnr)
+  end,
   settings = {
     Lua = {
       runtime = {
@@ -27,13 +35,6 @@ local opts = {
       },
     },
   },
-  flags = {
-    debounce_text_changes = 150,
-  },
-  on_attach = function(client, bufnr)
-    require("lsp.common-config").disableFormat(client)
-    require("lsp.common-config").keyAttach(bufnr)
-  end,
 
   -- custom handler
   -- handlers = {
@@ -46,16 +47,9 @@ local opts = {
   -- },
 }
 
--- local capabilities = vim.lsp.protocol.make_client_capabilities()
--- capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
--- opts.capabilities = capabilities
-
--- 查看目录等信息
--- print(vim.inspect(server))
-
 return {
   on_setup = function(server)
-    opts = require("lua-dev").setup({ lspconfig = opts })
-    server.setup(opts)
+    local luadev = require("lua-dev").setup({ lspconfig = opts })
+    server.setup(luadev)
   end,
 }

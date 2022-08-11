@@ -1,6 +1,5 @@
 local opts = {
-  on_attach = function(client, bufnr)
-    require("lsp.common-config").disableFormat(client)
+  on_attach = function(_, bufnr)
     require("lsp.common-config").keyAttach(bufnr)
   end,
 }
