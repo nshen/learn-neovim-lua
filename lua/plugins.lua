@@ -66,11 +66,17 @@ packer.startup({
     -- telescope
     use({
       "nvim-telescope/telescope.nvim",
-      requires = { "nvim-lua/plenary.nvim" },
+      -- opt = true,
+      -- cmd = "Telescope",
+      requires = {
+        -- telescope extensions
+        { "LinArcX/telescope-env.nvim" },
+        { "nvim-telescope/telescope-ui-select.nvim" },
+      },
+      config = function()
+        require("plugin-config.telescope")
+      end,
     })
-    -- telescope extensions
-    use("LinArcX/telescope-env.nvim")
-    use("nvim-telescope/telescope-ui-select.nvim")
     -- dashboard-nvim
     use("glepnir/dashboard-nvim")
     -- project

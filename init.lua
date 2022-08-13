@@ -12,7 +12,6 @@ require("colorscheme")
 -- 自动命令
 require("autocmds")
 -- 插件配置
-require("plugin-config.telescope")
 require("plugin-config.dashboard")
 require("plugin-config.project")
 require("plugin-config.nvim-treesitter")
