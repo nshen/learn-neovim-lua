@@ -110,6 +110,14 @@ packer.startup({
       end,
     })
 
+    -- nvim-notify
+    use({
+      "rcarriga/nvim-notify",
+      config = function()
+        require("plugin-config.nvim-notify")
+      end,
+    })
+
     --------------------- LSP --------------------
     use({ "williamboman/nvim-lsp-installer" })
     -- Lspconfig
@@ -179,16 +187,6 @@ packer.startup({
     -- use("jbyuki/one-small-step-for-vimkind")
 
     use("j-hui/fidget.nvim")
-    use({
-      "rcarriga/nvim-notify",
-      config = function()
-        require("notify").setup({
-          stages = "static",
-          timeout = 3000,
-        })
-        vim.notify = require("notify")
-      end,
-    })
     use({
       "jakewvincent/mkdnflow.nvim",
       ft = { "markdown" },
