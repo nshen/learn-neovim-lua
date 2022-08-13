@@ -36,6 +36,9 @@ packer.startup({
     -- Packer 可以升级自己
     use("wbthomason/packer.nvim")
     -------------------------- plugins -------------------------------------------
+    -- use("lewis6991/impatient.nvim")
+    -- use("nathom/filetype.nvim")
+
     -- nvim-tree
     use({
       "kyazdani42/nvim-tree.lua",
@@ -87,7 +90,13 @@ packer.startup({
     })
 
     -- project
-    use("ahmedkhalf/project.nvim")
+    use({
+      "ahmedkhalf/project.nvim",
+      config = function()
+        require("plugin-config.project")
+      end,
+    })
+
     -- treesitter
     use({
       "nvim-treesitter/nvim-treesitter",
@@ -99,14 +108,56 @@ packer.startup({
         { "nvim-treesitter/nvim-treesitter-refactor" },
         { "nvim-treesitter/nvim-treesitter-textobjects" },
       },
+      config = function()
+        require("plugin-config.nvim-treesitter")
+      end,
     })
+
     -- indent-blankline
-    use("lukas-reineke/indent-blankline.nvim")
+    use({
+      "lukas-reineke/indent-blankline.nvim",
+      config = function()
+        require("plugin-config.indent-blankline")
+      end,
+    })
+
+    -- toggleterm
+    use({
+      "akinsho/toggleterm.nvim",
+      config = function()
+        require("plugin-config.toggleterm")
+      end,
+    })
+
+    -- surround
+    use({
+      "ur4ltz/surround.nvim",
+      config = function()
+        require("plugin-config.surround")
+      end,
+    })
+
     -- Comment
     use({
       "numToStr/Comment.nvim",
       config = function()
         require("plugin-config.comment")
+      end,
+    })
+
+    -- nvim-autopairs
+    use({
+      "windwp/nvim-autopairs",
+      config = function()
+        require("plugin-config.nvim-autopairs")
+      end,
+    })
+
+    -- fidget.nvim
+    use({
+      "j-hui/fidget.nvim",
+      config = function()
+        require("plugin-config.fidget")
       end,
     })
 
@@ -124,6 +175,16 @@ packer.startup({
       requires = "nvim-lua/plenary.nvim",
       config = function()
         require("plugin-config.todo-comments")
+      end,
+    })
+
+    -- mkdnflow.nvim
+    use({
+      "jakewvincent/mkdnflow.nvim",
+      ft = { "markdown" },
+      commit = "739b8b93530adbd5dfb2d3abff66752637442d41",
+      config = function()
+        require("plugin-config.mkdnflow")
       end,
     })
 
@@ -161,48 +222,48 @@ packer.startup({
     use("simrat39/rust-tools.nvim")
     --------------------- colorschemes --------------------
     -- tokyonight
-    use("folke/tokyonight.nvim")
+    use({ "folke/tokyonight.nvim" })
+
     -- OceanicNext
-    use("mhartington/oceanic-next")
+    use({ "mhartington/oceanic-next", event = "VimEnter" })
+
     -- gruvbox
     use({
       "ellisonleao/gruvbox.nvim",
       requires = { "rktjmp/lush.nvim" },
     })
+
     -- zephyr
     -- use("glepnir/zephyr-nvim")
+
     -- nord
-    use("shaunsingh/nord.nvim")
+    -- use("shaunsingh/nord.nvim")
+
     -- onedark
-    use("ful1e5/onedark.nvim")
+    -- use("ful1e5/onedark.nvim")
+
     -- nightfox
-    use("EdenEast/nightfox.nvim")
+    -- use("EdenEast/nightfox.nvim")
 
     -------------------------------------------------------
-    use({ "akinsho/toggleterm.nvim" })
-    -- surround
-    use("ur4ltz/surround.nvim")
-    -- nvim-autopairs
-    use("windwp/nvim-autopairs")
     -- git
     use({ "lewis6991/gitsigns.nvim" })
     -- vimspector
-    use("puremourning/vimspector")
+    use({
+      "puremourning/vimspector",
+      cmd = { "VimspectorInstall", "VimspectorUpdate" },
+      fn = { "vimspector#Launch()", "vimspector#ToggleBreakpoint", "vimspector#Continue" },
+      config = function()
+        require("dap.vimspector")
+      end,
+    })
     ----------------------------------------------
     use("mfussenegger/nvim-dap")
     use("theHamsta/nvim-dap-virtual-text")
     use("rcarriga/nvim-dap-ui")
     -- use("Pocco81/DAPInstall.nvim")
     -- use("jbyuki/one-small-step-for-vimkind")
-
-    use("j-hui/fidget.nvim")
-    use({
-      "jakewvincent/mkdnflow.nvim",
-      ft = { "markdown" },
-      config = function()
-        require("plugin-config.mkdnflow")
-      end,
-    })
+    --[[ use("dstein64/vim-startuptime") ]]
 
     if paccker_bootstrap then
       packer.sync()
@@ -232,15 +293,3 @@ packer.startup({
     -- },
   },
 })
-
--- 每次保存 plugins.lua 自动安装插件
--- move to autocmds.lua
--- pcall(
---   vim.cmd,
---   [[
--- augroup packer_user_config
--- autocmd!
--- autocmd BufWritePost plugins.lua source <afile> | PackerSync
--- augroup end
--- ]]
--- )

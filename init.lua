@@ -11,14 +11,7 @@ require("plugins")
 require("colorscheme")
 -- 自动命令
 require("autocmds")
--- 插件配置
-require("plugin-config.project")
-require("plugin-config.nvim-treesitter")
-require("plugin-config.indent-blankline")
-require("plugin-config.toggleterm")
-require("plugin-config.surround")
-require("plugin-config.nvim-autopairs")
-require("plugin-config.fidget")
+
 -- 内置LSP
 require("lsp.setup")
 require("lsp.ui")
