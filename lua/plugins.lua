@@ -77,8 +77,15 @@ packer.startup({
         require("plugin-config.telescope")
       end,
     })
+
     -- dashboard-nvim
-    use("glepnir/dashboard-nvim")
+    use({
+      "glepnir/dashboard-nvim",
+      config = function()
+        require("plugin-config.dashboard")
+      end,
+    })
+
     -- project
     use("ahmedkhalf/project.nvim")
     -- treesitter
