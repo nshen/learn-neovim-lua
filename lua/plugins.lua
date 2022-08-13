@@ -118,6 +118,15 @@ packer.startup({
       end,
     })
 
+    -- todo-comments.nvim
+    use({
+      "folke/todo-comments.nvim",
+      requires = "nvim-lua/plenary.nvim",
+      config = function()
+        require("plugin-config.todo-comments")
+      end,
+    })
+
     --------------------- LSP --------------------
     use({ "williamboman/nvim-lsp-installer" })
     -- Lspconfig
