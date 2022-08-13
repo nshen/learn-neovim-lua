@@ -9,27 +9,19 @@ local keys = uConfig.keys
 --   term_mode = "t",
 --   command_mode = "c",
 
--- leader key 为空
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+-- 本地变量
+local map = vim.api.nvim_set_keymap
 
 local opt = {
   noremap = true,
   silent = true,
 }
+--------------------------------------------------------------------------
 
--- 本地变量
-local map = vim.api.nvim_set_keymap
-local opts_default = {
-  remap = false,
-  silent = true,
-}
+-- leader key 为空
+vim.g.mapleader = keys.leader_key
+vim.g.maplocalleader = keys.leader_key
 
--- $跳到行尾不带空格 (交换$ 和 g_)
-map("v", "$", "g_", opt)
-map("v", "g_", "$", opt)
-map("n", "$", "g_", opt)
-map("n", "g_", "$", opt)
 local opts_remap = {
   remap = true,
   silent = true,
@@ -40,151 +32,130 @@ local opts_expr = {
   silent = true,
 }
 
-local keymap = function(mode, lhs, rhs, opts)
-  if not (type(lhs) == "string") then
-    return
-  end
-  opts = opts or opts_default
-  vim.keymap.set(mode, lhs, rhs, opts)
-end
-
 -- 命令行下 Ctrl+j/k  上一个下一个
-map("c", "<C-j>", "<C-n>", { noremap = false })
-map("c", "<C-k>", "<C-p>", { noremap = false })
+keymap("c", keys.c_next_item, "<C-n>", opts_remap)
+keymap("c", keys.c_prev_item, "<C-p>", opts_remap)
 
-map("n", "<leader>w", ":w<CR>", opt)
-map("n", "<leader>wq", ":wqa!<CR>", opt)
+-- save && quit
+keymap("n", keys.n_save, ":w<CR>")
+keymap("n", keys.n_save_quit, ":wq<CR>")
+keymap("n", keys.n_save_all, ":wa<CR>")
+keymap("n", keys.n_save_all_quit, ":wqa<CR>")
+keymap("n", keys.n_force_quit, ":qa!<CR>")
 
--- fix :set wrap
-vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
-vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+-- $跳到行尾不带空格 (交换$ 和 g_)
+keymap({ "v", "n" }, "$", "g_")
+keymap({ "v", "n" }, "g_", "$")
 
 -- 上下滚动浏览
-map("n", "<C-j>", "5j", opt)
-map("n", "<C-k>", "5k", opt)
-map("v", "<C-j>", "5j", opt)
-map("v", "<C-k>", "5k", opt)
+keymap({ "n", "v" }, keys.n_v_5j, "5j")
+keymap({ "n", "v" }, keys.n_v_5k, "5k")
+
 -- ctrl u / ctrl + d  只移动9行，默认移动半屏
-map("n", "<C-u>", "10k", opt)
-map("n", "<C-d>", "10j", opt)
+-- keymap({ "n", "v" }, keys.n_v_10j, "10j")
+-- keymap({ "n", "v" }, keys.n_v_10k, "10k")
 
 -- magic search
-map("n", "/", "/\\v", { noremap = true, silent = false })
-map("v", "/", "/\\v", { noremap = true, silent = false })
+if uConfig.enable_magic_search then
+  keymap({ "n", "v" }, "/", "/\\v", {
+    remap = false,
+    silent = false,
+  })
+else
+  keymap({ "n", "v" }, "/", "/", {
+    remap = false,
+    silent = false,
+  })
+end
+
+-------------------- fix ------------------------------
+
+-- fix :set wrap
+keymap("n", "j", "v:count == 0 ? 'gj' : 'j'", opts_expr)
+keymap("n", "k", "v:count == 0 ? 'gk' : 'k'", opts_expr)
 
 -- visual模式下缩进代码
-map("v", "<", "<gv", opt)
-map("v", ">", ">gv", opt)
+keymap("v", "<", "<gv")
+keymap("v", ">", ">gv")
+
 -- 上下移动选中文本
-map("v", "J", ":move '>+1<CR>gv-gv", opt)
-map("v", "K", ":move '<-2<CR>gv-gv", opt)
+keymap("x", "J", ":move '>+1<CR>gv-gv")
+keymap("x", "K", ":move '<-2<CR>gv-gv")
 
 -- 在visual mode 里粘贴不要复制
-map("v", "p", '"_dP', opt)
-
--- 退出
-map("n", "qq", ":q!<CR>", opt)
-map("n", "<leader>q", ":qa!<CR>", opt)
-
--- insert 模式下，跳到行首行尾
--- map("i", "<C-h>", "<ESC>I", opt)
--- map("i", "<C-l>", "<ESC>A", opt)
+keymap("x", "p", '"_dP')
 
 ------------------------------------------------------------------
--- windows 分屏快捷键
+-- s_windows 分屏快捷键
 ------------------------------------------------------------------
--- 取消 s 默认功能
-map("n", "s", "", opt)
-map("n", "sv", ":vsp<CR>", opt)
-map("n", "sh", ":sp<CR>", opt)
--- 关闭当前
-map("n", "sc", "<C-w>c", opt)
--- 关闭其他
-map("n", "so", "<C-w>o", opt) -- close others
--- alt + hjkl  窗口之间跳转
-map("n", "<A-h>", "<C-w>h", opt)
-map("n", "<A-j>", "<C-w>j", opt)
-map("n", "<A-k>", "<C-w>k", opt)
-map("n", "<A-l>", "<C-w>l", opt)
--- <leader> + hjkl 窗口之间跳转
-map("n", "<leader>h", "<C-w>h", opt)
-map("n", "<leader>j", "<C-w>j", opt)
-map("n", "<leader>k", "<C-w>k", opt)
-map("n", "<leader>l", "<C-w>l", opt)
--- 左右比例控制
-map("n", "<C-Left>", ":vertical resize -2<CR>", opt)
-map("n", "<C-Right>", ":vertical resize +2<CR>", opt)
-map("n", "s,", ":vertical resize -10<CR>", opt)
-map("n", "s.", ":vertical resize +10<CR>", opt)
--- 上下比例
-map("n", "sj", ":resize +10<CR>", opt)
-map("n", "sk", ":resize -10<CR>", opt)
-map("n", "<C-Down>", ":resize +2<CR>", opt)
-map("n", "<C-Up>", ":resize -2<CR>", opt)
--- 相等比例
-map("n", "s=", "<C-w>=", opt)
+if keys.s_windows ~= nil and keys.s_windows.enable then
+  local skey = keys.s_windows
+  -- 取消 s 默认功能
+  keymap("n", "s", "")
+  keymap("n", skey.split_vertically, ":vsp<CR>")
+  keymap("n", skey.split_horizontally, ":sp<CR>")
+  -- 关闭当前
+  keymap("n", skey.close, "<C-w>c")
+  -- 关闭其他
+  keymap("n", skey.close_others, "<C-w>o") -- close others
+  -- alt + hjkl  窗口之间跳转
+  keymap("n", skey.jump_left, "<C-w>h")
+  keymap("n", skey.jump_down, "<C-w>j")
+  keymap("n", skey.jump_up, "<C-w>k")
+  keymap("n", skey.jump_right, "<C-w>l")
+  -- 比例控制
+  keymap("n", skey.width_decrease, ":vertical resize -2<CR>")
+  keymap("n", skey.width_increase, ":vertical resize +2<CR>")
+  keymap("n", skey.height_decrease, ":vertical resize -2<CR>")
+  keymap("n", skey.height_increase, ":vertical resize +2<CR>")
+  keymap("n", skey.size_equal, "<C-w>=")
+end
 
--- Terminal相关
-map("n", "st", ":sp | terminal<CR>", opt)
-map("n", "stv", ":vsp | terminal<CR>", opt)
+-- treesitter 折叠
+keymap("n", keys.fold.open, ":foldopen<CR>")
+keymap("n", keys.fold.close, ":foldclose<CR>")
+
+keymap("n", keys.format, "<cmd>lua vim.lsp.buf.formatting()<CR>")
+
 -- Esc 回 Normal 模式
-map("t", "<Esc>", "<C-\\><C-n>", opt)
-map("t", "<A-h>", [[ <C-\><C-N><C-w>h ]], opt)
-map("t", "<A-j>", [[ <C-\><C-N><C-w>j ]], opt)
-map("t", "<A-k>", [[ <C-\><C-N><C-w>k ]], opt)
-map("t", "<A-l>", [[ <C-\><C-N><C-w>l ]], opt)
-map("t", "<leader>h", [[ <C-\><C-N><C-w>h ]], opt)
-map("t", "<leader>j", [[ <C-\><C-N><C-w>j ]], opt)
-map("t", "<leader>k", [[ <C-\><C-N><C-w>k ]], opt)
-map("t", "<leader>l", [[ <C-\><C-N><C-w>l ]], opt)
+keymap("t", keys.terminal_to_normal, "<C-\\><C-n>")
+-- Terminal相关
+-- map("n", "st", ":sp | terminal<CR>", opt)
+-- map("n", "stv", ":vsp | terminal<CR>", opt)
+-- map("t", "<A-h>", [[ <C-\><C-N><C-w>h ]], opt)
+-- map("t", "<A-j>", [[ <C-\><C-N><C-w>j ]], opt)
+-- map("t", "<A-k>", [[ <C-\><C-N><C-w>k ]], opt)
+-- map("t", "<A-l>", [[ <C-\><C-N><C-w>l ]], opt)
+-- map("t", "<leader>h", [[ <C-\><C-N><C-w>h ]], opt)
+-- map("t", "<leader>j", [[ <C-\><C-N><C-w>j ]], opt)
+-- map("t", "<leader>k", [[ <C-\><C-N><C-w>k ]], opt)
+-- map("t", "<leader>l", [[ <C-\><C-N><C-w>l ]], opt)
+
 --------------------------------------------------------------------
 -- 插件快捷键
 local pluginKeys = {}
 
--- treesitter 折叠
-map("n", "zz", ":foldclose<CR>", opt)
-map("n", "Z", ":foldopen<CR>", opt)
-
 -- Telescope
-map("n", "<C-p>", ":Telescope find_files<CR>", opt)
-map("n", "<C-f>", ":Telescope live_grep<CR>", opt)
+local telescope = uConfig.telescope
+keymap("n", telescope.find_files, ":Telescope find_files<CR>")
+keymap("n", telescope.live_grep, ":Telescope live_grep<CR>")
 -- Telescope 列表中 插入模式快捷键
 pluginKeys.telescopeList = {
   i = {
     -- 上下移动
-    ["<C-j>"] = "move_selection_next",
-    ["<C-k>"] = "move_selection_previous",
-    ["<C-n>"] = "move_selection_next",
-    ["<C-p>"] = "move_selection_previous",
+    [telescope.move_selection_next] = "move_selection_next",
+    [telescope.move_selection_previous] = "move_selection_previous",
     -- 历史记录
-    ["<Down>"] = "cycle_history_next",
-    ["<Up>"] = "cycle_history_prev",
+    [telescope.cycle_history_next] = "cycle_history_next",
+    [telescope.cycle_history_prev] = "cycle_history_prev",
     -- 关闭窗口
     -- ["<esc>"] = actions.close,
-    ["<C-c>"] = "close",
+    [telescope.close] = "close",
     -- 预览窗口上下滚动
-    ["<C-u>"] = "preview_scrolling_up",
-    ["<C-d>"] = "preview_scrolling_down",
+    [telescope.preview_scrolling_up] = "preview_scrolling_up",
+    [telescope.preview_scrolling_down] = "preview_scrolling_down",
   },
 }
-
--- 代码注释插件
--- see ./lua/plugin-config/comment.lua
-pluginKeys.comment = {
-  -- Normal 模式快捷键
-  toggler = {
-    line = "gcc", -- 行注释
-    block = "gbc", -- 块注释
-  },
-  -- Visual 模式
-  opleader = {
-    line = "gc",
-    bock = "gb",
-  },
-}
--- ctrl + /
-map("n", "<C-_>", "gcc", { noremap = false })
-map("v", "<C-_>", "gcc", { noremap = false })
 
 -- lsp 回调函数快捷键设置
 local lsp = uConfig.lsp
@@ -309,42 +280,6 @@ pluginKeys.mapVimspector = function()
   map("n", "<leader>dl", "<Plug>VimspectorStepInto", opt)
 end
 
--- nvim-cmp 自动补全
-pluginKeys.cmp = function(cmp)
-  local feedkey = function(key, mode)
-    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
-  end
-  local has_words_before = function()
-    local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-    return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
-  end
-
-  return {
-    -- 上一个
-    ["<C-k>"] = cmp.mapping.select_prev_item(),
-    -- 下一个
-    ["<C-j>"] = cmp.mapping.select_next_item(),
-    -- 出现补全
-    ["<A-.>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
-    -- 取消
-    ["<A-,>"] = cmp.mapping({
-      i = cmp.mapping.abort(),
-      c = cmp.mapping.close(),
-    }),
-    -- 确认
-    -- Accept currently selected item. If none selected, `select` first item.
-    -- Set `select` to `false` to only confirm explicitly selected items.
-    ["<CR>"] = cmp.mapping.confirm({
-      select = true,
-      behavior = cmp.ConfirmBehavior.Replace,
-    }),
-    -- ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
-    -- 如果窗口内容太多，可以滚动
-    ["<C-u>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
-    ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
-  }
-end
-
 -- 自定义 toggleterm 3个不同类型的命令行窗口
 -- <leader>ta 浮动
 -- <leader>tb 右侧
@@ -353,6 +288,9 @@ end
 -- <leader>tg lazygit
 pluginKeys.mapToggleTerm = function(toggleterm)
   vim.keymap.set({ "n", "t" }, "<leader>ta", toggleterm.toggleA)
+  vim.keymap.set({ "n", "t" }, "<leader>tj", function()
+    toggleterm.toggleA("pnpm test")
+  end)
   vim.keymap.set({ "n", "t" }, "<leader>tb", toggleterm.toggleB)
   vim.keymap.set({ "n", "t" }, "<leader>tc", toggleterm.toggleC)
   vim.keymap.set({ "n", "t" }, "<leader>tg", toggleterm.toggleG)
@@ -377,7 +315,9 @@ pluginKeys.gitsigns_on_attach = function(bufnr)
       gs.next_hunk()
     end)
     return "<Ignore>"
-  end, { expr = true })
+  end, {
+    expr = true,
+  })
 
   map("n", "<leader>gk", function()
     if vim.wo.diff then
@@ -387,7 +327,9 @@ pluginKeys.gitsigns_on_attach = function(bufnr)
       gs.prev_hunk()
     end)
     return "<Ignore>"
-  end, { expr = true })
+  end, {
+    expr = true,
+  })
 
   map({ "n", "v" }, "<leader>gs", ":Gitsigns stage_hunk<CR>")
   map("n", "<leader>gS", gs.stage_buffer)
@@ -396,7 +338,9 @@ pluginKeys.gitsigns_on_attach = function(bufnr)
   map("n", "<leader>gR", gs.reset_buffer)
   map("n", "<leader>gp", gs.preview_hunk)
   map("n", "<leader>gb", function()
-    gs.blame_line({ full = true })
+    gs.blame_line({
+      full = true,
+    })
   end)
   map("n", "<leader>gd", gs.diffthis)
   map("n", "<leader>gD", function()
