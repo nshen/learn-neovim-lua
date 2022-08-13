@@ -83,6 +83,14 @@ packer.startup({
     })
     -- indent-blankline
     use("lukas-reineke/indent-blankline.nvim")
+    -- Comment
+    use({
+      "numToStr/Comment.nvim",
+      config = function()
+        require("plugin-config.comment")
+      end,
+    })
+
     --------------------- LSP --------------------
     use({ "williamboman/nvim-lsp-installer" })
     -- Lspconfig
@@ -138,8 +146,6 @@ packer.startup({
     use({ "akinsho/toggleterm.nvim" })
     -- surround
     use("ur4ltz/surround.nvim")
-    -- Comment
-    use("numToStr/Comment.nvim")
     -- nvim-autopairs
     use("windwp/nvim-autopairs")
     -- git

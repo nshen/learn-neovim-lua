@@ -173,6 +173,7 @@ local M = {
   },
 
   comment = {
+    enable = true,
     -- Normal 模式快捷键
     toggler = {
       line = "gcc", -- 行注释
