@@ -44,6 +44,7 @@ packer.startup({
         require("plugin-config.nvim-tree")
       end,
     })
+
     -- bufferline
     use({
       "akinsho/bufferline.nvim",
@@ -52,11 +53,16 @@ packer.startup({
         require("plugin-config.bufferline")
       end,
     })
+
     -- lualine
     use({
       "nvim-lualine/lualine.nvim",
       requires = { "kyazdani42/nvim-web-devicons" },
+      config = function()
+        require("plugin-config.lualine")
+      end,
     })
+
     -- telescope
     use({
       "nvim-telescope/telescope.nvim",
