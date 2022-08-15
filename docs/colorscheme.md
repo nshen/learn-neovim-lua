@@ -85,7 +85,7 @@ colorscheme nord
 修改 `lua/plugins.lua` 增加
 
 ```lua
-use 'glepnir/zephyr-nvim'`
+use 'glepnir/zephyr-nvim'
 ```
 
 `:wq` 保存退出，重新打开后运行 `:PackerSync`
