@@ -96,7 +96,7 @@ end)
 
 我配置文件中开启了全部 4 个模块，下边会逐个解释
 
-创建 `lua/plugin-config/treesitter.lua` 文件
+创建 `lua/plugin-config/nvim-treesitter.lua` 文件
 
 添加配置
 
