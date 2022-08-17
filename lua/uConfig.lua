@@ -143,6 +143,8 @@ local M = {
 
   telescope = {
 
+    enable = true,
+
     find_files = "<C-p>",
     live_grep = "<C-f>",
 

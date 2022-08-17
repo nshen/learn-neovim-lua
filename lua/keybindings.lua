@@ -135,28 +135,6 @@ keymap("t", keys.terminal_to_normal, "<C-\\><C-n>")
 -- 插件快捷键
 local pluginKeys = {}
 
--- Telescope
-local telescope = uConfig.telescope
-keymap("n", telescope.find_files, ":Telescope find_files<CR>")
-keymap("n", telescope.live_grep, ":Telescope live_grep<CR>")
--- Telescope 列表中 插入模式快捷键
-pluginKeys.telescopeList = {
-  i = {
-    -- 上下移动
-    [telescope.move_selection_next] = "move_selection_next",
-    [telescope.move_selection_previous] = "move_selection_previous",
-    -- 历史记录
-    [telescope.cycle_history_next] = "cycle_history_next",
-    [telescope.cycle_history_prev] = "cycle_history_prev",
-    -- 关闭窗口
-    -- ["<esc>"] = actions.close,
-    [telescope.close] = "close",
-    -- 预览窗口上下滚动
-    [telescope.preview_scrolling_up] = "preview_scrolling_up",
-    [telescope.preview_scrolling_down] = "preview_scrolling_down",
-  },
-}
-
 -- lsp 回调函数快捷键设置
 local lsp = uConfig.lsp
 pluginKeys.mapLSP = function(mapbuf)
