@@ -94,13 +94,13 @@
     "import destructing": {
         "key": "importDestructing",
         "prefix": "imd",
-        "body": ["import { ${2:second} } from '${1:first}'"],
+        "body": ["import { ${2:second} } from '${1:first}';"],
         "scope": "typescript,typescriptreact,javascript,javascriptreact"
     },
     "import default": {
         "key": "import",
         "prefix": "imp",
-        "body": ["import ${2:second} from '${1:first}'"],
+        "body": ["import ${2:second} from '${1:first}';"],
         "scope": "typescript,typescriptreact,javascript,javascriptreact"
     },
     "import react": {
