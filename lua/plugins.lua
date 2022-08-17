@@ -188,6 +188,13 @@ packer.startup({
       end,
     })
 
+    use({
+      "jbyuki/venn.nvim",
+      config = function()
+        require("plugin-config.venn")
+      end,
+    })
+
     --------------------- LSP --------------------
     use({ "williamboman/nvim-lsp-installer" })
     -- Lspconfig

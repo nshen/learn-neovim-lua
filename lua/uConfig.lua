@@ -187,6 +187,15 @@ local M = {
     },
   },
 
+  venn = {
+    -- toggle keymappings for venn using <leader>v
+    enable = true,
+    -- venn.nvim: enable or disable keymappings
+    toggle = "<leader>v",
+    -- draw a box by pressing "f" with visual selection
+    draw_box = "f",
+  },
+
   lsp = {
     rename = "<leader>rn",
     code_action = "<leader>ca",
