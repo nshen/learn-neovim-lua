@@ -79,12 +79,6 @@ local M = {
 
     -- proxy
     -- im-select
-    -- plugins
-
-    -- nvimTree = {
-    --   enable = true,
-    --
-    -- },
   },
 
   enable_magic_search = true,
@@ -187,6 +181,17 @@ local M = {
       line = "gc",
       bock = "gb",
     },
+  },
+
+  toggleterm = {
+    enable = true,
+
+    -- <leader>ta 浮动命令行窗口
+    toggle_window_A = "<leader>ta",
+    -- <leader>tb 右侧命令行窗口
+    toggle_window_B = "<leader>tb",
+    -- <leader>tc 下方命令行窗口
+    toggle_window_C = "<leader>tc",
   },
 
   venn = {

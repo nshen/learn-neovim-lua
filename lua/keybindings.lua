@@ -258,22 +258,6 @@ pluginKeys.mapVimspector = function()
   map("n", "<leader>dl", "<Plug>VimspectorStepInto", opt)
 end
 
--- 自定义 toggleterm 3个不同类型的命令行窗口
--- <leader>ta 浮动
--- <leader>tb 右侧
--- <leader>tc 下方
--- 特殊lazygit 窗口，需要安装lazygit
--- <leader>tg lazygit
-pluginKeys.mapToggleTerm = function(toggleterm)
-  vim.keymap.set({ "n", "t" }, "<leader>ta", toggleterm.toggleA)
-  vim.keymap.set({ "n", "t" }, "<leader>tj", function()
-    toggleterm.toggleA("pnpm test")
-  end)
-  vim.keymap.set({ "n", "t" }, "<leader>tb", toggleterm.toggleB)
-  vim.keymap.set({ "n", "t" }, "<leader>tc", toggleterm.toggleC)
-  vim.keymap.set({ "n", "t" }, "<leader>tg", toggleterm.toggleG)
-end
-
 -- gitsigns
 pluginKeys.gitsigns_on_attach = function(bufnr)
   local gs = package.loaded.gitsigns

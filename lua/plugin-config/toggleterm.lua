@@ -1,4 +1,10 @@
----@diagnostic disable: missing-parameter
+local uConfig = require("uConfig")
+local uToggleTerm = uConfig.toggleterm
+
+if uToggleTerm == nil or not uToggleTerm.enable then
+  return
+end
+
 local status, toggleterm = pcall(require, "toggleterm")
 if not status then
   vim.notify("没有找到 toggleterm")
@@ -98,4 +104,13 @@ M.toggleG = function()
   lazygit:toggle()
 end
 
-require("keybindings").mapToggleTerm(M)
+vim.keymap.set({ "n", "t" }, uToggleTerm.toggle_window_A, M.toggleA)
+vim.keymap.set({ "n", "t" }, uToggleTerm.toggle_window_B, M.toggleB)
+vim.keymap.set({ "n", "t" }, uToggleTerm.toggle_window_C, M.toggleC)
+
+--[[ 
+vim.keymap.set({ "n", "t" }, "<leader>tj", function()
+  M.toggleA("pnpm test")
+end)
+vim.keymap.set({ "n", "t" }, "<leader>tg", M.toggleG)
+]]
