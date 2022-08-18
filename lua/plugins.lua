@@ -188,10 +188,19 @@ packer.startup({
       end,
     })
 
+    -- venn 画图
     use({
       "jbyuki/venn.nvim",
       config = function()
         require("plugin-config.venn")
+      end,
+    })
+
+    -- zen mode
+    use({
+      "folke/zen-mode.nvim",
+      config = function()
+        require("plugin-config.zen-mode")
       end,
     })
 
@@ -232,13 +241,13 @@ packer.startup({
     use({ "folke/tokyonight.nvim" })
 
     -- OceanicNext
-    use({ "mhartington/oceanic-next", event = "VimEnter" })
+    -- use({ "mhartington/oceanic-next", event = "VimEnter" })
 
     -- gruvbox
-    use({
-      "ellisonleao/gruvbox.nvim",
-      requires = { "rktjmp/lush.nvim" },
-    })
+    -- use({
+    --   "ellisonleao/gruvbox.nvim",
+    --   requires = { "rktjmp/lush.nvim" },
+    -- })
 
     -- zephyr
     -- use("glepnir/zephyr-nvim")

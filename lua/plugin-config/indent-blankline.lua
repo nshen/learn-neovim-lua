@@ -36,6 +36,7 @@ indent_blankline.setup({
     "lsp-installer",
     "lspinfo",
     "toggleterm",
+    "text",
   },
   -- 竖线样式
   -- char = '¦'

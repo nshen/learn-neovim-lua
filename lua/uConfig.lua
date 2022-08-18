@@ -203,6 +203,11 @@ local M = {
     draw_box = "f",
   },
 
+  zen = {
+    enable = true,
+    toggle = "<leader>z",
+  },
+
   lsp = {
     rename = "<leader>rn",
     code_action = "<leader>ca",
