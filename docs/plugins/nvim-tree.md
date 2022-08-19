@@ -50,7 +50,7 @@ require'nvim-tree'.setup {
 
 `nvim-tree` 有很多配置项，但我觉得默认已经很完美了。
 
-这里使用了 `nvim-tree.lua` 的默认配置，我只把 git 状态图标关闭了，打开自动关闭
+这里使用了 `nvim-tree.lua` 的默认配置，我只把 git 状态图标关闭了
 
 [nvim-tree.nvim](https://github.com/kyazdani42/nvim-tree.lua) 主页有更多详细设置选项介绍
 
