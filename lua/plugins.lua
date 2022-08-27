@@ -130,10 +130,18 @@ packer.startup({
     })
 
     -- surround
+    -- use({
+    --   "ur4ltz/surround.nvim",
+    --   config = function()
+    --     require("plugin-config.surround")
+    --   end,
+    -- })
+
+    -- nvim-surround
     use({
-      "ur4ltz/surround.nvim",
+      "kylechui/nvim-surround",
       config = function()
-        require("plugin-config.surround")
+        require("plugin-config.nvim-surround")
       end,
     })
 
