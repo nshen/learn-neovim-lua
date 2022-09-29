@@ -31,6 +31,7 @@ null_ls.setup({
         "json",
         "yaml",
         "graphql",
+        "markdown",
       },
       timeout = 10000,
       prefer_local = "node_modules/.bin",

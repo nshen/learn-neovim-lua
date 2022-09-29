@@ -213,7 +213,9 @@ packer.startup({
     })
 
     --------------------- LSP --------------------
-    use({ "williamboman/nvim-lsp-installer" })
+    -- installer
+    use({ "williamboman/mason.nvim" })
+    use({ "williamboman/mason-lspconfig.nvim" })
     -- Lspconfig
     use({ "neovim/nvim-lspconfig" })
     -- 补全引擎
