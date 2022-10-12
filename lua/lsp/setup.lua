@@ -27,6 +27,7 @@ require("mason-lspconfig").setup({
     "rust_analyzer",
     "taplo",
     "yamlls",
+    "gopls",
   },
 })
 
@@ -50,6 +51,7 @@ local servers = {
   tailwindcss = require("lsp.config.tailwindcss"),
   rust_analyzer = require("lsp.config.rust"),
   taplo = require("lsp.config.taplo"), -- toml
+  gopls = require("lsp.config.gopls"),
   -- remark_ls = require("lsp.config.markdown"),
 }
 
