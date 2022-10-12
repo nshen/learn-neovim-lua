@@ -105,6 +105,7 @@ local list_keys = { -- 打开文件或文件夹
 }
 
 nvim_tree.setup({
+  open_on_setup = true,
   -- 完全禁止内置netrw
   disable_netrw = true,
   -- 不显示 git 状态图标
