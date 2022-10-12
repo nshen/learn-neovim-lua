@@ -19,11 +19,11 @@ autocmd("BufEnter", {
 -- https://github.com/daipeihust/im-select
 autocmd("InsertLeave", {
   group = myAutoGroup,
-  callback = require("utils.im-select").macInsertLeave,
+  callback = require("utils.im-select").insertLeave,
 })
 autocmd("InsertEnter", {
   group = myAutoGroup,
-  callback = require("utils.im-select").macInsertEnter,
+  callback = require("utils.im-select").insertEnter,
 })
 
 -- 进入Terminal 自动进入插入模式
