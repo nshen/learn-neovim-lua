@@ -39,6 +39,13 @@ packer.startup({
     -- use("lewis6991/impatient.nvim")
     -- use("nathom/filetype.nvim")
 
+    -- nvim-notify
+    use({
+      "rcarriga/nvim-notify",
+      config = function()
+        require("plugin-config.nvim-notify")
+      end,
+    })
     -- nvim-tree
     use({
       "kyazdani42/nvim-tree.lua",
@@ -169,14 +176,6 @@ packer.startup({
       end,
     })
 
-    -- nvim-notify
-    use({
-      "rcarriga/nvim-notify",
-      config = function()
-        require("plugin-config.nvim-notify")
-      end,
-    })
-
     -- todo-comments.nvim
     use({
       "folke/todo-comments.nvim",
@@ -211,7 +210,6 @@ packer.startup({
         require("plugin-config.zen-mode")
       end,
     })
-
     --------------------- LSP --------------------
     -- installer
     use({ "williamboman/mason.nvim" })
@@ -292,6 +290,25 @@ packer.startup({
     use("mfussenegger/nvim-dap")
     use("theHamsta/nvim-dap-virtual-text")
     use("rcarriga/nvim-dap-ui")
+
+    --[[ not work
+
+      use({
+        "mxsdev/nvim-dap-vscode-js",
+        requires = { "mfussenegger/nvim-dap" },
+        config = function()
+          require("dap.nvim-dap.vscode-js")
+        end,
+      })
+      use({
+        "microsoft/vscode-js-debug",
+        opt = true,
+        -- insall https://github.com/microsoft/vscode-js-debug
+        run = "npm install --legacy-peer-deps && npm run compile",
+      })
+
+    --]]
+
     -- use("Pocco81/DAPInstall.nvim")
     -- use("jbyuki/one-small-step-for-vimkind")
     --[[ use("dstein64/vim-startuptime") ]]
