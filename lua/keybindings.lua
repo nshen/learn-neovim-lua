@@ -178,7 +178,12 @@ pluginKeys.mapLSP = function(mapbuf)
     "<cmd>lua require'telescope.builtin'.lsp_references(require('telescope.themes').get_ivy())<CR>"
   )
 
-  mapbuf("n", lsp.format, "<cmd>lua vim.lsp.buf.formatting()<CR>")
+  if vim.fn.has("nvim-0.8") == 1 then
+    mapbuf("n", lsp.format, "<cmd>lua vim.lsp.buf.format({ async = true })<CR>")
+  else
+    mapbuf("n", lsp.format, "<cmd>lua vim.lsp.buf.formatting()<CR>")
+  end
+
   --[[
   Lspsaga 替换 gp, gj, gk
   mapbuf("n", "gp", "<cmd>lua vim.diagnostic.open_float()<CR>", opt)
