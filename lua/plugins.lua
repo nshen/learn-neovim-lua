@@ -239,7 +239,7 @@ packer.startup({
     -- TypeScript 增强
     use({ "jose-elias-alvarez/nvim-lsp-ts-utils", requires = "nvim-lua/plenary.nvim" })
     -- Lua 增强
-    use("folke/lua-dev.nvim")
+    use("folke/neodev.nvim")
     -- JSON 增强
     use("b0o/schemastore.nvim")
     -- Rust 增强
