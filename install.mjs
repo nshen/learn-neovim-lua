@@ -86,7 +86,7 @@ blue("");
 blue("开始下载全新配置，请稍后...");
 
 // red(await $`pwd`);
-await $`git clone https://github.com/nshen/learn-neovim-lua ${nvimDir}`;
+await $`git clone --branch v2 https://github.com/nshen/learn-neovim-lua ${nvimDir}`;
 
 blue("");
 green("下载成功");
