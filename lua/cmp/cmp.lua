@@ -1,10 +1,20 @@
 -- https://github.com/neovim/nvim-lspconfig/wiki/Autocompletion
 -- https://github.com/hrsh7th/nvim-cmp
 -- https://github.com/onsails/lspkind-nvim
+local status, cmp = pcall(require, "cmp")
+if not status then
+  return
+end
 
-local cmp = require("cmp")
-local luasnip = require("luasnip")
-local config = require("uConfig")
+local status, luasnip = pcall(require, "luasnip")
+if not status then
+  return
+end
+
+local status, config = pcall(require, "uConfig")
+if not status then
+  return
+end
 
 local has_words_before = function()
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -53,11 +63,26 @@ cmp.setup({
   mapping = mapping,
   -- 来源
   sources = cmp.config.sources({
-    { name = "luasnip", group_index = 1 },
-    { name = "nvim_lsp", group_index = 1 },
-    { name = "nvim_lsp_signature_help", group_index = 1 },
-    { name = "buffer", group_index = 2 },
-    { name = "path", group_index = 2 },
+    {
+      name = "luasnip",
+      group_index = 1,
+    },
+    {
+      name = "nvim_lsp",
+      group_index = 1,
+    },
+    {
+      name = "nvim_lsp_signature_help",
+      group_index = 1,
+    },
+    {
+      name = "buffer",
+      group_index = 2,
+    },
+    {
+      name = "path",
+      group_index = 2,
+    },
   }),
 
   -- 使用lspkind-nvim显示类型图标
@@ -67,27 +92,29 @@ cmp.setup({
 -- Use buffer source for `/`.
 cmp.setup.cmdline("/", {
   mapping = cmp.mapping.preset.cmdline(),
-  sources = {
-    { name = "buffer" },
-  },
+  sources = { {
+    name = "buffer",
+  } },
 })
 
 -- Use cmdline & path source for ':'.
 cmp.setup.cmdline(":", {
   mapping = cmp.mapping.preset.cmdline(),
-  sources = cmp.config.sources({
-    { name = "path" },
-  }, {
-    { name = "cmdline" },
-  }),
+  sources = cmp.config.sources({ {
+    name = "path",
+  } }, { {
+    name = "cmdline",
+  } }),
 })
 
 cmp.setup.filetype({ "markdown", "help" }, {
-  sources = {
-    { name = "luasnip" },
-    { name = "buffer" },
-    { name = "path" },
-  },
+  sources = { {
+    name = "luasnip",
+  }, {
+    name = "buffer",
+  }, {
+    name = "path",
+  } },
 })
 
 require("cmp.luasnip")

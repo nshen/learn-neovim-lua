@@ -1,10 +1,25 @@
-local ls = require("luasnip")
-local config = require("uConfig")
-local types = require("luasnip.util.types")
+local status, ls = pcall(require, "luasnip")
+if not status then
+  return
+end
+
+local status, config = pcall(require, "uConfig")
+if not status then
+  return
+end
+
+local status, types = pcall(require, "luasnip.util.types")
+if not status then
+  return
+end
 
 -- custom snippets
-require("luasnip.loaders.from_lua").load({ paths = config.config_path .. "/lua/cmp/snippets/lua" })
-require("luasnip.loaders.from_vscode").lazy_load({ paths = config.config_path .. "/lua/cmp/snippets/vscode" })
+require("luasnip.loaders.from_lua").load({
+  paths = config.config_path .. "/lua/cmp/snippets/lua",
+})
+require("luasnip.loaders.from_vscode").lazy_load({
+  paths = config.config_path .. "/lua/cmp/snippets/vscode",
+})
 
 -- https://github.com/rafamadriz/friendly-snippets/
 require("luasnip.loaders.from_vscode").lazy_load()
