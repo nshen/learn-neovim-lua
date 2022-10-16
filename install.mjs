@@ -37,7 +37,7 @@ async function yesOrQuit(questionString, func) {
 blue(logo);
 blue("开始环境检测...");
 
-const checklist = ["git", "nvim", "rg"];
+const checklist = ["git", "nvim", "rg", "wget", "curl"];
 
 let program;
 try {

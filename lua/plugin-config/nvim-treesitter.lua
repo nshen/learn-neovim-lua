@@ -9,7 +9,7 @@ treesitter.setup({
   sync_install = false,
   -- 安装 language parser
   -- :TSInstallInfo 命令查看支持的语言
-  ensure_installed = { "json", "html", "css", "vim", "lua", "javascript", "typescript", "tsx", "markdown" },
+  -- ensure_installed = { "json", "html", "css", "vim", "lua", "javascript", "typescript", "tsx", "markdown" },
   -- ensure_installed = "maintained",
 
   -- 启用代码高亮模块

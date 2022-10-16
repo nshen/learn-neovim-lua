@@ -107,7 +107,9 @@ packer.startup({
     -- treesitter
     use({
       "nvim-treesitter/nvim-treesitter",
-      run = ":TSUpdate",
+      run = function()
+        -- require("nvim-treesitter.install").update({ with_sync = true })
+      end,
       requires = {
         { "p00f/nvim-ts-rainbow" },
         { "JoosepAlviste/nvim-ts-context-commentstring" },
@@ -325,7 +327,7 @@ packer.startup({
     -- snapshot = "v1",
 
     -- 最大并发数
-    max_jobs = 16,
+    max_jobs = 10,
     -- 自定义源
     git = {
       -- default_url_format = "https://hub.fastgit.xyz/%s",
