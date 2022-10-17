@@ -6,4 +6,4 @@
 
 ## Install
 
-`npx zx http://www.nshen.net/learn-neovim-lua/install.mj`
+`npx zx http://www.nshen.net/learn-neovim-lua/install.mjs`
