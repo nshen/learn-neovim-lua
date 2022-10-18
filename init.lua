@@ -15,7 +15,7 @@ require("autocmds")
 -- 内置LSP
 require("lsp")
 -- 自动补全
-require("cmp")
+require("cmp.cmp")
 -- 格式化
 require("format")
 -- DAP
