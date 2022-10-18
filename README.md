@@ -6,12 +6,11 @@
 
 ## Install
 
-`npx zx http://www.nshen.net/learn-neovim-lua/install.mj`
+`npx zx http://www.nshen.net/learn-neovim-lua/install.mjs`
 
 ## todo
 
 - packer init first
 - nvim-treesitter ensure_installed 
 - mason_config ensure_installed 
-
 
