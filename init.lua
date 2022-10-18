@@ -13,13 +13,13 @@ require("colorscheme")
 require("autocmds")
 
 -- 内置LSP
-require("lsp")
+require("lsp.setup")
 -- 自动补全
-require("cmp.cmp")
+require("cmp.setup")
 -- 格式化
-require("format")
+require("format.setup")
 -- DAP
-require("dap")
+require("dap.setup")
 
 -- require("dap.vimspector")
 -- utils
