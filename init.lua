@@ -17,8 +17,7 @@ require("lsp")
 -- 自动补全
 require("cmp.cmp")
 -- 格式化
--- require("lsp.formatter")
-require("lsp.null-ls")
+require("format")
 -- DAP
 -- require("dap.vimspector")
 require("dap.nvim-dap")
