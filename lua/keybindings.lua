@@ -214,7 +214,7 @@ pluginKeys.mapTsLSP = function(bufnr)
   local bufopts = { noremap = true, silent = true, buffer = bufnr }
   keymap("n", lsp.ts_organize, ":TSLspOrganize<CR>", bufopts)
   keymap("n", lsp.ts_rename_file, ":TSLspRenameFile<CR>", bufopts)
-  keymap("n", lsp.ts_import_all, ":TSLspImportAll<CR>", bufopts)
+  keymap("n", lsp.ts_add_missing_import, ":TSLspImportAll<CR>", bufopts)
 end
 
 -- nvim-dap
