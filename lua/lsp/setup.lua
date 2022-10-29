@@ -46,6 +46,8 @@ mason_config.setup({
     "taplo",
     "yamlls",
     "gopls",
+    "clangd",
+    "cmake",
   },
 })
 
@@ -69,6 +71,8 @@ local servers = {
   taplo = require("lsp.config.taplo"), -- toml
   gopls = require("lsp.config.gopls"),
   -- remark_ls = require("lsp.config.markdown"),
+  clangd = require("lsp.config.clangd"),
+  cmake = require("lsp.config.cmake"),
 }
 
 for name, config in pairs(servers) do
