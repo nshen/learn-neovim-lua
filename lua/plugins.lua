@@ -280,7 +280,12 @@ packer.startup({
 
     -------------------------------------------------------
     -- git
-    use({ "lewis6991/gitsigns.nvim" })
+    use({
+      "lewis6991/gitsigns.nvim",
+      config = function()
+        require("plugin-config.gitsigns")
+      end,
+    })
     -- vimspector
     use({
       "puremourning/vimspector",
