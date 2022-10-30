@@ -291,29 +291,31 @@ packer.startup({
       end,
     })
     ----------------------------------------------
+    -- nvim-dap
     use("mfussenegger/nvim-dap")
     use("theHamsta/nvim-dap-virtual-text")
     use("rcarriga/nvim-dap-ui")
 
+    use({
+      "mxsdev/nvim-dap-vscode-js",
+      requires = { "mfussenegger/nvim-dap" },
+      config = function()
+        require("dap.nvim-dap.vscode-js")
+      end,
+    })
+
     --[[ not work
 
-      use({
-        "mxsdev/nvim-dap-vscode-js",
-        requires = { "mfussenegger/nvim-dap" },
-        config = function()
-          require("dap.nvim-dap.vscode-js")
-        end,
-      })
-      use({
-        "microsoft/vscode-js-debug",
-        opt = true,
-        -- insall https://github.com/microsoft/vscode-js-debug
-        run = "npm install --legacy-peer-deps && npm run compile",
-      })
+    use({
+      "mfussenegger/nvim-dap-python",
+      requires = { "mfussenegger/nvim-dap" },
+      config = function()
+        require("dap-python").setup("/Users/nn/.local/share/nvim/mason/bin/debugpy")
+      end,
+    })
 
     --]]
 
-    -- use("Pocco81/DAPInstall.nvim")
     -- use("jbyuki/one-small-step-for-vimkind")
     --[[ use("dstein64/vim-startuptime") ]]
 
