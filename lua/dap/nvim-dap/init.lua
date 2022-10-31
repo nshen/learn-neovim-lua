@@ -77,3 +77,5 @@ end
 require("dap.nvim-dap.lua").setup()
 -- require("dap.nvim-dap.python")
 require("keybindings").mapDAP()
+
+require("dap-go").setup()

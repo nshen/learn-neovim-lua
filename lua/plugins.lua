@@ -301,6 +301,7 @@ packer.startup({
     use("theHamsta/nvim-dap-virtual-text")
     use("rcarriga/nvim-dap-ui")
 
+    -- node
     use({
       "mxsdev/nvim-dap-vscode-js",
       requires = { "mfussenegger/nvim-dap" },
@@ -308,6 +309,9 @@ packer.startup({
         require("dap.nvim-dap.vscode-js")
       end,
     })
+
+    -- go
+    use("leoluz/nvim-dap-go")
 
     --[[ not work
 
