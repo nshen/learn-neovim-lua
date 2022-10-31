@@ -67,6 +67,15 @@ local M = {
       size_equal = "s=",
     },
 
+    s_tab = {
+      split = "ts",
+      prev = "th",
+      next = "tl",
+      first = "tj",
+      last = "tk",
+      close = "tc",
+    },
+
     fold = {
       open = "Z",
       close = "zz",

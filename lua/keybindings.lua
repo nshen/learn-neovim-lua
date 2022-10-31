@@ -111,6 +111,16 @@ if keys.s_windows ~= nil and keys.s_windows.enable then
   keymap("n", skey.size_equal, "<C-w>=")
 end
 
+if keys.s_tab ~= nil then
+  local tkey = keys.s_tab
+  keymap("n", tkey.split, "<CMD>tab split<CR>")
+  keymap("n", tkey.close, "<CMD>tabclose<CR>")
+  keymap("n", tkey.next, "<CMD>tabnext<CR>")
+  keymap("n", tkey.prev, "<CMD>tabprev<CR>")
+  keymap("n", tkey.first, "<CMD>tabfirst<CR>")
+  keymap("n", tkey.last, "<CMD>tablast<CR>")
+end
+
 -- treesitter 折叠
 keymap("n", keys.fold.open, ":foldopen<CR>")
 keymap("n", keys.fold.close, ":foldclose<CR>")
