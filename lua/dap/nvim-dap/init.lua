@@ -74,8 +74,8 @@ end
 dap.listeners.before.event_exited["dapui_config"] = function()
   dapui.close()
 end
-require("dap.nvim-dap.lua").setup()
--- require("dap.nvim-dap.python")
-require("keybindings").mapDAP()
+require("dap.nvim-dap.config.lua").setup()
+require("dap.nvim-dap.config.cpp").setup()
 
 require("dap-go").setup()
+require("keybindings").mapDAP()
