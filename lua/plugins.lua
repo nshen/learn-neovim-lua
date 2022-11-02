@@ -306,7 +306,7 @@ packer.startup({
       "mxsdev/nvim-dap-vscode-js",
       requires = { "mfussenegger/nvim-dap" },
       config = function()
-        require("dap.nvim-dap.vscode-js")
+        require("dap.nvim-dap.config.vscode-js")
       end,
     })
 

@@ -28,7 +28,7 @@ return {
       -- We don't want to call lspconfig.rust_analyzer.setup() when using rust-tools
       rust_tools.setup({
         server = opts,
-        dap = require("dap.nvim-dap.rust"),
+        dap = require("dap.nvim-dap.config.rust"),
       })
     end
   end,
