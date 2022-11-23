@@ -16,4 +16,7 @@ fidget.setup({
       ignore = true,
     },
   },
+  window ={
+    blend=0
+  }
 })

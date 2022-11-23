@@ -250,12 +250,12 @@ packer.startup({
     use("simrat39/rust-tools.nvim")
     --------------------- colorschemes --------------------
     -- tokyonight
-    use({
-      "folke/tokyonight.nvim",
-      config = function()
-        require("plugin-config.tokyonight")
-      end,
-    })
+    -- use({
+    --  "folke/tokyonight.nvim",
+    --   config = function()
+    --     require("plugin-config.tokyonight")
+    --   end,
+    -- })
 
     -- OceanicNext
     -- use({ "mhartington/oceanic-next", event = "VimEnter" })
@@ -270,7 +270,7 @@ packer.startup({
     -- use("glepnir/zephyr-nvim")
 
     -- nord
-    -- use("shaunsingh/nord.nvim")
+    use("shaunsingh/nord.nvim")
 
     -- onedark
     -- use("ful1e5/onedark.nvim")
