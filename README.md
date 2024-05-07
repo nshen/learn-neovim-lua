@@ -1,5 +1,7 @@
 ## 📜 Neovim 配置实战：从 0 到 1 打造自己的 IDE
 
+>- 注意：插件配置更新非常频繁，小册中很多动态截图无法更新，我创建了全新项目 [InsisVim](https://github.com/nshen/InsisVim) 可以直接使用，如果你是自己配置遇到问题请到 InsisVim 项目里参考对应插件的最新配置。
+
 《学习 Neovim 全 lua 配置》已经在稀土掘金专业编辑的指点下完全重写。
 
 新名字是：[《Neovim 配置实战：从 0 到 1 打造自己的 IDE》](https://juejin.cn/book/7051157342770954277)
@@ -14,7 +16,6 @@
 >- `bak` 分支是最早期还没有小册时候的旧版备份已经过期，不建议参考
 >- `main` 分支是小册的版本，为保持小册内容稳定已在 plugins.lua 中[锁定了插件版本](https://github.com/nshen/learn-neovim-lua/blob/7af70083eaf469fccb2ad601eaeabac150d080e5/lua/plugins.lua#L151-L154)，是小册的对应源码
 >- `v2` 分支是小册完成后，插件更新对应配置的持续修改，如果取消了`main`分支插件版本锁定，建议对应此分支更新配置。
->- 随着 v2 分支改动越来越多，我创建了全新项目 [InsisVim](https://github.com/nshen/InsisVim)，欢迎大佬们一起参与提 PR 
 
 ## 新版购买链接
 
